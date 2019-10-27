@@ -1,6 +1,4 @@
 from flask import Flask, render_template
-import os
-import urllib.parse as up
 import psycopg2
 
 def postgres_test():
