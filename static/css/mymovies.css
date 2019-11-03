@@ -1,0 +1,53 @@
+
+table {
+                font-family: serif;
+}
+                td {
+                border: 3px;
+                text-align: center;
+                padding: 10px;
+}
+                ul{
+                text-shadow: 0.5px 0.5px #ff0000
+                }
+                h1 {
+                color: gray;
+                text-shadow: 2px 2px #ffffff;
+                }
+				.button
+				{
+				background-color: rgba(80, 0, 0, 0.9); /* Green */
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				}
+                form {
+                text-align: center;
+                align: center;
+                
+                }
+                input {
+                
+                }
+                input[type=text] {
+                width: 300px;
+                
+                }
+                
+                th{
+                text-shadow: 0.5px 0.5px #0000ff;
+                
+                }
+                td{
+                text-shadow: 0.5px 0.5px #00ffff;
+                }
+                tr {
+                background-color: rgba(80, 0, 0, 0.9); 
+                color: gray;
+                
+                transition: background-color 1s ease-in-out;
+}

@@ -27,7 +27,6 @@ if  postgres_test():
 	conn.commit();
 	conn.close();
 
-    
 
 
 @app.route("/")
