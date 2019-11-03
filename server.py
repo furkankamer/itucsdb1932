@@ -49,7 +49,7 @@ VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
 	cursor.execute(statement)
 	conn.commit();
 	conn.close();
-	return """Congratulations You have signed up!"""
+	return """Congratulations. You have signed up!"""
 
 
 
