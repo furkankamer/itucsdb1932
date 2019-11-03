@@ -6,29 +6,6 @@ import psycopg2
 
 app = Flask(__name__)
 
-def postgres_test():
-
-	try:
-		conn = psycopg2.connect(
-			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
-		conn.close();
-		return True
-	except:
-		print('not connected')
-		return
-
-if  postgres_test():
-	print('connected')
-	conn = psycopg2.connect(
-			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
-	cursor = conn.cursor()
-	statement = """CREATE TABLE if not exists Persons ( UserName varchar(255), Password varchar(255), FirstName varchar(255), LastName varchar(255) )"""
-	cursor.execute(statement)
-	conn.commit();
-	conn.close();
-
-
-
 @app.route("/")
 def home_page():
     return render_template("homepage.html")
@@ -43,39 +20,32 @@ def sign_in():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
+	
 	if request.form["btn"]=="Sign Up":
-		conn = psycopg2.connect(
-			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
-		cursor = conn.cursor()
 		username = request.form['UserName']
 		password = request.form['Password']
 		firstname = request.form['FirstName']
 		lastname = request.form['LastName']
 		statement = """INSERT INTO Persons (UserName, Password, FirstName, LastName)
 VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
-		cursor.execute(statement)
-		conn.commit();
-		conn.close();
+		with psycopg2.connect("dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'") as connection:
+			with connection.cursor() as cursor:
+				cursor.execute(statement)
 		return """Congratulations. You have signed up!"""
 	elif request.form["btn"]=="Sign In":
-		conn = psycopg2.connect(
-			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
-		cursor = conn.cursor()
 		username = request.form['UserName']
 		password = request.form['Password']
 		statement = """SELECT password from Persons WHERE username = '%s'""" % (username)
-		cursor.execute(statement)
-		password1 = cursor.fetchone()
-		for row in cursor:
-			password1 = row[0]
-			print(password1)
-			if password == password1:
-				conn.close();
-				return """Congratulations. You have signed in"""
-			else:
-				conn.close();
-				return """False information!Please try again"""
-		
+		with psycopg2.connect("dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'") as connection:
+			with connection.cursor() as cursor:
+				cursor.execute(statement)
+				password1 = cursor.fetchone()[0]
+				if password == password1:
+					return """Congratulations. You have signed in"""
+				else:
+					return """False information!Please try again"""
+	
+	return """nothin"""
 		
 		
 
