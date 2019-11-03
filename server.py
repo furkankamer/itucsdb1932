@@ -35,6 +35,11 @@ def home_page():
     return render_template("homepage.html")
 
 
+@app.route("/signup")
+def sign_up():
+	return render_template("signup.html")
+
+
 @app.route('/', methods=['POST'])
 def my_form_post():
 	conn = psycopg2.connect(
