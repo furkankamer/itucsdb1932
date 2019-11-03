@@ -38,24 +38,47 @@ def home_page():
 @app.route("/signup")
 def sign_up():
 	return render_template("signup.html")
-
+@app.route("/signin")
+def sign_in():
+	return render_template("signin.html")
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-	conn = psycopg2.connect(
+	if request.form["btn"]=="Sign Up":
+		conn = psycopg2.connect(
 			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
-	cursor = conn.cursor()
-	username = request.form['UserName']
-	password = request.form['Password']
-	firstname = request.form['FirstName']
-	lastname = request.form['LastName']
-	statement = """INSERT INTO Persons (UserName, Password, FirstName, LastName)
+		cursor = conn.cursor()
+		username = request.form['UserName']
+		password = request.form['Password']
+		firstname = request.form['FirstName']
+		lastname = request.form['LastName']
+		statement = """INSERT INTO Persons (UserName, Password, FirstName, LastName)
 VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
-	cursor.execute(statement)
-	conn.commit();
-	conn.close();
-	return """Congratulations. You have signed up!"""
-
+		cursor.execute(statement)
+		conn.commit();
+		conn.close();
+		return """Congratulations. You have signed up!"""
+	elif request.form["btn"]=="Sign In":
+		conn = psycopg2.connect(
+			"dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'")
+		cursor = conn.cursor()
+		username = request.form['UserName']
+		password = request.form['Password']
+		statement = """SELECT password from Persons WHERE username = '%s'""" % (username)
+		cursor.execute(statement)
+		password1 = cursor.fetchone()
+		for row in cursor:
+			password1 = row[0]
+			print(password1)
+			if password == password1:
+				conn.close();
+				return """Congratulations. You have signed in"""
+			else:
+				conn.close();
+				return """False information!Please try again"""
+		
+		
+		
 
 
 
