@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import psycopg2
-
+from passlib.hash import pbkdf2_sha256 as hasher
 
 
 
 app = Flask(__name__)
+
+app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17';
 
 @app.route("/")
 def home_page():
@@ -23,7 +25,7 @@ def my_form_post():
 	
 	if request.form["btn"]=="Sign Up":
 		username = request.form['UserName']
-		password = request.form['Password']
+		password = hasher.hash(request.form['Password'])
 		firstname = request.form['FirstName']
 		lastname = request.form['LastName']
 		statement = """INSERT INTO Persons (UserName, Password, FirstName, LastName)
@@ -31,7 +33,8 @@ VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
 		with psycopg2.connect("dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'") as connection:
 			with connection.cursor() as cursor:
 				cursor.execute(statement)
-		return """Congratulations. You have signed up!"""
+		flash('Signed Up successfully.')
+		return render_template("homepage.html")
 	elif request.form["btn"]=="Sign In":
 		username = request.form['UserName']
 		password = request.form['Password']
@@ -40,7 +43,7 @@ VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
 			with connection.cursor() as cursor:
 				cursor.execute(statement)
 				password1 = cursor.fetchone()[0]
-				if password == password1:
+				if hasher.verify(password,password1):
 					return """Congratulations. You have signed in"""
 				else:
 					return """False information!Please try again"""
