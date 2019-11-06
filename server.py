@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash
 import psycopg2
-from passlib.hash import pbkdf2_sha256 as hasher
+from passlib.hash import pbkdf2_sha256
 
 
 
@@ -25,7 +25,7 @@ def my_form_post():
 	
 	if request.form["btn"]=="Sign Up":
 		username = request.form['UserName']
-		password = hasher.hash(request.form['Password'])
+		password = pbkdf2_sha256.hash(request.form['Password'])
 		firstname = request.form['FirstName']
 		lastname = request.form['LastName']
 		statement = """INSERT INTO Persons (UserName, Password, FirstName, LastName)
@@ -43,7 +43,7 @@ VALUES ('%s', '%s', '%s', '%s');""" % (username,password,firstname,lastname)
 			with connection.cursor() as cursor:
 				cursor.execute(statement)
 				password1 = cursor.fetchone()[0]
-				if hasher.verify(password,password1):
+				if pbkdf2_sha256.verify(password,password1):
 					return """Congratulations. You have signed in"""
 				else:
 					return """False information!Please try again"""
