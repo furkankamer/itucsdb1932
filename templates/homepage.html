@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-	<link rel="stylesheet" href="/static/css/mymovies.css"/>
-    <title>SchoolManager</title>
-	{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-{% block body %}{% endblock %}
-  </head>
-  <div style="height: 100vh; width: 100vw; background-color: rgba(0, 80, 0, 0.7); color: gray; background-size: cover; font-size:18px; font-style: italic; font-weight: bold; font-family: serif;">
-  <body style="color: blue; background-image: url(/static/img/castle.jpg); background-repeat: no-repeat; background-size:cover ;">
+{% extends "main.html" %}
+
+{% block content %}
+
+<div>
     <a href="/">
-	<h1>SchoolManager</h1>
-	</a>
-	<a href="/signup" class="button">Sign Up</a>
-	<a href="/signin" class="button">Sign In</a>
-  </body>
-</html>
+        <h1>SchoolManager</h1>
+    </a>
+    <a href="/signup" class="button">Sign Up</a>
+    <a href="/signin" class="button">Sign In</a>
+
+{% endblock %}

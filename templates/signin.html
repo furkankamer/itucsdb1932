@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-	<link rel="stylesheet" href="/static/css/mymovies.css"/>
-    <title>SchoolManager</title>
-  </head>
- 
-  <div style="height: 100vh; width: 100vw; border-color: black; border-style: solid; border-width:5px; background-color: rgba(0, 80, 0, 0.7); color: gray; background-size: cover; font-size:18px; font-style: italic; font-weight: bold; font-family: serif;">
-     <body style="color: blue; background-image: url(/static/img/castle.jpg); background-repeat: no-repeat; background-size:cover ;">
-	<a href="/">
-	<h1>SchoolManager</h1>
-	</a>
-	<a href="/" class="button">Home Page</a>
-	<a href="/signup" class="button">Sign Up</a>
-	<form method="POST" action="/">
-Username: <input style="font-size:22px;" type="text" name="UserName" value=""><br>
-Password: <input style="font-size:22px;" type="password" name="Password" value=""><br>
-<input style="font-size:12px;" type="submit" name="btn" value="Sign In">
-</form>
-  </body>
-</html>
+{% extends "main.html" %}
+
+{% block content %}
+
+<div>
+    <a href="/">
+        <h1>SchoolManager</h1>
+    </a>
+    <a href="/" class="button">Home Page</a>
+    <a href="/signup" class="button">Sign Up</a>
+    <form method="POST" action="/">
+        Username: <input type="text" name="UserName" value=""><br>
+        Password: <input type="password" name="Password" value=""><br>
+        <input style="font-size:12px;" type="submit" name="btn" value="Sign In">
+    </form>
+
+{% endblock %}
