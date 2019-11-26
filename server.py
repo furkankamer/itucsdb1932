@@ -53,7 +53,7 @@ def my_form_post():
                 else:
                     return """False information!Please try again"""
 
-    return """nothin"""
+    return """nothing"""
 
 
 if __name__ == "__main__":
