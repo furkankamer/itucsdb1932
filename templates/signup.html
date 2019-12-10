@@ -10,24 +10,33 @@ function asd(a,b)
 		if(b==0)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
-			document.getElementById("signupform2").style.visibility="hidden";
-			document.getElementById("signupform3").style.visibility="hidden";
+			document.getElementById("schname").style.visibility="hidden";
+			document.getElementById("sch").style.visibility="visible";
+			document.getElementById("subj").style.visibility="hidden";
+			document.getElementById("act").style.visibility="visible";
+			document.getElementById("deg").style.visibility="visible";
 			document.getElementById("3").checked = true;
 			document.getElementById("1").checked = false;
 			document.getElementById("2").checked = false;}
 		else if(b==1)
 		{
-			document.getElementById("signupform2").style.visibility="visible";
-			document.getElementById("signupform1").style.visibility="hidden";
-			document.getElementById("signupform3").style.visibility="hidden";
+			document.getElementById("signupform1").style.visibility="visible";
+			document.getElementById("schname").style.visibility="visible";
+			document.getElementById("sch").style.visibility="hidden";
+			document.getElementById("subj").style.visibility="hidden";
+			document.getElementById("act").style.visibility="hidden";
+			document.getElementById("deg").style.visibility="hidden";
 			document.getElementById("1").checked = true;
 			document.getElementById("2").checked = false;
 			document.getElementById("3").checked = false;}
 		else
 		{
-			document.getElementById("signupform3").style.visibility="visible";
-			document.getElementById("signupform1").style.visibility="hidden";
-			document.getElementById("signupform2").style.visibility="hidden";
+			document.getElementById("signupform1").style.visibility="visible";
+			document.getElementById("schname").style.visibility="hidden";
+			document.getElementById("sch").style.visibility="visible";
+			document.getElementById("subj").style.visibility="visible";
+			document.getElementById("act").style.visibility="visible";
+			document.getElementById("deg").style.visibility="hidden";
 			document.getElementById("2").checked = true;
 			document.getElementById("1").checked = false;
 			document.getElementById("3").checked = false;}
@@ -54,27 +63,13 @@ function asd(a,b)
     <form id="signupform1" method="POST" action="/" style = "visibility: hidden;">
         Username: <input type="text" name="UserName" value=""><br>
         Password: <input type="password" name="Password" value=""><br>
-		SchoolName: <input type="text" name="SchoolName" value=""><br>
+		SchoolName: <input id="schname" type="text" name="SchoolName" value=""><br>
+		School: <input id="sch" type="text" name="SchoolName" value=""><br>
         First name: <input type="text" name="FirstName" value=""><br>
         Last name: <input type="text" name="LastName" value=""><br>
-        <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
-    </form>
-	<form id="signupform2" method="POST" action="/" style = "visibility: hidden;">
-        Username: <input type="text" name="UserName" value=""><br>
-        Password: <input type="password" name="Password" value=""><br>
-        First name: <input type="text" name="FirstName" value=""><br>
-        Last name: <input type="text" name="LastName" value=""><br>
-		Subject: <input type="text" name="Subject" value=""><br>
-		Activation Code: <input type="text" name="ActivationCode" value=""><br>
-        <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
-    </form>
-	<form id="signupform3" method="POST" action="/" style = "visibility: hidden;">
-        Username: <input type="text" name="UserName" value=""><br>
-        Password: <input type="password" name="Password" value=""><br>
-        First name: <input type="text" name="FirstName" value=""><br>
-        Last name: <input type="text" name="LastName" value=""><br>
-		Degree: <input type="text" name="Degree" value=""><br>
-		Activation Code: <input type="text" name="ActivationCode" value=""><br>
+		Subject: <input id="subj" type="text" name="Subject" value=""><br>
+		Activation Code: <input id="act" type="text" name="ActivationCode" value=""><br>
+		Degree: <input id="deg" type="text" name="Degree" value=""><br>
         <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
     </form>
 
