@@ -23,7 +23,11 @@ def sign_in():
 
 @app.route("/lectures")
 def lectures():
-	return render_template("lectures.html")
+	names = ["physics", "biology", "chemistry"]
+	deneme1 = """"""
+	for i in names:
+		deneme1 += """<option value="%s">%s</option>"""%(i,i)
+	return render_template("lectures.html",deneme=deneme1)
 
 @app.route("/schedule")
 def schedule():
