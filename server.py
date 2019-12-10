@@ -21,6 +21,14 @@ def sign_up():
 def sign_in():
     return render_template("signin.html")
 
+@app.route("/lectures")
+def lectures():
+	return render_template("lectures.html")
+
+@app.route("/schedule")
+def schedule():
+	return render_template("schedule.html")
+
 
 @app.route('/', methods=['POST'])
 def my_form_post():
