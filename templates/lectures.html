@@ -8,8 +8,13 @@
     </a>
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
-	<br>subject
-    <select>
+	<br>
+	<form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+	subject
+    <select id="mySelect" name = "cars">
 	{{ deneme | safe}}
 	</select>
+	<input type="submit" value="Submit">
+  </form>
+  <br> {{ deneme2 | safe}} 
 {% endblock %}

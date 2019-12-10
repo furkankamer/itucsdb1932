@@ -27,11 +27,22 @@ def lectures():
 	deneme1 = """"""
 	for i in names:
 		deneme1 += """<option value="%s">%s</option>"""%(i,i)
-	return render_template("lectures.html",deneme=deneme1)
+	return render_template("lectures.html",deneme=deneme1,deneme2="""""")
 
 @app.route("/schedule")
 def schedule():
 	return render_template("schedule.html")
+
+@app.route('/lectures', methods=['POST'])
+def lectureregistry():
+	names = ["physics", "biology", "chemistry"]
+	deneme1 = """"""
+	for i in names:
+		deneme1 += """<option value="%s">%s</option>"""%(i,i)
+	if request.method == "POST":
+		car_brand = request.form.get("cars", None)
+	return render_template("lectures.html",deneme=deneme1,deneme2=car_brand)
+	
 
 
 @app.route('/', methods=['POST'])
