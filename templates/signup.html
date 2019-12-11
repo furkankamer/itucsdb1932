@@ -67,16 +67,15 @@ function asd(a,b)
 
 </script>
 <div class="container">
-    <a href="/" class="button">Home Page</a>
-    <a href="/signin" class="button">Sign In</a><br>
+    <a href="/signin" class="button">Sign In</a><br><br>
 	<input id="1" onclick="asd(1,1)" type="radio" name="manager" value="Manager">Manager<br>
 	<input id="2" onclick="asd(1,2)" type="radio" name="teacher" value="Teacher">Teacher<br>
 	<input id="3" onclick="asd(1,0)" type="radio" name="student" value="Student">Student<br>
 
     <form id="signupform1" method="POST" action="/" style = "visibility: hidden;">
-        Username: <input type="text" name="UserName" value=""><br>
+        Username: <input type="text" name="UserName" value="" required="required"><br>
 
-        Password: <input type="password" name="Password" value=""><br>
+        Password: <input type="password" name="Password" value="" required="required"><br>
 
         <label id="schnameLabel" for="schname">SchoolName: </label>
         <input id="schname" type="text" name="SchoolName" value=""><br>

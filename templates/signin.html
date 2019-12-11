@@ -3,12 +3,11 @@
 {% block content %}
 
 <div class="container">
-    <a href="/" class="button">Home Page</a>
     <a href="/signup" class="button">Sign Up</a>
     <form method="POST" action="/">
-        Username: <input type="text" name="UserName" value=""><br>
-        Password: <input type="password" name="Password" value=""><br>
-        <input style="font-size:12px;" type="submit" name="btn" value="Sign In">
+        Username: <input class="" type="text" name="UserName" value="" required="required"><br>
+        Password: <input type="password" name="Password" value="" required="required"><br>
+        <input style="font-size:16px;" type="submit" name="btn" value="Sign In">
     </form>
 </div>
 

@@ -92,7 +92,7 @@ def my_form_post():
                 if pbkdf2_sha256.verify(password, password1):
                     return render_template("loggedin.html")
                 else:
-                    return """False information!Please try again"""
+                    return """False information! Please try again"""
 
     return """nothing"""
 
