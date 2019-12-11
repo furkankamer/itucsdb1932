@@ -1,12 +1,17 @@
-body {
-    color: blue;
+html {
     background-image: url(/static/img/castle.jpg);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    margin-bottom: 50px;
 }
 
 div {
-    height: 91vh;
+    height: auto;
     width: auto;
     background-color: rgba(0, 80, 0, 0.7);
     color: gray;
@@ -88,6 +93,17 @@ tr {
     transition: background-color 1s ease-in-out;
 }
 
+nav.navbar {
+    background-color: rgba(255,255,255,0.25);
+}
+
 footer {
+    position: fixed;
+    height: 50px;
+    background-color: rgba(255,255,255,0.25);
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
     text-align: center;
 }
