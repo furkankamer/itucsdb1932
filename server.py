@@ -21,28 +21,30 @@ def sign_up():
 def sign_in():
     return render_template("signin.html")
 
+
 @app.route("/lectures")
 def lectures():
-	names = ["physics", "biology", "chemistry"]
-	deneme1 = """"""
-	for i in names:
-		deneme1 += """<option value="%s">%s</option>"""%(i,i)
-	return render_template("lectures.html",deneme=deneme1,deneme2="""""")
+    names = ["Physics", "Biology", "Chemistry"]
+    deneme1 = """"""
+    for i in names:
+        deneme1 += """<option value="%s">%s</option>""" % (i, i)
+    return render_template("lectures.html", deneme=deneme1, deneme2="""""")
+
 
 @app.route("/schedule")
 def schedule():
-	return render_template("schedule.html")
+    return render_template("schedule.html")
+
 
 @app.route('/lectures', methods=['POST'])
 def lectureregistry():
-	names = ["physics", "biology", "chemistry"]
-	deneme1 = """"""
-	for i in names:
-		deneme1 += """<option value="%s">%s</option>"""%(i,i)
-	if request.method == "POST":
-		car_brand = request.form.get("cars", None)
-	return render_template("lectures.html",deneme=deneme1,deneme2=car_brand)
-	
+    names = ["physics", "biology", "chemistry"]
+    deneme1 = """"""
+    for i in names:
+        deneme1 += """<option value="%s">%s</option>""" % (i, i)
+    if request.method == "POST":
+        car_brand = request.form.get("cars", None)
+    return render_template("lectures.html", deneme=deneme1, deneme2=car_brand)
 
 
 @app.route('/', methods=['POST'])
@@ -64,7 +66,7 @@ def my_form_post():
     elif request.form["btn"] == "Sign In":
         username = request.form['UserName']
         password = request.form['Password']
-        statement = """SELECT password from Persons WHERE username = '%s'""" % (username)
+        statement = """SELECT password from Persons WHERE username = '%s'""" % (username,)
         with psycopg2.connect(
                 """dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' 
                 password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'""") as connection:

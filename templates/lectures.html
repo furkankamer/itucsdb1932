@@ -3,18 +3,17 @@
 {% block content %}
 
 <div>
-    <a href="/">
-        <h1>SchoolManager</h1>
-    </a>
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
-	<br>
-	<form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
-	subject
-    <select id="mySelect" name = "cars">
-	{{ deneme | safe}}
-	</select>
-	<input type="submit" value="Submit">
-  </form>
-  <br> {{ deneme2 | safe}} 
+    <br>
+    <form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+        Subject:
+        <select id="mySelect" name = "cars">
+            {{ deneme | safe}}
+        </select>
+        <input style="font-size:12px;" type="submit" value="Submit">
+    </form>
+    <br> {{ deneme2 | safe}}
+</div>
+
 {% endblock %}

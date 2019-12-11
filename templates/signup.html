@@ -11,10 +11,15 @@ function asd(a,b)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
 			document.getElementById("schname").style.visibility="hidden";
+			document.getElementById("schnameLabel").style.display="none";
 			document.getElementById("sch").style.visibility="visible";
+			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="hidden";
+			document.getElementById("subjLabel").style.display="none";
 			document.getElementById("act").style.visibility="visible";
+			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="visible";
+			document.getElementById("degLabel").style.display="inline";
 			document.getElementById("3").checked = true;
 			document.getElementById("1").checked = false;
 			document.getElementById("2").checked = false;}
@@ -22,10 +27,15 @@ function asd(a,b)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
 			document.getElementById("schname").style.visibility="visible";
+			document.getElementById("schnameLabel").style.display="inline";
 			document.getElementById("sch").style.visibility="hidden";
+			document.getElementById("schLabel").style.display="none";
 			document.getElementById("subj").style.visibility="hidden";
+			document.getElementById("subjLabel").style.display="none";
 			document.getElementById("act").style.visibility="hidden";
+			document.getElementById("actLabel").style.display="none";
 			document.getElementById("deg").style.visibility="hidden";
+			document.getElementById("degLabel").style.display="none";
 			document.getElementById("1").checked = true;
 			document.getElementById("2").checked = false;
 			document.getElementById("3").checked = false;}
@@ -33,10 +43,15 @@ function asd(a,b)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
 			document.getElementById("schname").style.visibility="hidden";
+			document.getElementById("schnameLabel").style.display="none";
 			document.getElementById("sch").style.visibility="visible";
+			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="visible";
+			document.getElementById("subjLabel").style.display="inline";
 			document.getElementById("act").style.visibility="visible";
+			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="hidden";
+			document.getElementById("degLabel").style.display="none";
 			document.getElementById("2").checked = true;
 			document.getElementById("1").checked = false;
 			document.getElementById("3").checked = false;}
@@ -52,25 +67,38 @@ function asd(a,b)
 
 </script>
 <div>
-    <a href="/">
-        <h1>SchoolManager</h1>
-    </a>
     <a href="/" class="button">Home Page</a>
     <a href="/signin" class="button">Sign In</a><br>
-	<input id="1" onclick="asd(1,1)" type="checkbox" name="manager" value="Manager">Manager<br>
-	<input id="2" onclick="asd(1,2)" type="checkbox" name="teacher" value="Teacher">Teacher<br>
-	<input id="3" onclick="asd(1,0)" type="checkbox" name="student" value="Student">Student<br>
+	<input id="1" onclick="asd(1,1)" type="radio" name="manager" value="Manager">Manager<br>
+	<input id="2" onclick="asd(1,2)" type="radio" name="teacher" value="Teacher">Teacher<br>
+	<input id="3" onclick="asd(1,0)" type="radio" name="student" value="Student">Student<br>
+
     <form id="signupform1" method="POST" action="/" style = "visibility: hidden;">
         Username: <input type="text" name="UserName" value=""><br>
+
         Password: <input type="password" name="Password" value=""><br>
-		SchoolName: <input id="schname" type="text" name="SchoolName" value=""><br>
-		School: <input id="sch" type="text" name="SchoolName" value=""><br>
+
+        <label id="schnameLabel" for="schname">SchoolName: </label>
+        <input id="schname" type="text" name="SchoolName" value=""><br>
+
+		<label id="schLabel" for="sch">School: </label>
+        <input id="sch" type="text" name="SchoolName" value=""><br>
+
         First name: <input type="text" name="FirstName" value=""><br>
+
         Last name: <input type="text" name="LastName" value=""><br>
-		Subject: <input id="subj" type="text" name="Subject" value=""><br>
-		Activation Code: <input id="act" type="text" name="ActivationCode" value=""><br>
-		Degree: <input id="deg" type="text" name="Degree" value=""><br>
+
+		<label id="subjLabel" for="subj">Subject: </label>
+        <input id="subj" type="text" name="Subject" value=""><br>
+
+		<label id="actLabel" for="act">Activation Code: </label>
+        <input id="act" type="text" name="ActivationCode" value=""><br>
+
+		<label id="degLabel" for="deg">Degree: </label>
+        <input id="deg" type="text" name="Degree" value=""><br>
+
         <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
     </form>
+</div>
 
 {% endblock %}

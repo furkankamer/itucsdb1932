@@ -1,86 +1,93 @@
 body {
-                color: blue;
-                background-image: url(/static/img/castle.jpg);
-                background-repeat: no-repeat;
-                background-size:cover;
+    color: blue;
+    background-image: url(/static/img/castle.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 div {
-                height: 100vh;
-                width: 100vw;
-                background-color: rgba(0, 80, 0, 0.7);
-                color: gray;
-                background-size: cover;
-                font-size:18px;
-                font-style: italic;
-                font-weight: bold;
-                font-family: serif;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 80, 0, 0.7);
+    color: gray;
+    background-size: cover;
+    font-size:18px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: serif;
 }
 
 input {
-                font-size:22px;
+    font-size:2my2px;
 }
 
 .flashes
 {
-				background-color: rgba(80, 0, 0, 0.9); /* Green */
-				border: none;
-				color: white;
-				padding: 15px 32px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
+    background-color: rgba(80, 0, 0, 0.9); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
+
 table {
-                font-family: serif;
+    font-family: serif;
 }
-                td {
-                border: 3px;
-                text-align: center;
-                padding: 10px;
+
+td {
+    border: 3px;
+    text-align: center;
+    padding: 10px;
 }
-                ul{
-                text-shadow: 0.5px 0.5px #ff0000
-                }
-                h1 {
-                color: gray;
-                text-shadow: 2px 2px #ffffff;
-                }
-				.button
-				{
-				background-color: rgba(80, 0, 0, 0.9); /* Green */
-				border: none;
-				color: white;
-				padding: 15px 32px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
-				}
-                form {
-                text-align: center;
-                align: center;
-                
-                }
-                input {
-                
-                }
-                input[type=text] {
-                width: 300px;
-                
-                }
-                
-                th{
-                text-shadow: 0.5px 0.5px #0000ff;
-                
-                }
-                td{
-                text-shadow: 0.5px 0.5px #00ffff;
-                }
-                tr {
-                background-color: rgba(80, 0, 0, 0.9); 
-                color: gray;
-                
-                transition: background-color 1s ease-in-out;
+
+ul {
+    text-shadow: 0.5px 0.5px #ff0000
+}
+
+h1 {
+    color: gray;
+    text-shadow: 2px 2px #ffffff;
+}
+
+.button {
+    background-color: rgba(80, 0, 0, 0.9); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+form {
+    align: center;
+}
+
+input {
+}
+
+input[type=text] {
+    width: 300px;
+}
+
+th {
+    text-shadow: 0.5px 0.5px #0000ff;
+}
+
+td {
+    text-shadow: 0.5px 0.5px #00ffff;
+}
+
+tr {
+    background-color: rgba(80, 0, 0, 0.9);
+    color: gray;
+    transition: background-color 1s ease-in-out;
+}
+
+footer {
+    text-align: center;
 }

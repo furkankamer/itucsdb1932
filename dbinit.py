@@ -3,11 +3,10 @@ import sys
 
 import psycopg2 as dbapi2
 
-
 INIT_STATEMENTS = [
     """CREATE TABLE if not exists Persons ( UserName varchar(255), Password varchar(255), FirstName varchar(255), 
-    LastName varchar(255) );
-	CREATE TABLE if not exists Lectures ( Name varchar(255), Code varchar(255), Time varchar(255), 
+    LastName varchar(255) );""",
+    """CREATE TABLE if not exists Lectures ( Name varchar(255), Code varchar(255), Time varchar(255), 
     Location varchar(255), Quota varchar(255) );""",
 ]
 
