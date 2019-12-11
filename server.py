@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, current_app, abort
 import psycopg2
 from passlib.hash import pbkdf2_sha256
 
 app = Flask(__name__)
 
-app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17';
+app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17'
 
 
 @app.route("/")
@@ -34,6 +34,22 @@ def lectures():
 @app.route("/schedule")
 def schedule():
     return render_template("schedule.html")
+
+
+@app.route("/users")
+def people_page():
+    db = current_app.config["db"]
+    people = db.get_people()
+    return render_template("people.html", people=sorted(people))
+
+
+@app.route("/users/<int:person_key>")
+def person_page(person_key):
+    db = current_app.config["db"]
+    person = db.get_person(person_key)
+    if person is None:
+        abort(404)
+    return render_template("person.html", person=person)
 
 
 @app.route('/lectures', methods=['POST'])
