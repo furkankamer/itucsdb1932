@@ -16,6 +16,8 @@ function asd(a,b)
 			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="hidden";
 			document.getElementById("subjLabel").style.display="none";
+			document.getElementById("exp").style.visibility="hidden";
+			document.getElementById("expLabel").style.display="none";
 			document.getElementById("act").style.visibility="visible";
 			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="visible";
@@ -32,6 +34,8 @@ function asd(a,b)
 			document.getElementById("schLabel").style.display="none";
 			document.getElementById("subj").style.visibility="hidden";
 			document.getElementById("subjLabel").style.display="none";
+			document.getElementById("exp").style.visibility="visible";
+			document.getElementById("expLabel").style.display="inline";
 			document.getElementById("act").style.visibility="hidden";
 			document.getElementById("actLabel").style.display="none";
 			document.getElementById("deg").style.visibility="hidden";
@@ -48,6 +52,8 @@ function asd(a,b)
 			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="visible";
 			document.getElementById("subjLabel").style.display="inline";
+			document.getElementById("exp").style.visibility="visible";
+			document.getElementById("expLabel").style.display="inline";
 			document.getElementById("act").style.visibility="visible";
 			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="hidden";
@@ -90,14 +96,17 @@ function asd(a,b)
         Last name: <input type="text" name="LastName" value=""><br>
 
 		<label id="subjLabel" for="subj" style = "display:none;">Subject: </label>
-        <input id="subj" type="text" name="Subject" style = "visibility: hidden;" value=""><br>
+        <input name="subject" id="subj" type="text" name="Subject" style = "visibility: hidden;" value=""><br>
 		
 
-		<label id="actLabel" for="act" style = "display:none;">Activation Code: </label>
+		<label type="number" id="actLabel" for="act" style = "display:none;">Activation Code: </label>
         <input id="act" type="text" name="ActivationCode" value="" style = "visibility: hidden;"><br>
 
-		<label id="degLabel" for="deg" style = "display:none;">Degree: </label>
+		<label type="number" id="degLabel" for="deg" style = "display:none;">Degree: </label>
         <input id="deg" type="text" name="Degree" value="" style = "visibility: hidden;"><br>
+
+		<label type="number" id="expLabel" for="deg" style = "display:none;">Experience Year: </label>
+        <input id="exp" type="text" name="Experience" value="" style = "visibility: hidden;"><br>
 
         <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
     </form>

@@ -17,21 +17,21 @@ INIT_STATEMENTS = [
 	
 	"""CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    crn DEC(3,0) NOT NULL UNIQUE,
+    crn int NOT NULL UNIQUE,
     time VARCHAR(255),
     weekday VARCHAR(255),
-    locationid int NOT NULL,
+    locationid int,
 	FOREIGN KEY (locationid)REFERENCES Building(id),
-    quota DEC(3,0));""",
+    quota int);""",
 	
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     profile bytea,
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
-	lecture_id int NOT NULL,
+	lecture_id int,
 	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
-	experience_year Dec(2,0),
+	experience_year int,
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
 
@@ -40,7 +40,7 @@ INIT_STATEMENTS = [
     surname VARCHAR(255) NOT NULL,
     profile bytea,
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
-	experience_year Dec(2,0),
+	experience_year int,
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
 
@@ -50,7 +50,7 @@ INIT_STATEMENTS = [
     degree int NOT NULL,
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
     grade FLOAT,
-	lecture_id int NOT NULL,
+	lecture_id int,
 	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
@@ -64,7 +64,7 @@ INIT_STATEMENTS = [
     required_grade int,
     locationid int NOT NULL, 
 	FOREIGN KEY (locationid) REFERENCES Building(id),
-    quota DEC(3,0));""",
+    quota int);""",
 ]
 
 
