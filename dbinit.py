@@ -10,7 +10,20 @@ INIT_STATEMENTS = [
     title VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL );""",
-
+	
+	"""CREATE TABLE if not exists Building ( id SERIAL PRIMARY KEY, 
+	name varchar(255) NOT NULL, 
+	size int NOT NULL);""",
+	
+	"""CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    crn DEC(3,0) NOT NULL UNIQUE,
+    time VARCHAR(255),
+    weekday VARCHAR(255),
+    locationid int NOT NULL,
+	FOREIGN KEY (locationid)REFERENCES Building(id),
+    quota DEC(3,0));""",
+	
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
@@ -41,19 +54,6 @@ INIT_STATEMENTS = [
 	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
-	
-	"""CREATE TABLE if not exists Building ( id SERIAL PRIMARY KEY, 
-	name varchar(255) NOT NULL, 
-	size int NOT NULL);""",
-	
-	"""CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    crn DEC(3,0) NOT NULL UNIQUE,
-    time VARCHAR(255),
-    weekday VARCHAR(255),
-    locationid int NOT NULL,
-	FOREIGN KEY (locationid)REFERENCES Building(id),
-    quota DEC(3,0));""",
 
     """CREATE TABLE if not exists Etudes ( id SERIAL PRIMARY KEY,
     subject VARCHAR(255),
