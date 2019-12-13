@@ -42,7 +42,7 @@ INIT_STATEMENTS = [
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
 	
-	"""CREATE TABLE if not exists Building (id SERIAL PRIMARY KEY, 
+	"""CREATE TABLE if not exists Building ( id SERIAL PRIMARY KEY, 
 	name varchar(255) NOT NULL, 
 	size int NOT NULL);""",
 	
