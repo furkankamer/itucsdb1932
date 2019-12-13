@@ -68,9 +68,13 @@ def my_form_post():
 		lastname = request.form['LastName']
 		title = request.form.getlist('title')
 		title = title[0]
-		print(title)
 		statement = """INSERT INTO Users (username, password, title, name, surname) 
 		VALUES ('%s', '%s', '%s', '%s', '%s');""" % (username, password, title, firstname, lastname)
+		if title == "Student":
+			degree = request.form['Degree']
+			statement += """INSERT INTO Students (name,surname,degree,grade)
+			VALUES ('%s', '%s', '%s', '%s');""" % (name,surname,degree)
+			
 		with psycopg2.connect(
 				"""dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' 
 				password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'""") as connection:

@@ -81,7 +81,9 @@ function asd(a,b)
         <input id="schname" type="text" name="SchoolName" value="" style = "visibility: hidden;"><br>
 
 		<label id="schLabel" for="sch" style = "display:none;">School: </label>
-        <input id="sch" type="text" name="SchoolName" value="" style = "visibility: hidden;"><br>
+		<select id="sch" type="text" name="SchoolName" value="" style = "visibility: hidden;">
+            {{ schoolnames | safe}}
+        </select><br>
 
         First name: <input type="text" name="FirstName" value="" ><br>
 
@@ -89,6 +91,7 @@ function asd(a,b)
 
 		<label id="subjLabel" for="subj" style = "display:none;">Subject: </label>
         <input id="subj" type="text" name="Subject" style = "visibility: hidden;" value=""><br>
+		
 
 		<label id="actLabel" for="act" style = "display:none;">Activation Code: </label>
         <input id="act" type="text" name="ActivationCode" value="" style = "visibility: hidden;"><br>
