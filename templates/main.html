@@ -12,6 +12,10 @@
 <body>
 <a href="/"><h1 class="title">SchoolManager</h1></a>
 
+{% for message in get_flashed_messages() %}
+<div class="notification is-info">{{ message }}</div>
+{% endfor %}
+
 {% block content %}
 
 {% endblock %}

@@ -2,9 +2,17 @@
 
 {% block content %}
 
+{% if not current_user.is_authenticated %}
 <div class="container">
     <a href="/signup" class="button">Sign Up</a>
     <a href="/signin" class="button">Sign In</a>
 </div>
+{% else %}
+<div class="container">
+    <a href="/lectures" class="button">Lectures</a>
+    <a href="/schedule" class="button">Weekly Schedule</a>
+</div>
+{% endif %}
+
 
 {% endblock %}
