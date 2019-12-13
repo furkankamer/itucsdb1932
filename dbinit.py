@@ -57,7 +57,7 @@ INIT_STATEMENTS = [
     subject VARCHAR(255),
     lecture_id int, 
 	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
-    time datetime(0),
+    time DATE NOT NULL,
     day VARCHAR(255),
     required_grade int,
     locationid int NOT NULL, 
