@@ -61,7 +61,7 @@ INIT_STATEMENTS = [
     day VARCHAR(255),
     required_grade int,
     locationid int NOT NULL, 
-	FOREIGN KEY (locationid) REFERENCES Buildings(id),
+	FOREIGN KEY (locationid) REFERENCES Building(id),
     quota DEC(3,0));""",
 ]
 
