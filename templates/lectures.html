@@ -7,13 +7,21 @@
     <a href="/schedule" class="button">Weekly Schedule</a>
     <br>
     <form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
-        Subject:
-        <select id="mySelect" name = "cars">
-            {{ deneme | safe}}
-        </select>
+        Lecture Branch:
+        <select id="mySelect" name = "Branch">
+            {{ branchnames | safe}}
+        </select><br>
+		<select id="mySelect" name = "Branch">
+            {{ day | safe}}
+        </select><br>
+		<select id="mySelect" name = "Branch">
+            {{ time | safe}}
+        </select><br>
+		<select id="mySelect" name = "Branch">
+            {{ location | safe}}
+        </select><br>
         <input style="font-size:12px;" type="submit" value="Submit">
     </form>
-    <br> {{ deneme2 | safe}}
 </div>
 
 {% endblock %}

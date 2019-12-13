@@ -68,33 +68,33 @@ function asd(a,b)
 </script>
 <div class="container">
     <a href="/signin" class="button">Sign In</a><br><br>
-	<input id="1" onclick="asd(1,1)" type="radio" name="manager" value="Manager">Manager<br>
-	<input id="2" onclick="asd(1,2)" type="radio" name="teacher" value="Teacher">Teacher<br>
-	<input id="3" onclick="asd(1,0)" type="radio" name="student" value="Student">Student<br>
 
-    <form id="signupform1" method="POST" action="/" style = "visibility: hidden;">
-        Username: <input type="text" name="UserName" value="" required="required"><br>
+    <form id="signupform1" method="POST" action="/" >
+		<input id="1" onclick="asd(1,1)" type="radio" name="title" value="Manager">Manager<br>
+		<input id="2" onclick="asd(1,2)" type="radio" name="title" value="Teacher">Teacher<br>
+		<input id="3" onclick="asd(1,0)" type="radio" name="title" value="Student">Student<br>
+        Username: <input type="text" name="UserName" value="" required="required" ><br>
 
         Password: <input type="password" name="Password" value="" required="required"><br>
 
-        <label id="schnameLabel" for="schname">SchoolName: </label>
-        <input id="schname" type="text" name="SchoolName" value=""><br>
+        <label id="schnameLabel" for="schname" style = "display:none;">SchoolName: </label>
+        <input id="schname" type="text" name="SchoolName" value="" style = "visibility: hidden;"><br>
 
-		<label id="schLabel" for="sch">School: </label>
-        <input id="sch" type="text" name="SchoolName" value=""><br>
+		<label id="schLabel" for="sch" style = "display:none;">School: </label>
+        <input id="sch" type="text" name="SchoolName" value="" style = "visibility: hidden;"><br>
 
-        First name: <input type="text" name="FirstName" value=""><br>
+        First name: <input type="text" name="FirstName" value="" ><br>
 
         Last name: <input type="text" name="LastName" value=""><br>
 
-		<label id="subjLabel" for="subj">Subject: </label>
-        <input id="subj" type="text" name="Subject" value=""><br>
+		<label id="subjLabel" for="subj" style = "display:none;">Subject: </label>
+        <input id="subj" type="text" name="Subject" style = "visibility: hidden;" value=""><br>
 
-		<label id="actLabel" for="act">Activation Code: </label>
-        <input id="act" type="text" name="ActivationCode" value=""><br>
+		<label id="actLabel" for="act" style = "display:none;">Activation Code: </label>
+        <input id="act" type="text" name="ActivationCode" value="" style = "visibility: hidden;"><br>
 
-		<label id="degLabel" for="deg">Degree: </label>
-        <input id="deg" type="text" name="Degree" value=""><br>
+		<label id="degLabel" for="deg" style = "display:none;">Degree: </label>
+        <input id="deg" type="text" name="Degree" value="" style = "visibility: hidden;"><br>
 
         <input style="font-size:12px;" type="submit" name="btn" value="Sign Up">
     </form>
