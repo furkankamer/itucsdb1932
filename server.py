@@ -84,14 +84,14 @@ def my_form_post():
 			statement += """INSERT INTO Students (name,surname,degree,grade,user_id)
 			VALUES ('%s', '%s', '%s', NULL,'%s');""" % (firstname, lastname,degree,userid)
 		if title == "Teacher":
+			print(request.form)
 			experienceyear = request.form['Experience']
-			subject = request.form['Subject']
-			print(experienceyear,subject)
+			subject = request.form['subject']
 			statement += """INSERT INTO Teachers (name,surname,subject,experience_year,user_id)
 			VALUES ('%s', '%s', '%s', '%s','%s');""" % (firstname, lastname,subject,experienceyear,userid)
 		if title == "Manager":
-			degree = request.form['Degree']
 			experienceyear = request.form['Experience']
+			print(experienceyear)
 			statement += """INSERT INTO Managers (name,surname,user_id,experience_year)
 			VALUES ('%s', '%s', '%s', '%s');""" % (firstname, lastname,userid,experienceyear)
 		with psycopg2.connect(

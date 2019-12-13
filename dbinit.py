@@ -28,6 +28,7 @@ INIT_STATEMENTS = [
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     profile bytea,
+	subject varchar(255),
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
 	lecture_id int,
 	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
