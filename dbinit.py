@@ -55,7 +55,8 @@ INIT_STATEMENTS = [
 
     """CREATE TABLE if not exists Etudes ( id SERIAL PRIMARY KEY,
     subject VARCHAR(255),
-    lecture_id int FOREIGN KEY REFERENCES Lectures(id),
+    lecture_id int, 
+	FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
     time datetime(0),
     day VARCHAR(255),
     required_grade int,
