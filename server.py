@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, current_app, abort, redirect
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 import psycopg2
 from passlib.hash import pbkdf2_sha256
 
@@ -8,6 +8,8 @@ app = Flask(__name__)
 app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17'
 
 lm = LoginManager()
+
+
 
 
 @lm.user_loader

@@ -7,17 +7,20 @@
     <a href="/schedule" class="button">Weekly Schedule</a>
     <br>
     <form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
-        Lecture Branch:
+        <label id="branchLabel" for="branch" style = "display:inline;">Lecture Branch: </label>
         <select id="mySelect" name = "Branch">
             {{ branchnames | safe}}
         </select><br>
-		<select id="mySelect" name = "Branch">
+		<label id="dayLabel" for="weekday" style = "display:inline;">WeekDay:</label>
+		<select id="mySelect" name = "day">
             {{ day | safe}}
         </select><br>
-		<select id="mySelect" name = "Branch">
+		<label id="timeLabel" for="time" style = "display:inline;">Time:</label>
+		<select id="mySelect" name = "time">
             {{ time | safe}}
         </select><br>
-		<select id="mySelect" name = "Branch">
+		<label id="locationLabel" for="location" style = "display:inline;">Location:</label>
+		<select  id="mySelect" name = "location">
             {{ location | safe}}
         </select><br>
         <input style="font-size:12px;" type="submit" value="Submit">
