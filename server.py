@@ -36,9 +36,14 @@ def login():
 
 @app.route("/profile")
 def profile():
-    statement = """ select*from (select title from users where username = '%s')s where user_id = (select id from users where username = '%s')""" % (current_user.username,current_user.username)
+    
+    titles = """select title from users where username = '%s'""" %(current_user.username)
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
+            cursor.execute(titles)
+            title = cursor.fetchone()[0]
+            title += """s"""
+            statement = """ select*from %s where user_id = (select id from users where username = '%s')""" % (title,current_user.username)
             cursor.execute(statement)
             for row in cursor.fetchall():
                 print(row)
