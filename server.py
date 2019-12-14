@@ -34,6 +34,21 @@ def login():
     return render_template("signin.html", message="Invalid credentials.")
 
 
+@app.route("/profile")
+def profile():
+    statement = """ select*from Students where user_id = (select id from users where username = '%s')""" % (current_user.username)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(statement)
+            for row in cursor.fetchall():
+                print(row)
+                name = row[1]
+                sname = row[2]
+                jdate = row[4]
+    return render_template("profile.html",otherinf = """""",uname=current_user.username,fname=name,lname=sname,joindate=jdate);
+
+
+
 @app.route("/logout")
 def logout():
     logout_user()

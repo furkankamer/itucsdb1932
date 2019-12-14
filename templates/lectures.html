@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if current_user.is_authenticated %}
 <div class="container">
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
@@ -26,5 +27,5 @@
         <input style="font-size:12px;" type="submit" value="Submit">
     </form>
 </div>
-
+{% endif %}
 {% endblock %}

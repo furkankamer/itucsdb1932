@@ -1,5 +1,9 @@
 from flask import current_app
 from flask_login import UserMixin
+import psycopg2
+
+
+url = "dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'"
 
 
 class User(UserMixin):
@@ -22,8 +26,13 @@ def get_user(user_id):
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
             cursor.execute(statement)
-            user = cursor.fetchone()
-            return user
+            user = cursor.fetchall()
+            if user is not None:
+                for row in user:
+                    user = User(row[1],row[2])
+                    return user
+            else:
+                return None
     # password = current_app.config["PASSWORDS"].get(user_id)
     # user = User(user_id, password) if password else None
     # if user is not None:
