@@ -29,7 +29,7 @@ def get_user(user_id):
             user = cursor.fetchall()
             if user is not None:
                 for row in user:
-                    user = User(row[1],row[2])
+                    user = User(row[1], row[2])
                     return user
             else:
                 return None

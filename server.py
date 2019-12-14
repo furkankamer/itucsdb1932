@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, current_app, abort, redirect
+from flask import Flask, render_template, request, flash, current_app, abort, redirect, url_for
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import psycopg2
 from passlib.hash import pbkdf2_sha256
@@ -11,8 +11,6 @@ app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17'
 lm = LoginManager()
 
 url = "dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'"
-
-
 
 
 @lm.user_loader
@@ -30,30 +28,11 @@ def login():
         if pbkdf2_sha256.verify(password, password1):
             login_user(user)
             flash("You have logged in.")
-            return render_template("homepage.html", username=user)
+            return redirect("/")
     return render_template("signin.html", message="Invalid credentials.")
 
 
-@app.route("/profile")
-def profile():
-    
-    titles = """select title from users where username = '%s'""" %(current_user.username)
-    with psycopg2.connect(url) as connection:
-        with connection.cursor() as cursor:
-            cursor.execute(titles)
-            title = cursor.fetchone()[0]
-            title += """s"""
-            statement = """ select*from %s where user_id = (select id from users where username = '%s')""" % (title,current_user.username)
-            cursor.execute(statement)
-            for row in cursor.fetchall():
-                print(row)
-                name = row[1]
-                sname = row[2]
-                jdate = row[4]
-    return render_template("profile.html",otherinf = """""",uname=current_user.username,fname=name,lname=sname,joindate=jdate);
-
-
-
+@login_required
 @app.route("/logout")
 def logout():
     logout_user()
@@ -73,6 +52,26 @@ def sign_up():
 @app.route("/signin")
 def sign_in():
     return render_template("signin.html")
+
+
+@app.route("/profile")
+def profile():
+    titles = """select title from users where username = '%s'""" % current_user.username
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(titles)
+            title = cursor.fetchone()[0]
+            title += """s"""
+            statement = """ select*from %s where user_id = (select id from users where username = '%s')""" \
+                        % (title, current_user.username)
+            cursor.execute(statement)
+            for row in cursor.fetchall():
+                print(row)
+                name = row[1]
+                sname = row[2]
+                jdate = row[4]
+    return render_template("profile.html",
+                           otherinf="""""", uname=current_user.username, fname=name, lname=sname, joindate=jdate)
 
 
 @login_required
@@ -100,7 +99,42 @@ def lectures():
 @login_required
 @app.route("/schedule")
 def schedule():
-    return render_template("schedule.html")
+    statement = """SELECT title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(statement)
+            title = cursor.fetchone()[0]
+            if title == "Manager":
+                message = "Managers don't have a schedule."
+                return render_template("homepage.html", message=message)
+            others = title
+            others += "s"
+            statement = """SELECT name, crn, time, weekday, location_id, quota FROM Lectures WHERE id = (
+            SELECT lecture_id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s'))""" \
+                        % (others, current_user.username)
+            cursor.execute(statement)
+            name = ""
+            crn = 0
+            time = '00:00'
+            weekday = ""
+            location_id = 0
+            quota = 0
+            for row in cursor.fetchall():
+                print(row)
+                name = row[0]
+                crn = row[1]
+                time = row[2]
+                weekday = row[3]
+                location_id = row[4]
+                quota = row[5]
+            statement = """SELECT name FROM Buildings WHERE id = %s""" % (location_id,)
+            cursor.execute(statement)
+            location = ""
+            for row in cursor.fetchall():
+                print(row)
+                location = row[0]
+            return render_template("schedule.html",
+                                   name=name, crn=crn, time=time, weekday=weekday, location=location, quota=quota)
 
 
 @login_required

@@ -4,24 +4,23 @@
 <div class="container">
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
-	<a href="/logout" class="button">Log Out</a>
-	<a href="/profile" class="button">Profile</a>
-	<table style="width:100%">
-  <tr>
-	<th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Join Date</th>
-	{{ otherinf | safe}}
-	
-  </tr>
-  <tr>
-    <td>{{ uname | safe}}</td>
-    <td>{{ fname | safe}}</td>
-    <td>{{ lname | safe}}</td>
-	<td>{{ joindate | safe}}</td>
-  </tr>
-</table>
+    <a href="/profile" class="button" style="float: right;">Profile</a>
+    <a href="/logout" class="button" style="float: right;">Log Out</a>
+    <table style="width:100%">
+        <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Join Date</th>
+            {{ otherinf | safe}}
+        </tr>
+        <tr>
+            <td>{{ uname | safe}}</td>
+            <td>{{ fname | safe}}</td>
+            <td>{{ lname | safe}}</td>
+            <td>{{ joindate | safe}}</td>
+        </tr>
+    </table>
 </div>
 {% else %}
 <div class="container">

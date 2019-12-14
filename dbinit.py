@@ -11,7 +11,7 @@ INIT_STATEMENTS = [
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL );""",
 
-    """CREATE TABLE if not exists Building ( id SERIAL PRIMARY KEY, 
+    """CREATE TABLE if not exists Buildings ( id SERIAL PRIMARY KEY, 
     name varchar(255) NOT NULL, 
     size int NOT NULL);""",
 
@@ -21,7 +21,7 @@ INIT_STATEMENTS = [
     time VARCHAR(255),
     weekday VARCHAR(255),
     location_id int,
-    FOREIGN KEY (location_id)REFERENCES Building(id),
+    FOREIGN KEY (location_id)REFERENCES Buildings(id),
     quota int);""",
 
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
