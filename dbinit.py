@@ -20,8 +20,8 @@ INIT_STATEMENTS = [
     crn int NOT NULL UNIQUE,
     time VARCHAR(255),
     weekday VARCHAR(255),
-    locationid int,
-    FOREIGN KEY (locationid)REFERENCES Building(id),
+    location_id int,
+    FOREIGN KEY (location_id)REFERENCES Building(id),
     quota int);""",
 
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
@@ -63,8 +63,8 @@ INIT_STATEMENTS = [
     time DATE NOT NULL,
     day VARCHAR(255),
     required_grade int,
-    locationid int NOT NULL, 
-    FOREIGN KEY (locationid) REFERENCES Building(id),
+    location_id int NOT NULL, 
+    FOREIGN KEY (location_id) REFERENCES Building(id),
     quota int);""",
 ]
 
