@@ -119,20 +119,22 @@ def schedule():
             weekday = ""
             location_id = 0
             quota = 0
-            for row in cursor.fetchall():
-                print(row)
-                name = row[0]
-                crn = row[1]
-                time = row[2]
-                weekday = row[3]
-                location_id = row[4]
-                quota = row[5]
+            schedule = cursor.fetchall()
+            if schedule is not None:
+               for row in schedule:
+                   print(row)
+                   name = row[1]
+                   crn = row[2]
+                   time = row[3]
+                   weekday = row[4]
+                   location_id = row[5]
+                   quota = row[6]
             statement = """SELECT name FROM Buildings WHERE id = %s""" % (location_id,)
             cursor.execute(statement)
             location = ""
             for row in cursor.fetchall():
                 print(row)
-                location = row[0]
+                location = row[1]
             return render_template("schedule.html",
                                    name=name, crn=crn, time=time, weekday=weekday, location=location, quota=quota)
 
