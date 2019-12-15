@@ -100,6 +100,7 @@ def lectures():
             cursor.execute(statement)
             title = cursor.fetchone()[0]
     if title == "Teacher":
+        print(title)
         names = ["Physics", "Biology", "Chemistry"]
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         times = ["9:30", "11:30", "13:30", "15:30"]
@@ -122,21 +123,45 @@ def lectures():
             quota += """<option value="%s">%s</option>""" % (i, i)
         if request.method == "POST":
             branch = request.form.get("Branch", None)
-            weekday = request.form.get("day", None)
-            lecturetime = request.form.get("time", None)
-            lecturelocation = request.form.get("location", None)
-            lecturequota = request.form.get("quota", None)
+            weekday = request.form.get("day", None) 
+            lecturetime = request.form.get("time", None) 
+            lecturelocation = request.form.get("location", None) 
+            lecturequota = request.form.get("quota", None) 
             statement = """INSERT INTO Buildings (name) VALUES('%s');
             INSERT INTO Lectures (name, time, weekday, location_id, quota) 
             VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (
-                lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
+            lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
             with psycopg2.connect(url) as connection:
-                with connection.cursor() as cursor:
-                    cursor.execute(statement)
+                 with connection.cursor() as cursor:
+                     cursor.execute(statement)
         return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location,
-                               quota=quota)
+                               quota=quota, title = title)
     else:
-        return render_template("lectures.html")
+        if request.method == "POST":
+           k = 0
+           for i in range(14, 30000, 3):
+               subject = request.form.get(i,None)
+               if subject is not None:
+                  k=i
+                  print(i)
+                  break           
+           
+        statement = """select name,weekday, time, quota from lectures"""
+        lecturerows = """"""
+        with psycopg2.connect(url) as connection:
+             with connection.cursor() as cursor:
+                  cursor.execute(statement)
+                  i=10
+                  for rows in cursor.fetchall():
+                      branch = rows[0]
+                      weekday = rows[1]
+                      lecturetime = rows[2]
+                      lecturequota = rows[3]
+                      lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value="%s"/><td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" 
+                      value="%s"/>
+					  <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>"""%(branch,i,branch,weekday,i+1,weekday,lecturetime,i+2,lecturetime,lecturequota,i+3,lecturequota,i+4,i+4,i+4,i+4)
+                      i+=10
+        return render_template("lectures.html",title=title,newrow = lecturerows)
 
 
 @login_required

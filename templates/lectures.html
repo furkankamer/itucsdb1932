@@ -3,33 +3,74 @@
 {% block content %}
 
 {% if current_user.is_authenticated %}
+
+<script>
+
+function uncheck(id)
+
+{
+    var i=14
+	while(document.getElementById(i) !== null)
+	{
+	document.getElementById(i).checked = false;
+	i+=10
+	}
+	document.getElementById(id).checked = true;
+}
+
+</script>
+
+
 <div class="container">
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
     <br>
+	{% if title == 'Teacher' %}
     <form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
         <label id="branchLabel" for="branch" style = "display:inline;">Lecture Branch: </label>
-        <select id="mySelect" name = "Branch">
+        <select id="mySelect1" name = "Branch">
             {{ branchnames | safe}}
-        </select><br>
+        </select>
+		<br>
 		<label id="dayLabel" for="weekday" style = "display:inline;">WeekDay:</label>
-		<select id="mySelect" name = "day">
+		<select id="mySelect2" name = "day"  >
             {{ day | safe}}
-        </select><br>
+        </select>
+		<br>
 		<label id="timeLabel" for="time" style = "display:inline;">Time:</label>
-		<select id="mySelect" name = "time">
+		<select id="mySelect3" name = "time" >
             {{ time | safe}}
-        </select><br>
+        </select>
+		<br>
 		<label id="locationLabel" for="location" style = "display:inline;">Location:</label>
-		<select  id="mySelect" name = "location">
+		<select  id="mySelect4" name = "location">
             {{ location | safe}}
-        </select><br>
+        </select>
+		<br>
 		<label id="quotaLabel" for="quota" style = "display:inline;">Quota:</label>
-		<select  id="mySelect" name = "quota">
+		<select  id="mySelect5" name = "quota"  {{activition | safe}} {{onchangee5 | safe }} >
             {{ quota | safe}}
-        </select><br>
-        <input style="font-size:12px;" type="submit" value="Submit">
+        </select>
+		<br>
+        <input style="font-size:12px;" type="submit" name="sub" value="Submit">
     </form>
+	{% endif %}
+	{% if title == 'Student' %}
+	<form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+	<table style="width:100%">
+        <tr>
+            <th>Subject</th>
+            <th>Day</th>
+            <th>Time</th>
+			<th>Quota</th>
+			<th>Select</th>
+        </tr>
+        {{newrow | safe}}
+    </table>
+	<input style="font-size:12px;" type="submit" name="sub" value="Submit">
+	</form>
+	
+	{% endif %}
 </div>
 {% endif %}
 {% endblock %}
