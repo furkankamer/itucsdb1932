@@ -13,11 +13,11 @@ INIT_STATEMENTS = [
 
     """CREATE TABLE if not exists Buildings ( id SERIAL PRIMARY KEY, 
     name varchar(255) NOT NULL, 
-    size int NOT NULL);""",
+    size int);""",
 
     """CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    crn int NOT NULL UNIQUE,
+    crn int UNIQUE,
     time VARCHAR(255),
     weekday VARCHAR(255),
     location_id int,

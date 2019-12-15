@@ -75,26 +75,50 @@ def profile():
 
 
 @login_required
-@app.route("/lectures")
+@app.route("/lectures",  methods=['GET', 'POST'])
 def lectures():
-    names = ["Physics", "Biology", "Chemistry"]
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-    times = ["9:30", "11:30", "13:30", "15:30"]
-    locations = ["MED A34", "EHB 2101", "MDB 105"]
-    branches = """"""
-    day = """"""
-    time = """"""
-    location = """"""
-    for i in names:
-        branches += """<option value="%s">%s</option>""" % (i, i)
-    for i in days:
-        day += """<option value="%s">%s</option>""" % (i, i)
-    for i in times:
-        time += """<option value="%s">%s</option>""" % (i, i)
-    for i in locations:
-        location += """<option value="%s">%s</option>""" % (i, i)
-    return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location)
-
+    title = """"""
+    statement = """select title from users where username = '%s'""" % (current_user.username)
+    with psycopg2.connect(url) as connection:
+             with connection.cursor() as cursor:
+                  cursor.execute(statement)
+                  title = cursor.fetchone()[0]
+    if title == "Teacher":
+       names = ["Physics", "Biology", "Chemistry"]
+       days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+       times = ["9:30", "11:30", "13:30", "15:30"]
+       locations = ["MED A34", "EHB 2101", "MDB 105"]
+       quotas = ['30','45','60']
+       branches = """"""
+       day = """"""
+       time = """"""
+       location = """"""
+       quota = """"""
+       for i in names:
+           branches += """<option value="%s">%s</option>""" % (i, i)
+       for i in days:
+           day += """<option value="%s">%s</option>""" % (i, i)
+       for i in times:
+           time += """<option value="%s">%s</option>""" % (i, i)
+       for i in locations:
+           location += """<option value="%s">%s</option>""" % (i, i)
+       for i in quotas:
+           quota += """<option value="%s">%s</option>""" % (i, i)
+       if request.method == "POST":
+           branch = request.form.get("Branch", None)
+           weekday = request.form.get("day", None)
+           lecturetime = request.form.get("time",None)
+           lecturelocation = request.form.get("location", None)
+           lecturequota = request.form.get("quota", None)
+           statement = """INSERT INTO Buildings (name) VALUES('%s');
+		INSERT INTO Lectures (name, time, weekday, location_id, quota) 
+        VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (lecturelocation,branch,lecturetime, weekday,branch,lecturequota)
+           with psycopg2.connect(url) as connection:
+                with connection.cursor() as cursor:
+                     cursor.execute(statement)
+       return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location, quota = quota)
+    else:
+       return render_template("lectures.html")
 
 @login_required
 @app.route("/schedule")
@@ -139,16 +163,6 @@ def schedule():
                                    name=name, crn=crn, time=time, weekday=weekday, location=location, quota=quota)
 
 
-@login_required
-@app.route('/lectures', methods=['POST'])
-def lectureregistry():
-    names = ["physics", "biology", "chemistry"]
-    deneme1 = """"""
-    for i in names:
-        deneme1 += """<option value="%s">%s</option>""" % (i, i)
-    if request.method == "POST":
-        car_brand = request.form.get("cars", None)
-    return render_template("lectures.html", deneme=deneme1)
 
 
 @app.route('/signup', methods=['POST'])

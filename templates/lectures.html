@@ -7,7 +7,7 @@
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
     <br>
-    <form id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+    <form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
         <label id="branchLabel" for="branch" style = "display:inline;">Lecture Branch: </label>
         <select id="mySelect" name = "Branch">
             {{ branchnames | safe}}
@@ -23,6 +23,10 @@
 		<label id="locationLabel" for="location" style = "display:inline;">Location:</label>
 		<select  id="mySelect" name = "location">
             {{ location | safe}}
+        </select><br>
+		<label id="quotaLabel" for="quota" style = "display:inline;">Quota:</label>
+		<select  id="mySelect" name = "quota">
+            {{ quota | safe}}
         </select><br>
         <input style="font-size:12px;" type="submit" value="Submit">
     </form>
