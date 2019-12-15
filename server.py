@@ -136,9 +136,9 @@ def lectures():
             lecturelocation = request.form.get("location", None)
             lecturequota = request.form.get("quota", None)
             statement = """INSERT INTO Buildings (name) VALUES('%s');
-            INSERT INTO Lectures (name, time, weekday, location_id, quota) 
-            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (
-                lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
+            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id) 
+            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')))""" % (
+                lecturelocation, branch, lecturetime, weekday, lecturelocation, lecturequota,current_user.username)
             with psycopg2.connect(url) as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(statement)
@@ -147,30 +147,33 @@ def lectures():
     else:
         if request.method == "POST":
             k = 0
-            for i in range(14, 30000, 3):
-                subject = request.form.get(i, None)
+            for i in range(11, 30000, 10):
+                id = """%d""" % (i) 
+                subject = request.form.get(id, None)
                 if subject is not None:
-                    k = i
-                    print(i)
+                    k = i-1
                     break
-
-        statement = """select name,weekday, time, quota from lectures"""
+            id = """%d""" %(k)
+            lidd = request.form.get(id, None)
+            statement1 = """UPDATE Students SET  lecture_id = %s where user_id = (select id from users where username = '%s') """ %(lidd,current_user.username)
+            with psycopg2.connect(url) as connection:
+                 with connection.cursor() as cursor:
+                      cursor.execute(statement1)
+        statement = """select id,name,weekday, time, quota from lectures"""
         lecturerows = """"""
         with psycopg2.connect(url) as connection:
             with connection.cursor() as cursor:
                 cursor.execute(statement)
                 i = 10
                 for rows in cursor.fetchall():
-                    branch = rows[0]
-                    weekday = rows[1]
-                    lecturetime = rows[2]
-                    lecturequota = rows[3]
-                    lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value="%s"/><td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" 
-                      value="%s"/>
-                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (
-                        branch, i, branch, weekday, i + 1, weekday, lecturetime, i + 2, lecturetime, lecturequota,
-                        i + 3,
-                        lecturequota, i + 4, i + 4, i + 4, i + 4)
+                    lid = rows[0]
+                    branch = rows[1]
+                    weekday = rows[2]
+                    lecturetime = rows[3]
+                    lecturequota = rows[4]
+                    lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value = "%s"/><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
+                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (lid,i,lid,
+                        branch, weekday,lecturetime,lecturequota,i+1,i+1,i+1,i+1)
                     i += 10
         return render_template("lectures.html", title=title, newrow=lecturerows)
 
@@ -190,34 +193,34 @@ def schedule():
                 return render_template("homepage.html", message=message)
             others = title
             others += "s"
-            statement = """SELECT name, crn, time, weekday, location_id, quota FROM Lectures WHERE id = (
-            SELECT lecture_id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s'))""" \
+            statement = """SELECT name, crn, time, weekday, location_id, quota FROM Lectures WHERE teacher_id = (
+            SELECT id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s'))""" \
                         % (others, current_user.username)
             cursor.execute(statement)
-            name = ""
-            crn = 0
-            time = '00:00'
-            weekday = ""
-            location_id = 0
-            quota = 0
+            lname = ""
+            lcrn = 0
+            ltime = '00:00'
+            lweekday = ""
+            llocation_id = 0
+            lquota = 0
             schedule1 = cursor.fetchall()
             if schedule1 is not None:
                 for row in schedule1:
                     print(row)
-                    name = row[1]
-                    crn = row[2]
-                    time = row[3]
-                    weekday = row[4]
-                    location_id = row[5]
-                    quota = row[6]
-            statement = """SELECT name FROM Buildings WHERE id = %s""" % (location_id,)
+                    lname = row[0]
+                    lcrn = row[1]
+                    ltime = row[2]
+                    lweekday = row[3]
+                    llocation_id = row[4]
+                    lquota = row[5]
+            statement = """SELECT name FROM Buildings WHERE id = %s""" % (llocation_id,)
             cursor.execute(statement)
-            location = ""
+            llocation = ""
             for row in cursor.fetchall():
                 print(row)
-                location = row[1]
+                llocation = row[0]
             return render_template("schedule.html",
-                                   name=name, crn=crn, time=time, weekday=weekday, location=location, quota=quota)
+                                   name=lname, crn=lcrn, time=ltime, weekday=lweekday, location=llocation, quota=lquota)
 
 
 @app.route('/signup', methods=['POST'])

@@ -9,7 +9,7 @@
 function uncheck(id)
 
 {
-    var i=14
+    var i=11
 	while(document.getElementById(i) !== null)
 	{
 	document.getElementById(i).checked = false;
@@ -59,6 +59,7 @@ function uncheck(id)
 	<form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
 	<table style="width:100%">
         <tr>
+		    <th>ID<th>
             <th>Subject</th>
             <th>Day</th>
             <th>Time</th>

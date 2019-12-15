@@ -22,6 +22,8 @@ INIT_STATEMENTS = [
     weekday VARCHAR(255),
     location_id int,
     FOREIGN KEY (location_id)REFERENCES Buildings(id),
+	teacher_id int,
+	FOREIGN KEY (teacher_id) REFERENCES Teachers (id),
     quota int);""",
 
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
@@ -30,8 +32,6 @@ INIT_STATEMENTS = [
     profile bytea,
     subject varchar(255),
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    lecture_id int,
-    FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
     experience_year int,
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
