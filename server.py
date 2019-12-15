@@ -139,8 +139,9 @@ def lectures():
     else:
         if request.method == "POST":
            k = 0
-           for i in range(14, 30000, 3):
-               subject = request.form.get(i,None)
+           for i in range(14, 30000, 10):
+               id = """%d"""%(i)
+               subject = request.form.get(id,None)
                if subject is not None:
                   k=i
                   print(i)
