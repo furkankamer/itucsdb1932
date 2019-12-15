@@ -3,12 +3,15 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 import psycopg2
 from passlib.hash import pbkdf2_sha256
 from user import get_user
+from database import Database
 
 app = Flask(__name__)
 
 app.secret_key = b'\xdd\xd6]j\xb0\xcc\xe3mNF{\x14\xaf\xa7\xb9\x17'
 
 lm = LoginManager()
+
+db = Database()
 
 url = "dbname='lsgowduy' user='lsgowduy' host='salt.db.elephantsql.com' password='FbiQok5ytKXzEjdU7MbH46l5AWJbKf3I'"
 
@@ -54,6 +57,7 @@ def sign_in():
     return render_template("signin.html")
 
 
+@login_required
 @app.route("/profile")
 def profile():
     titles = """select title from users where username = '%s'""" % current_user.username
@@ -75,50 +79,65 @@ def profile():
 
 
 @login_required
-@app.route("/lectures",  methods=['GET', 'POST'])
+@app.route("/update-user")
+def update_user():
+    user = db.get_user(current_user.username)
+    inp = object()
+    inp.username = request.form['username']
+    inp.password = request.form['username']
+    inp.title = request.form['username']
+    inp.name = request.form['username']
+    inp.surname = request.form['username']
+
+
+@login_required
+@app.route("/lectures", methods=['GET', 'POST'])
 def lectures():
     title = """"""
-    statement = """select title from users where username = '%s'""" % (current_user.username)
+    statement = """select title from users where username = '%s'""" % (current_user.username,)
     with psycopg2.connect(url) as connection:
-             with connection.cursor() as cursor:
-                  cursor.execute(statement)
-                  title = cursor.fetchone()[0]
+        with connection.cursor() as cursor:
+            cursor.execute(statement)
+            title = cursor.fetchone()[0]
     if title == "Teacher":
-       names = ["Physics", "Biology", "Chemistry"]
-       days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-       times = ["9:30", "11:30", "13:30", "15:30"]
-       locations = ["MED A34", "EHB 2101", "MDB 105"]
-       quotas = ['30','45','60']
-       branches = """"""
-       day = """"""
-       time = """"""
-       location = """"""
-       quota = """"""
-       for i in names:
-           branches += """<option value="%s">%s</option>""" % (i, i)
-       for i in days:
-           day += """<option value="%s">%s</option>""" % (i, i)
-       for i in times:
-           time += """<option value="%s">%s</option>""" % (i, i)
-       for i in locations:
-           location += """<option value="%s">%s</option>""" % (i, i)
-       for i in quotas:
-           quota += """<option value="%s">%s</option>""" % (i, i)
-       if request.method == "POST":
-           branch = request.form.get("Branch", None)
-           weekday = request.form.get("day", None)
-           lecturetime = request.form.get("time",None)
-           lecturelocation = request.form.get("location", None)
-           lecturequota = request.form.get("quota", None)
-           statement = """INSERT INTO Buildings (name) VALUES('%s');
-		INSERT INTO Lectures (name, time, weekday, location_id, quota) 
-        VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (lecturelocation,branch,lecturetime, weekday,branch,lecturequota)
-           with psycopg2.connect(url) as connection:
+        names = ["Physics", "Biology", "Chemistry"]
+        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        times = ["9:30", "11:30", "13:30", "15:30"]
+        locations = ["MED A34", "EHB 2101", "MDB 105"]
+        quotas = ['30', '45', '60']
+        branches = """"""
+        day = """"""
+        time = """"""
+        location = """"""
+        quota = """"""
+        for i in names:
+            branches += """<option value="%s">%s</option>""" % (i, i)
+        for i in days:
+            day += """<option value="%s">%s</option>""" % (i, i)
+        for i in times:
+            time += """<option value="%s">%s</option>""" % (i, i)
+        for i in locations:
+            location += """<option value="%s">%s</option>""" % (i, i)
+        for i in quotas:
+            quota += """<option value="%s">%s</option>""" % (i, i)
+        if request.method == "POST":
+            branch = request.form.get("Branch", None)
+            weekday = request.form.get("day", None)
+            lecturetime = request.form.get("time", None)
+            lecturelocation = request.form.get("location", None)
+            lecturequota = request.form.get("quota", None)
+            statement = """INSERT INTO Buildings (name) VALUES('%s');
+            INSERT INTO Lectures (name, time, weekday, location_id, quota) 
+            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (
+                lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
+            with psycopg2.connect(url) as connection:
                 with connection.cursor() as cursor:
-                     cursor.execute(statement)
-       return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location, quota = quota)
+                    cursor.execute(statement)
+        return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location,
+                               quota=quota)
     else:
-       return render_template("lectures.html")
+        return render_template("lectures.html")
+
 
 @login_required
 @app.route("/schedule")
@@ -143,16 +162,16 @@ def schedule():
             weekday = ""
             location_id = 0
             quota = 0
-            schedule = cursor.fetchall()
-            if schedule is not None:
-               for row in schedule:
-                   print(row)
-                   name = row[1]
-                   crn = row[2]
-                   time = row[3]
-                   weekday = row[4]
-                   location_id = row[5]
-                   quota = row[6]
+            schedule1 = cursor.fetchall()
+            if schedule1 is not None:
+                for row in schedule1:
+                    print(row)
+                    name = row[1]
+                    crn = row[2]
+                    time = row[3]
+                    weekday = row[4]
+                    location_id = row[5]
+                    quota = row[6]
             statement = """SELECT name FROM Buildings WHERE id = %s""" % (location_id,)
             cursor.execute(statement)
             location = ""
@@ -161,8 +180,6 @@ def schedule():
                 location = row[1]
             return render_template("schedule.html",
                                    name=name, crn=crn, time=time, weekday=weekday, location=location, quota=quota)
-
-
 
 
 @app.route('/signup', methods=['POST'])
@@ -205,6 +222,9 @@ def my_form_post():
 
 lm.init_app(app)
 lm.login_view = "login"
+
+app.config["db"] = db
+
 
 if __name__ == "__main__":
     app.run()
