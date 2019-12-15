@@ -38,6 +38,8 @@ def login():
 @login_required
 @app.route("/logout")
 def logout():
+    if not current_user.is_authenticated:
+        return redirect("/")
     logout_user()
     return render_template("homepage.html", message="You have logged out.")
 
@@ -60,6 +62,8 @@ def sign_in():
 @login_required
 @app.route("/profile")
 def profile():
+    if not current_user.is_authenticated:
+        return redirect("/")
     titles = """select title from users where username = '%s'""" % current_user.username
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
@@ -81,6 +85,8 @@ def profile():
 @login_required
 @app.route("/update-user")
 def update_user():
+    if not current_user.is_authenticated:
+        return redirect("/")
     user = db.get_user(current_user.username)
     inp = object()
     inp.username = request.form['username']
@@ -93,6 +99,8 @@ def update_user():
 @login_required
 @app.route("/lectures", methods=['GET', 'POST'])
 def lectures():
+    if not current_user.is_authenticated:
+        return redirect("/")
     title = """"""
     statement = """select title from users where username = '%s'""" % (current_user.username,)
     with psycopg2.connect(url) as connection:
@@ -123,51 +131,55 @@ def lectures():
             quota += """<option value="%s">%s</option>""" % (i, i)
         if request.method == "POST":
             branch = request.form.get("Branch", None)
-            weekday = request.form.get("day", None) 
-            lecturetime = request.form.get("time", None) 
-            lecturelocation = request.form.get("location", None) 
-            lecturequota = request.form.get("quota", None) 
+            weekday = request.form.get("day", None)
+            lecturetime = request.form.get("time", None)
+            lecturelocation = request.form.get("location", None)
+            lecturequota = request.form.get("quota", None)
             statement = """INSERT INTO Buildings (name) VALUES('%s');
             INSERT INTO Lectures (name, time, weekday, location_id, quota) 
             VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s')""" % (
-            lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
+                lecturelocation, branch, lecturetime, weekday, branch, lecturequota)
             with psycopg2.connect(url) as connection:
-                 with connection.cursor() as cursor:
-                     cursor.execute(statement)
+                with connection.cursor() as cursor:
+                    cursor.execute(statement)
         return render_template("lectures.html", branchnames=branches, day=day, time=time, location=location,
-                               quota=quota, title = title)
+                               quota=quota, title=title)
     else:
         if request.method == "POST":
-           k = 0
-           for i in range(14, 30000, 10):
-               id = """%d"""%(i)
-               subject = request.form.get(id,None)
-               if subject is not None:
-                  k=i
-                  print(i)
-                  break           
-           
+            k = 0
+            for i in range(14, 30000, 3):
+                subject = request.form.get(i, None)
+                if subject is not None:
+                    k = i
+                    print(i)
+                    break
+
         statement = """select name,weekday, time, quota from lectures"""
         lecturerows = """"""
         with psycopg2.connect(url) as connection:
-             with connection.cursor() as cursor:
-                  cursor.execute(statement)
-                  i=10
-                  for rows in cursor.fetchall():
-                      branch = rows[0]
-                      weekday = rows[1]
-                      lecturetime = rows[2]
-                      lecturequota = rows[3]
-                      lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value="%s"/><td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" 
+            with connection.cursor() as cursor:
+                cursor.execute(statement)
+                i = 10
+                for rows in cursor.fetchall():
+                    branch = rows[0]
+                    weekday = rows[1]
+                    lecturetime = rows[2]
+                    lecturequota = rows[3]
+                    lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value="%s"/><td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" value="%s"/> <td>%s</td><input type="hidden" name="%d" 
                       value="%s"/>
-					  <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>"""%(branch,i,branch,weekday,i+1,weekday,lecturetime,i+2,lecturetime,lecturequota,i+3,lecturequota,i+4,i+4,i+4,i+4)
-                      i+=10
-        return render_template("lectures.html",title=title,newrow = lecturerows)
+                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (
+                        branch, i, branch, weekday, i + 1, weekday, lecturetime, i + 2, lecturetime, lecturequota,
+                        i + 3,
+                        lecturequota, i + 4, i + 4, i + 4, i + 4)
+                    i += 10
+        return render_template("lectures.html", title=title, newrow=lecturerows)
 
 
 @login_required
 @app.route("/schedule")
 def schedule():
+    if not current_user.is_authenticated:
+        return redirect("/")
     statement = """SELECT title FROM Users WHERE username = '%s'""" % (current_user.username,)
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
@@ -246,11 +258,16 @@ def my_form_post():
             return render_template("homepage.html")
 
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return redirect("/")
+
+
 lm.init_app(app)
 lm.login_view = "login"
 
 app.config["db"] = db
-
 
 if __name__ == "__main__":
     app.run()
