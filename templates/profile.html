@@ -9,16 +9,18 @@
     <table class="table" style="width:100%">
         {% if title == "Manager" %}
         <thead>
+            <th>Username</th>
             <th>Name</th>
             <th>Surname</th>
-            <th>Profile Picture</th>
+            <th>E-mail</th>
             <th>Join Date</th>
             <th>Experience</th>
         </thead>
         <tr>
+            <td>{{ username }}</td>
             <td>{{ name }}</td>
             <td>{{ surname }}</td>
-            <td><img src="data:image/png;base64,{{ profile }}" alt="profile.png"/></td>
+            <td>{{ email }}</td>
             <td>{{ join_date }}</td>
             <td>{{ experience }}</td>
         </tr>
@@ -34,7 +36,6 @@
         <tr>
             <td>{{ name }}</td>
             <td>{{ surname }}</td>
-            <td><img src="data:image/png;base64,{{ profile }}" alt="profile.png"/></td>
             <td>{{ subject }}</td>
             <td>{{ join_date }}</td>
             <td>{{ experience }}</td>

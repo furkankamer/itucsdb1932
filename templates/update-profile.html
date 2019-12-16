@@ -9,7 +9,7 @@
     <form method="POST" action="/update-profile">
         Name: <input type="text" name="name" value="{{ name }}"><br>
         Surname: <input type="text" name="surname" value="{{ surname }}"><br>
-        {% if subject %}
+        {% if subject is defined %}
         Subject:
         <select name="subject">
             <option value="Physics"{% if subject=="Physics" %} selected {% endif %}>Physics</option>
@@ -18,10 +18,13 @@
             <option value="Maths"{% if subject=="Maths" %} selected {% endif %}>Maths</option>
         </select><br>
         {% endif %}
-        {% if experience %}
+        {% if email is defined %}
+        E-mail: <input type="email" name="email" value="{{ email }}"><br>
+        {% endif %}
+        {% if experience is defined %}
         Experience (years): <input type="number" name="experience" min="0" max="100" value="{{ experience }}"><br>
         {% endif %}
-        {% if degree %}
+        {% if degree is defined %}
         Degree: <input type="number" name="degree" min="1" max="12" value="{{ degree }}"><br>
         {% endif %}
         <input type="submit" value="Update"><br>

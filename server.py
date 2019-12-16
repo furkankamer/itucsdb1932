@@ -4,7 +4,6 @@ import psycopg2
 from passlib.hash import pbkdf2_sha256
 from user import get_user
 from database import Database
-import base64
 
 app = Flask(__name__)
 
@@ -78,12 +77,12 @@ def profile():
                     print(row)
                     name = row[1]
                     surname = row[2]
-                    profile_pic = row[3]
+                    email = row[3]
                     join_date = row[4]
                     experience = row[5]
                 return render_template("profile.html",
                                        username=current_user.username, title=title, name=name, surname=surname,
-                                       profile_pic=profile_pic, join_date=join_date, experience=experience)
+                                       email=email, join_date=join_date, experience=experience)
             elif title == "Teacher":
                 statement = """SELECT * FROM Teachers WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
                             % (current_user.username,)
@@ -92,14 +91,12 @@ def profile():
                     print(row)
                     name = row[1]
                     surname = row[2]
-                    profile_pic = row[3]
-                    subject = row[4]
-                    join_date = row[5]
-                    experience = row[6]
+                    subject = row[3]
+                    join_date = row[4]
+                    experience = row[5]
                 return render_template("profile.html",
                                        username=current_user.username, title=title, name=name, surname=surname,
-                                       profile_pic=profile_pic, subject=subject,
-                                       join_date=join_date, experience=experience)
+                                       subject=subject, join_date=join_date, experience=experience)
             elif title == "Student":
                 statement = """SELECT * FROM Students WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
                             % (current_user.username,)
@@ -132,13 +129,15 @@ def profile_update():
                 user_id = row[0]
                 title = row[1]
             if title == "Manager":
-                query = """SELECT name, surname, experience_year FROM Managers WHERE user_id = %s""" % (user_id,)
+                query = """SELECT name, surname, email, experience_year FROM Managers WHERE user_id = %s""" % (user_id,)
                 cursor.execute(query)
                 for row in cursor.fetchall():
                     name = row[0]
                     surname = row[1]
-                    experience = row[2]
-                return render_template("update-profile.html", name=name, surname=surname, experience=experience)
+                    email = row[2]
+                    experience = row[3]
+                return render_template("update-profile.html", name=name, surname=surname, email=email,
+                                       experience=experience)
             elif title == "Teacher":
                 query = """SELECT name, surname, subject, experience_year FROM Teachers WHERE user_id = %s""" % user_id
                 cursor.execute(query)
@@ -157,6 +156,8 @@ def profile_update():
                     surname = row[1]
                     degree = row[2]
                 return render_template("update-profile.html", name=name, surname=surname, degree=degree)
+            else:
+                abort(404)
 
 
 @login_required
@@ -175,9 +176,10 @@ def update_profile():
             if title == "Manager":
                 name = request.form['name']
                 surname = request.form['surname']
+                email = request.form['email']
                 experience = request.form['experience']
-                query = """UPDATE Managers SET name = '%s', surname = '%s', experience_year = %s WHERE user_id = %s""" \
-                        % (name, surname, experience, user_id)
+                query = """UPDATE Managers SET name = '%s', surname = '%s', email = '%s', experience_year = %s 
+                WHERE user_id = %s""" % (name, surname, email, experience, user_id)
                 cursor.execute(query)
                 query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
                 cursor.execute(query)
