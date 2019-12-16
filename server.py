@@ -4,6 +4,7 @@ import psycopg2
 from passlib.hash import pbkdf2_sha256
 from user import get_user
 from database import Database
+import base64
 
 app = Flask(__name__)
 
@@ -64,22 +65,57 @@ def sign_in():
 def profile():
     if not current_user.is_authenticated:
         return redirect("/")
-    titles = """select title from users where username = '%s'""" % current_user.username
+    titles = """select title from users where username = '%s'""" % (current_user.username,)
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
             cursor.execute(titles)
             title = cursor.fetchone()[0]
-            title += """s"""
-            statement = """ select*from %s where user_id = (select id from users where username = '%s')""" \
-                        % (title, current_user.username)
-            cursor.execute(statement)
-            for row in cursor.fetchall():
-                print(row)
-                name = row[1]
-                sname = row[2]
-                jdate = row[4]
-    return render_template("profile.html",
-                           otherinf="""""", uname=current_user.username, fname=name, lname=sname, joindate=jdate)
+            if title == "Manager":
+                statement = """SELECT * FROM Managers WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    profile_pic = row[3]
+                    join_date = row[4]
+                    experience = row[5]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       profile_pic=profile_pic, join_date=join_date, experience=experience)
+            elif title == "Teacher":
+                statement = """SELECT * FROM Teachers WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    profile_pic = row[3]
+                    subject = row[4]
+                    join_date = row[5]
+                    experience = row[6]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       profile_pic=profile_pic, subject=subject,
+                                       join_date=join_date, experience=experience)
+            elif title == "Student":
+                statement = """SELECT * FROM Students WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    degree = row[3]
+                    join_date = row[4]
+                    grade = row[5]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       degree=degree, join_date=join_date, grade=grade)
+            else:
+                abort(404)
 
 
 @login_required
@@ -138,7 +174,7 @@ def lectures():
             statement = """INSERT INTO Buildings (name) VALUES('%s');
             INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id) 
             VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')))""" % (
-                lecturelocation, branch, lecturetime, weekday, lecturelocation, lecturequota,current_user.username)
+                lecturelocation, branch, lecturetime, weekday, lecturelocation, lecturequota, current_user.username)
             with psycopg2.connect(url) as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(statement)
@@ -148,17 +184,18 @@ def lectures():
         if request.method == "POST":
             k = 0
             for i in range(11, 30000, 10):
-                id = """%d""" % (i) 
+                id = """%d""" % (i)
                 subject = request.form.get(id, None)
                 if subject is not None:
-                    k = i-1
+                    k = i - 1
                     break
-            id = """%d""" %(k)
+            id = """%d""" % (k)
             lidd = request.form.get(id, None)
-            statement1 = """UPDATE Students SET  lecture_id = %s where user_id = (select id from users where username = '%s') """ %(lidd,current_user.username)
+            statement1 = """UPDATE Students SET  lecture_id = %s where user_id = (
+            select id from users where username = '%s') """ % (lidd, current_user.username)
             with psycopg2.connect(url) as connection:
-                 with connection.cursor() as cursor:
-                      cursor.execute(statement1)
+                with connection.cursor() as cursor:
+                    cursor.execute(statement1)
         statement = """select id,name,weekday, time, quota from lectures"""
         lecturerows = """"""
         with psycopg2.connect(url) as connection:
@@ -172,8 +209,9 @@ def lectures():
                     lecturetime = rows[3]
                     lecturequota = rows[4]
                     lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value = "%s"/><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
-                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (lid,i,lid,
-                        branch, weekday,lecturetime,lecturequota,i+1,i+1,i+1,i+1)
+                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (
+                        lid, i, lid,
+                        branch, weekday, lecturetime, lecturequota, i + 1, i + 1, i + 1, i + 1)
                     i += 10
         return render_template("lectures.html", title=title, newrow=lecturerows)
 

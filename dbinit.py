@@ -22,8 +22,8 @@ INIT_STATEMENTS = [
     weekday VARCHAR(255),
     location_id int,
     FOREIGN KEY (location_id)REFERENCES Buildings(id),
-	teacher_id int,
-	FOREIGN KEY (teacher_id) REFERENCES Teachers (id),
+    teacher_id int,
+    FOREIGN KEY (teacher_id) REFERENCES Teachers (id),
     quota int);""",
 
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,

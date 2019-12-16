@@ -6,20 +6,55 @@
     <a href="/schedule" class="button">Weekly Schedule</a>
     <a href="/profile" class="button" style="float: right;">Profile</a>
     <a href="/logout" class="button" style="float: right;">Log Out</a>
-    <table style="width:100%">
-        <tr>
-            <th>Username</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
+    <table class="table" style="width:100%">
+        {% if title == "Manager" %}
+        <thead>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Profile</th>
             <th>Join Date</th>
-            {{ otherinf | safe}}
+            <th>Experience</th>
+        </thead>
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td><img src="data:image/png;base64,{{ profile }}" alt="profile.png"/></td>
+            <td>{{ join_date }}</td>
+            <td>{{ experience }}</td>
+        </tr>
+        {% elif title == "Teacher" %}
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Profile</th>
+            <th>Subject</th>
+            <th>Join Date</th>
+            <th>Experience</th>
         </tr>
         <tr>
-            <td>{{ uname | safe}}</td>
-            <td>{{ fname | safe}}</td>
-            <td>{{ lname | safe}}</td>
-            <td>{{ joindate | safe}}</td>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td><img src="data:image/png;base64,{{ profile }}" alt="profile.png"/></td>
+            <td>{{ subject }}</td>
+            <td>{{ join_date }}</td>
+            <td>{{ experience }}</td>
         </tr>
+        {% elif title == "Student" %}
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Degree</th>
+            <th>Join Date</th>
+            <th>grade</th>
+        </tr>
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td>{{ degree }}</td>
+            <td>{{ join_date }}</td>
+            <td>{{ grade }}</td>
+        </tr>
+        {% endif %}
     </table>
 </div>
 {% else %}
