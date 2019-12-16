@@ -30,7 +30,7 @@ class Database:
             cursor.execute(query)
             connection.commit()
 
-    def update_profile(self, user_id, profile):  # Changeable attributes: name, surname
+    def update_profile(self, user_id, profile):  # Changeable attributes: name, surname (general updating)
         with dbapi2.connect(self.dbfile) as connection:
             cursor = connection.cursor()
             query = "SELECT title FROM Users WHERE id = %s" % (user_id,)

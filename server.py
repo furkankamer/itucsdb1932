@@ -22,7 +22,7 @@ def load_user(user_id):
     return get_user(user_id)
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['POST'])
 def login():
     username = request.form['UserName']
     user = get_user(username)
@@ -119,17 +119,147 @@ def profile():
 
 
 @login_required
-@app.route("/update-user")
-def update_user():
+@app.route("/update-profile")
+def profile_update():
     if not current_user.is_authenticated:
         return redirect("/")
-    user = db.get_user(current_user.username)
-    inp = object()
-    inp.username = request.form['username']
-    inp.password = request.form['username']
-    inp.title = request.form['username']
-    inp.name = request.form['username']
-    inp.surname = request.form['username']
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                print(row)
+                user_id = row[0]
+                title = row[1]
+            if title == "Manager":
+                query = """SELECT name, surname, experience_year FROM Managers WHERE user_id = %s""" % (user_id,)
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    experience = row[2]
+                return render_template("update-profile.html", name=name, surname=surname, experience=experience)
+            elif title == "Teacher":
+                query = """SELECT name, surname, subject, experience_year FROM Teachers WHERE user_id = %s""" % user_id
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    subject = row[2]
+                    experience = row[3]
+                return render_template("update-profile.html",
+                                       name=name, surname=surname, subject=subject, experience=experience)
+            elif title == "Student":
+                query = """SELECT name, surname, degree FROM Students WHERE user_id = %s""" % (user_id,)
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    degree = row[2]
+                return render_template("update-profile.html", name=name, surname=surname, degree=degree)
+
+
+@login_required
+@app.route("/update-profile", methods=['POST'])
+def update_profile():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                print(row)
+                user_id = row[0]
+                title = row[1]
+            if title == "Manager":
+                name = request.form['name']
+                surname = request.form['surname']
+                experience = request.form['experience']
+                query = """UPDATE Managers SET name = '%s', surname = '%s', experience_year = %s WHERE user_id = %s""" \
+                        % (name, surname, experience, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+            elif title == "Teacher":
+                name = request.form['name']
+                surname = request.form['surname']
+                subject = request.form['subject']
+                experience = request.form['experience']
+                query = """UPDATE Teachers SET name = '%s', surname = '%s', subject = '%s', experience_year = %s 
+                WHERE user_id = %s""" % (name, surname, subject, experience, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+            elif title == "Student":
+                name = request.form['name']
+                surname = request.form['surname']
+                degree = request.form['degree']
+                query = """UPDATE Students SET name = '%s', surname = '%s', degree = %s WHERE user_id = %s""" % (
+                    name, surname, degree, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+    return redirect("/profile")
+
+
+@login_required
+@app.route("/password")
+def password():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    return render_template("password.html")
+
+
+@login_required
+@app.route("/password", methods=['POST'])
+def change_password():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    new1 = request.form['new1']
+    new2 = request.form['new2']
+    if new1 != new2:
+        message = "New passwords don't match. Try again."
+        return render_template("password.html", message=message)
+    old = request.form['old']
+    user = get_user(current_user.username)
+    if pbkdf2_sha256.verify(old, user.password):
+        new = pbkdf2_sha256.hash(new1)
+        query = """UPDATE Users SET password = '%s' WHERE username = '%s'""" % (new, current_user.username)
+        with psycopg2.connect(url) as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                connection.commit()
+                logout_user()
+                return redirect("/signin")
+    else:
+        message = "The old password you entered is incorrect. Try again."
+        return render_template("password.html", message=message)
+
+
+@login_required
+@app.route("/DELETE")
+def delete():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                user_id = row[0]
+                title = row[1]
+            title += "s"
+            query = """DELETE FROM %s WHERE user_id = %s""" % (title, user_id)
+            logout_user()
+            cursor.execute(query)
+            query = """DELETE FROM Users WHERE id = %s""" % user_id
+            cursor.execute(query)
+            connection.commit()
+            return redirect("/")
 
 
 @login_required

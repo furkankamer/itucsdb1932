@@ -11,7 +11,7 @@
         <thead>
             <th>Name</th>
             <th>Surname</th>
-            <th>Profile</th>
+            <th>Profile Picture</th>
             <th>Join Date</th>
             <th>Experience</th>
         </thead>
@@ -26,7 +26,7 @@
         <tr>
             <th>Name</th>
             <th>Surname</th>
-            <th>Profile</th>
+            <th>Profile Picture</th>
             <th>Subject</th>
             <th>Join Date</th>
             <th>Experience</th>
@@ -57,6 +57,14 @@
         {% endif %}
     </table>
 </div>
+
+<div class="container" style="padding-top: 20px;">
+    <a href="/update-profile" class="button">Update Your Profile</a>
+    <a href="/password" class="button">Change Your Password</a>
+    <a onclick="return confirm('Are you sure? This operation cannot be undone!')" href="/DELETE" class="button"
+       style="float: right;">DELETE YOUR ACCOUNT!</a>
+</div>
+
 {% else %}
 <div class="container">
     <a href="/signup" class="button">Sign Up</a>

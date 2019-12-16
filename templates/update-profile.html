@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <a href="/lectures" class="button">Lectures</a>
+    <a href="/schedule" class="button">Weekly Schedule</a>
+    <a href="/profile" class="button" style="float: right;">Profile</a>
+    <a href="/logout" class="button" style="float: right;">Log Out</a>
+    <form method="POST" action="/update-profile">
+        Name: <input type="text" name="name" value="{{ name }}"><br>
+        Surname: <input type="text" name="surname" value="{{ surname }}"><br>
+        {% if subject %}
+        Subject:
+        <select name="subject">
+            <option value="Physics"{% if subject=="Physics" %} selected {% endif %}>Physics</option>
+            <option value="Chemistry"{% if subject=="Chemistry" %} selected {% endif %}>Chemistry</option>
+            <option value="Biology"{% if subject=="Biology" %} selected {% endif %}>Biology</option>
+            <option value="Maths"{% if subject=="Maths" %} selected {% endif %}>Maths</option>
+        </select><br>
+        {% endif %}
+        {% if experience %}
+        Experience (years): <input type="number" name="experience" min="0" max="100" value="{{ experience }}"><br>
+        {% endif %}
+        {% if degree %}
+        Degree: <input type="number" name="degree" min="1" max="12" value="{{ degree }}"><br>
+        {% endif %}
+        <input type="submit" value="Update"><br>
+    </form>
+</div>
+{% else %}
+<div class="container">
+    <a href="/signup" class="button">Sign Up</a>
+    <a href="/signin" class="button">Sign In</a>
+</div>
+{% endif %}
+
+{% endblock %}
