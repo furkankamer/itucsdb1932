@@ -18,6 +18,36 @@ function uncheck(id)
 	document.getElementById(id).checked = true;
 }
 
+function init()
+
+{
+       document.getElementById("9:30").style.display = "none";
+	   document.getElementById("11:30").style.display = "none";
+	   document.getElementById("13:30").style.display = "none";
+	   document.getElementById("15:30").style.display = "none";
+}
+
+function times(sel)
+{
+	
+	document.getElementById("mySelect3").disabled = false;
+	if(sel.options[sel.selectedIndex].text == "Friday")
+	{
+		
+	   document.getElementById("9:30").disabled = true;
+	   document.getElementById("11:30").disabled = true;
+	   document.getElementById("13:30").disabled = true;
+	   document.getElementById("15:30").disabled = true;
+	}
+	else
+	{
+		document.getElementById("9:30").disabled = false;
+	   document.getElementById("11:30").disabled = false;
+	   document.getElementById("13:30").disabled = false;
+	   document.getElementById("15:30").disabled = false;
+	}
+}
+
 </script>
 
 
@@ -29,19 +59,20 @@ function uncheck(id)
     <a href="/logout" class="button" style="float: right;">Log Out</a>
     <br>
 	{% if title == 'Teacher' %}
-    <form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+	<script>init();</script>
+    <form name="lectures" id="form1" action="/etudes" method="POST" enctype="multipart/form-data">
         <label id="branchLabel" for="branch" style = "display:inline;">Lecture Branch: </label>
         <select id="mySelect1" name = "Branch">
             {{ branchnames | safe}}
         </select>
 		<br>
 		<label id="dayLabel" for="weekday" style = "display:inline;">WeekDay:</label>
-		<select id="mySelect2" name = "day"  >
+		<select id="mySelect2" name = "day" onchange="times(this)" >
             {{ day | safe}}
         </select>
 		<br>
-		<label id="timeLabel" for="time" style = "display:inline;">Time:</label>
-		<select id="mySelect3" name = "time" >
+		<label id="timeLabel" for="time" style = "display:inline;" >Time:</label>
+		<select id="mySelect3" name = "time" disabled>
             {{ time | safe}}
         </select>
 		<br>
@@ -59,7 +90,7 @@ function uncheck(id)
     </form>
 	{% endif %}
 	{% if title == 'Student' %}
-	<form name="lectures" id="form1" action="/lectures" method="POST" enctype="multipart/form-data">
+	<form name="etudes" id="form1" action="/etudes" method="POST" enctype="multipart/form-data">
 	<table style="width:100%">
         <tr>
 		    <th>ID</th>

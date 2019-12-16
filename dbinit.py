@@ -17,14 +17,16 @@ INIT_STATEMENTS = [
 
     """CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    crn int UNIQUE,
-    time VARCHAR(255),
+    time TIME,
     weekday VARCHAR(255),
     location_id int,
     FOREIGN KEY (location_id)REFERENCES Buildings(id),
 	teacher_id int,
 	FOREIGN KEY (teacher_id) REFERENCES Teachers (id),
-    quota int);""",
+	enrolled int DEFAULT 0,
+    quota int,
+	CONSTRAINT time_cons UNIQUE(time,weekday,location_id),
+	CONSTRAINT teacher_cons UNIQUE(time,weekday,teacher_id));""",
 
     """CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -51,21 +53,30 @@ INIT_STATEMENTS = [
     degree int NOT NULL,
     join_date DATE NOT NULL DEFAULT CURRENT_DATE,
     grade FLOAT,
-    lecture_id int,
-    FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
     user_id int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id));""",
 
     """CREATE TABLE if not exists Etudes ( id SERIAL PRIMARY KEY,
     subject VARCHAR(255),
-    lecture_id int, 
-    FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
-    time DATE NOT NULL,
-    day VARCHAR(255),
-    required_grade int,
+    teacher_id int, 
+    FOREIGN KEY (teacher_id) REFERENCES Teachers(id),
+    time TIME,
+    weekday VARCHAR(255),
+    enrolled int DEFAULT 0,
     location_id int NOT NULL, 
     FOREIGN KEY (location_id) REFERENCES Building(id),
     quota int);""",
+	
+	"""CREATE TABLE if not exists RegisteredStudents (
+    lecture_id int, 
+    FOREIGN KEY (lecture_id) REFERENCES Lectures(id),
+    student_id int , 
+    FOREIGN KEY (student_id) REFERENCES Users(id),
+    etude_id int , 
+    FOREIGN KEY (etude_id) REFERENCES Etudes(id),
+	CONSTRAINT reg_cons UNIQUE(student_id,lecture_id),
+	CONSTRAINT regi_cons UNIQUE(student_id,etude_id));""",
+	
 ]
 
 
