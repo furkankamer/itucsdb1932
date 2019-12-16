@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <a href="/lectures" class="button">Lectures</a>
+    <a href="/schedule" class="button">Weekly Schedule</a>
+    <a href="/profile" class="button" style="float: right;">Profile</a>
+    <a href="/logout" class="button" style="float: right;">Log Out</a>
+    <table class="table" style="width:100%">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Degree</th>
+            <th>Join Date</th>
+            <th>Grade</th>
+        </thead>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td>{{ student[4] }}</td>
+            <td>{{ student[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/student">
+        Enter the student ID to give a grade: <input type="number" name="id" min="0" value="0">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% else %}
+<div class="container">
+    <a href="/signup" class="button">Sign Up</a>
+    <a href="/signin" class="button">Sign In</a>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -21,7 +21,7 @@ def load_user(user_id):
     return get_user(user_id)
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['POST'])
 def login():
     username = request.form['UserName']
     user = get_user(username)
@@ -64,36 +64,260 @@ def sign_in():
 def profile():
     if not current_user.is_authenticated:
         return redirect("/")
-    titles = """select title from users where username = '%s'""" % current_user.username
+    titles = """select title from users where username = '%s'""" % (current_user.username,)
     with psycopg2.connect(url) as connection:
         with connection.cursor() as cursor:
             cursor.execute(titles)
             title = cursor.fetchone()[0]
-            title += """s"""
-            statement = """ select*from %s where user_id = (select id from users where username = '%s')""" \
-                        % (title, current_user.username)
-            cursor.execute(statement)
-            for row in cursor.fetchall():
-                print(row)
-                name = row[1]
-                sname = row[2]
-                jdate = row[4]
-    return render_template("profile.html",
-                           otherinf="""""", uname=current_user.username, fname=name, lname=sname, joindate=jdate)
+            if title == "Manager":
+                statement = """SELECT * FROM Managers WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    email = row[3]
+                    join_date = row[4]
+                    experience = row[5]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       email=email, join_date=join_date, experience=experience)
+            elif title == "Teacher":
+                statement = """SELECT * FROM Teachers WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    subject = row[3]
+                    join_date = row[4]
+                    experience = row[5]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       subject=subject, join_date=join_date, experience=experience)
+            elif title == "Student":
+                statement = """SELECT * FROM Students WHERE user_id = (SELECT id FROM Users WHERE username = '%s')""" \
+                            % (current_user.username,)
+                cursor.execute(statement)
+                for row in cursor.fetchall():
+                    print(row)
+                    name = row[1]
+                    surname = row[2]
+                    degree = row[3]
+                    join_date = row[4]
+                    grade = row[5]
+                return render_template("profile.html",
+                                       username=current_user.username, title=title, name=name, surname=surname,
+                                       degree=degree, join_date=join_date, grade=grade)
+            else:
+                abort(404)
 
 
 @login_required
-@app.route("/update-user")
-def update_user():
+@app.route("/update-profile")
+def profile_update():
     if not current_user.is_authenticated:
         return redirect("/")
-    user = db.get_user(current_user.username)
-    inp = object()
-    inp.username = request.form['username']
-    inp.password = request.form['username']
-    inp.title = request.form['username']
-    inp.name = request.form['username']
-    inp.surname = request.form['username']
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                print(row)
+                user_id = row[0]
+                title = row[1]
+            if title == "Manager":
+                query = """SELECT name, surname, email, experience_year FROM Managers WHERE user_id = %s""" % (user_id,)
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    email = row[2]
+                    experience = row[3]
+                return render_template("update-profile.html", name=name, surname=surname, email=email,
+                                       experience=experience)
+            elif title == "Teacher":
+                query = """SELECT name, surname, subject, experience_year FROM Teachers WHERE user_id = %s""" % user_id
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    subject = row[2]
+                    experience = row[3]
+                return render_template("update-profile.html",
+                                       name=name, surname=surname, subject=subject, experience=experience)
+            elif title == "Student":
+                query = """SELECT name, surname, degree FROM Students WHERE user_id = %s""" % (user_id,)
+                cursor.execute(query)
+                for row in cursor.fetchall():
+                    name = row[0]
+                    surname = row[1]
+                    degree = row[2]
+                return render_template("update-profile.html", name=name, surname=surname, degree=degree)
+            else:
+                abort(404)
+
+
+@login_required
+@app.route("/update-profile", methods=['POST'])
+def update_profile():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                print(row)
+                user_id = row[0]
+                title = row[1]
+            if title == "Manager":
+                name = request.form['name']
+                surname = request.form['surname']
+                email = request.form['email']
+                experience = request.form['experience']
+                query = """UPDATE Managers SET name = '%s', surname = '%s', email = '%s', experience_year = %s 
+                WHERE user_id = %s""" % (name, surname, email, experience, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+            elif title == "Teacher":
+                name = request.form['name']
+                surname = request.form['surname']
+                subject = request.form['subject']
+                experience = request.form['experience']
+                query = """UPDATE Teachers SET name = '%s', surname = '%s', subject = '%s', experience_year = %s 
+                WHERE user_id = %s""" % (name, surname, subject, experience, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+            elif title == "Student":
+                name = request.form['name']
+                surname = request.form['surname']
+                degree = request.form['degree']
+                query = """UPDATE Students SET name = '%s', surname = '%s', degree = %s WHERE user_id = %s""" % (
+                    name, surname, degree, user_id)
+                cursor.execute(query)
+                query = """UPDATE Users SET name = '%s', surname = '%s' WHERE id = %s""" % (name, surname, user_id)
+                cursor.execute(query)
+                connection.commit()
+    return redirect("/profile")
+
+
+@login_required
+@app.route("/password")
+def password():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    return render_template("password.html")
+
+
+@login_required
+@app.route("/password", methods=['POST'])
+def change_password():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    new1 = request.form['new1']
+    new2 = request.form['new2']
+    if new1 != new2:
+        message = "New passwords don't match. Try again."
+        return render_template("password.html", message=message)
+    old = request.form['old']
+    user = get_user(current_user.username)
+    if pbkdf2_sha256.verify(old, user.password):
+        new = pbkdf2_sha256.hash(new1)
+        query = """UPDATE Users SET password = '%s' WHERE username = '%s'""" % (new, current_user.username)
+        with psycopg2.connect(url) as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                connection.commit()
+                logout_user()
+                return redirect("/signin")
+    else:
+        message = "The old password you entered is incorrect. Try again."
+        return render_template("password.html", message=message)
+
+
+@login_required
+@app.route("/DELETE")
+def delete():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                user_id = row[0]
+                title = row[1]
+            title += "s"
+            query = """DELETE FROM %s WHERE user_id = %s""" % (title, user_id)
+            logout_user()
+            cursor.execute(query)
+            query = """DELETE FROM Users WHERE id = %s""" % user_id
+            cursor.execute(query)
+            connection.commit()
+            return redirect("/")
+
+
+@login_required
+@app.route("/students")
+def students():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            title = cursor.fetchone()[0]
+            if title != "Student":
+                query = """SELECT * from Students ORDER BY id"""
+                cursor.execute(query)
+                rows = []
+                for row in cursor.fetchall():
+                    print(row)
+                    rows += (row,)
+                print(rows)
+                return render_template("students.html", students=rows)
+
+
+@login_required
+@app.route("/student", methods=['POST'])
+def give_grade():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    student_id = request.form['id']
+    query = """SELECT name, surname, degree, join_date, grade FROM Students WHERE id = %s""" % (student_id,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                name = row[0]
+                surname = row[1]
+                degree = row[2]
+                join_date = row[3]
+                grade = row[4]
+            if cursor.fetchall() is None:
+                return redirect("/students")
+            return render_template("student.html", id=student_id, name=name, surname=surname, degree=degree,
+                                   join_date=join_date, grade=grade)
+
+
+@login_required
+@app.route("/grade", methods=['POST'])
+def grader():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """UPDATE Students SET grade = %s WHERE id = %s""" % (request.form['grade'], request.form['id'])
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            connection.commit()
+            return redirect("/students")
 
 
 @login_required
@@ -135,10 +359,10 @@ def lectures():
             lecturetime = request.form.get("time", None)
             lecturelocation = request.form.get("location", None)
             lecturequota = request.form.get("quota", None)
-            statement = """
-            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id,enrolled) 
-            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')),0)""" % (
-                branch, lecturetime, weekday, lecturelocation, lecturequota,current_user.username)
+            statement = """INSERT INTO Buildings (name) VALUES('%s');
+            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id) 
+            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')))""" % (
+                lecturelocation, branch, lecturetime, weekday, lecturelocation, lecturequota, current_user.username)
             with psycopg2.connect(url) as connection:
                 with connection.cursor() as cursor:
                      try:
@@ -153,37 +377,18 @@ def lectures():
             k = 0
             err = 0
             for i in range(11, 30000, 10):
-                id = """%d""" % (i) 
+                id = """%d""" % (i)
                 subject = request.form.get(id, None)
                 if subject is not None:
-                    k = i-1
+                    k = i - 1
                     break
-            id = """%d""" %(k)
+            id = """%d""" % (k)
             lidd = request.form.get(id, None)
-            if lidd is not None:
-               statement1 = """insert into registeredstudents (lecture_id,student_id) values( %s, (select id from users where username = '%s')); update lectures set enrolled = enrolled + 1 where id = %s """ %(lidd,current_user.username,lidd)
-               statement2 = """select lecture_id from registeredstudents where lecture_id is not null and student_id = (select id from users where username = '%s')""" % (current_user.username)
-               statement4 = """select weekday,time from lectures where id = %s""" % (lidd)
-               with psycopg2.connect(url) as connection:
-                    with connection.cursor() as cursor:
-                         cursor.execute(statement2)
-                         reglec = cursor.fetchall()
-                         cursor.execute(statement4)
-                         lecc = cursor.fetchall()
-                         lweekd = lecc[0][0]
-                         ltimee = lecc[0][1]
-                         if reglec is not None:
-                            for row in reglec:                         
-                                statement3 = """select weekday,time from lectures where id = %s""" % (row[0])
-                                cursor.execute(statement3)
-                                wreglec = cursor.fetchall()
-                                for lrow in wreglec:
-                                    if lrow[0] == lweekd and lrow[1] == ltimee:
-                                       error = """You have already have a lecture at the same time. Please check your schedule"""                   
-                                       err = 1
-                         if(err == 0):
-                            cursor.execute(statement1)
-                         
+            statement1 = """UPDATE Students SET  lecture_id = %s where user_id = (
+            select id from users where username = '%s') """ % (lidd, current_user.username)
+            with psycopg2.connect(url) as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(statement1)
         statement = """select id,name,weekday, time, quota from lectures"""
         lecturerows = """"""
         with psycopg2.connect(url) as connection:
@@ -196,9 +401,10 @@ def lectures():
                     weekday = rows[2]
                     lecturetime = rows[3]
                     lecturequota = rows[4]
-                    lecturerows += """<tr><td>%s<input type="hidden" name="%d" value = "%s"/></td><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
-                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (lid,i,lid,
-                        branch, weekday,lecturetime,lecturequota,i+1,i+1,i+1,i+1)
+                    lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value = "%s"/><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
+                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (
+                        lid, i, lid,
+                        branch, weekday, lecturetime, lecturequota, i + 1, i + 1, i + 1, i + 1)
                     i += 10
         return render_template("lectures.html", title=title, newrow=lecturerows,message=error)
 

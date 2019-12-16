@@ -7,22 +7,65 @@
 	<a href="/etudes" class="button">Etudes</a>
     <a href="/profile" class="button" style="float: right;">Profile</a>
     <a href="/logout" class="button" style="float: right;">Log Out</a>
-    <table style="width:100%">
-        <tr>
+    <table class="table" style="width:100%">
+        {% if title == "Manager" %}
+        <thead>
             <th>Username</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>E-mail</th>
             <th>Join Date</th>
-            {{ otherinf | safe}}
+            <th>Experience</th>
+        </thead>
+        <tr>
+            <td>{{ username }}</td>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td>{{ email }}</td>
+            <td>{{ join_date }}</td>
+            <td>{{ experience }}</td>
+        </tr>
+        {% elif title == "Teacher" %}
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Subject</th>
+            <th>Join Date</th>
+            <th>Experience</th>
         </tr>
         <tr>
-            <td>{{ uname | safe}}</td>
-            <td>{{ fname | safe}}</td>
-            <td>{{ lname | safe}}</td>
-            <td>{{ joindate | safe}}</td>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td>{{ subject }}</td>
+            <td>{{ join_date }}</td>
+            <td>{{ experience }}</td>
         </tr>
+        {% elif title == "Student" %}
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Degree</th>
+            <th>Join Date</th>
+            <th>grade</th>
+        </tr>
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td>{{ degree }}</td>
+            <td>{{ join_date }}</td>
+            <td>{{ grade }}</td>
+        </tr>
+        {% endif %}
     </table>
 </div>
+
+<div class="container" style="padding-top: 20px;">
+    <a href="/update-profile" class="button">Update Your Profile</a>
+    <a href="/password" class="button">Change Your Password</a>
+    <a onclick="return confirm('Are you sure? This operation cannot be undone!')" href="/DELETE" class="button"
+       style="float: right;">DELETE YOUR ACCOUNT!</a>
+</div>
+
 {% else %}
 <div class="container">
     <a href="/signup" class="button">Sign Up</a>
