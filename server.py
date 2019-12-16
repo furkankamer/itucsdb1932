@@ -265,6 +265,62 @@ def delete():
 
 
 @login_required
+@app.route("/students")
+def students():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """SELECT id, title FROM Users WHERE username = '%s'""" % (current_user.username,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            title = cursor.fetchone()[0]
+            if title != "Student":
+                query = """SELECT * from Students ORDER BY id"""
+                cursor.execute(query)
+                rows = []
+                for row in cursor.fetchall():
+                    print(row)
+                    rows += (row,)
+                print(rows)
+                return render_template("students.html", students=rows)
+
+
+@login_required
+@app.route("/student", methods=['POST'])
+def give_grade():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    student_id = request.form['id']
+    query = """SELECT name, surname, degree, join_date, grade FROM Students WHERE id = %s""" % (student_id,)
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            for row in cursor.fetchall():
+                name = row[0]
+                surname = row[1]
+                degree = row[2]
+                join_date = row[3]
+                grade = row[4]
+            if cursor.fetchall() is None:
+                return redirect("/students")
+            return render_template("student.html", id=student_id, name=name, surname=surname, degree=degree,
+                                   join_date=join_date, grade=grade)
+
+
+@login_required
+@app.route("/grade", methods=['POST'])
+def grader():
+    if not current_user.is_authenticated:
+        return redirect("/")
+    query = """UPDATE Students SET grade = %s WHERE id = %s""" % (request.form['grade'], request.form['id'])
+    with psycopg2.connect(url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            connection.commit()
+            return redirect("/students")
+
+
+@login_required
 @app.route("/lectures", methods=['GET', 'POST'])
 def lectures():
     if not current_user.is_authenticated:

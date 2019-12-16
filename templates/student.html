@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <a href="/lectures" class="button">Lectures</a>
+    <a href="/schedule" class="button">Weekly Schedule</a>
+    <a href="/profile" class="button" style="float: right;">Profile</a>
+    <a href="/logout" class="button" style="float: right;">Log Out</a>
+    <table class="table" style="width:100%">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Degree</th>
+            <th>Join Date</th>
+            <th>Grade</th>
+        </thead>
+        <tr>
+            <td>{{ id }}</td>
+            <td>{{ name }}</td>
+            <td>{{ surname }}</td>
+            <td>{{ degree }}</td>
+            <td>{{ join_date }}</td>
+            <td>
+                <form method="POST" action="/grade" style="float: left;">
+                    <input type="number" name="grade" min="0" value="{{ grade }}">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% else %}
+<div class="container">
+    <a href="/signup" class="button">Sign Up</a>
+    <a href="/signin" class="button">Sign In</a>
+</div>
+{% endif %}
+
+{% endblock %}
