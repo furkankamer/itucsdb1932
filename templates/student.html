@@ -23,7 +23,7 @@
             <td>{{ join_date }}</td>
             <td>
                 <form method="POST" action="/grade" style="float: left;">
-                    <input type="number" name="grade" min="0" value="{{ grade }}">
+                    <input type="number" name="grade" min="0" max="100" value="{{ grade }}">
                     <input type="hidden" name="id" value="{{ id }}">
                     <input type="submit" value="Submit">
                 </form>

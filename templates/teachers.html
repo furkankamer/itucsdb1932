@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <a href="/lectures" class="button">Lectures</a>
+    <a href="/schedule" class="button">Weekly Schedule</a>
+    <a href="/profile" class="button" style="float: right;">Profile</a>
+    <a href="/logout" class="button" style="float: right;">Log Out</a>
+    <table class="table" style="width:100%">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Subject</th>
+            <th>Join Date</th>
+            <th>Experience (years)</th>
+        </thead>
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher[0] }}</td>
+            <td>{{ teacher[1] }}</td>
+            <td>{{ teacher[2] }}</td>
+            <td>{{ teacher[3] }}</td>
+            <td>{{ teacher[4] }}</td>
+            <td>{{ teacher[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% else %}
+<div class="container">
+    <a href="/signup" class="button">Sign Up</a>
+    <a href="/signin" class="button">Sign In</a>
+</div>
+{% endif %}
+
+{% endblock %}
