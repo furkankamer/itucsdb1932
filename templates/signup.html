@@ -10,34 +10,26 @@ function asd(a,b)
 		if(b==0)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
-			document.getElementById("schname").style.visibility="hidden";
-			document.getElementById("schnameLabel").style.display="none";
-			document.getElementById("sch").style.visibility="visible";
-			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="hidden";
 			document.getElementById("subjLabel").style.display="none";
 			document.getElementById("exp").style.visibility="hidden";
 			document.getElementById("expLabel").style.display="none";
-			document.getElementById("act").style.visibility="visible";
-			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="visible";
 			document.getElementById("degLabel").style.display="inline";
+	        document.getElementById("exp").required = false;
+			document.getElementById("deg").required = true;
 			document.getElementById("3").checked = true;
 			document.getElementById("1").checked = false;
 			document.getElementById("2").checked = false;}
 		else if(b==1)
 		{
 			document.getElementById("signupform1").style.visibility="visible";
-			document.getElementById("schname").style.visibility="visible";
-			document.getElementById("schnameLabel").style.display="inline";
-			document.getElementById("sch").style.visibility="hidden";
-			document.getElementById("schLabel").style.display="none";
 			document.getElementById("subj").style.visibility="hidden";
 			document.getElementById("subjLabel").style.display="none";
-			document.getElementById("exp").style.visibility="visible";
+			document.getElementById("exp").style.visibility="visible";		
+	        document.getElementById("exp").required = true;
+			document.getElementById("deg").required = false;
 			document.getElementById("expLabel").style.display="inline";
-			document.getElementById("act").style.visibility="hidden";
-			document.getElementById("actLabel").style.display="none";
 			document.getElementById("deg").style.visibility="hidden";
 			document.getElementById("degLabel").style.display="none";
 			document.getElementById("1").checked = true;
@@ -46,16 +38,12 @@ function asd(a,b)
 		else
 		{
 			document.getElementById("signupform1").style.visibility="visible";
-			document.getElementById("schname").style.visibility="hidden";
-			document.getElementById("schnameLabel").style.display="none";
-			document.getElementById("sch").style.visibility="visible";
-			document.getElementById("schLabel").style.display="inline";
 			document.getElementById("subj").style.visibility="visible";
 			document.getElementById("subjLabel").style.display="inline";
 			document.getElementById("exp").style.visibility="visible";
+	        document.getElementById("exp").required = true;
+			document.getElementById("deg").required = false;
 			document.getElementById("expLabel").style.display="inline";
-			document.getElementById("act").style.visibility="visible";
-			document.getElementById("actLabel").style.display="inline";
 			document.getElementById("deg").style.visibility="hidden";
 			document.getElementById("degLabel").style.display="none";
 			document.getElementById("2").checked = true;
@@ -83,24 +71,17 @@ function asd(a,b)
 
         Password: <input type="password" name="Password" value="" required="required"><br>
 
-        <label id="schnameLabel" for="schname" style = "display:none;">SchoolName: </label>
-        <input id="schname" type="text" name="SchoolName" value="" style = "visibility: hidden;"><br>
-
-		<label id="schLabel" for="sch" style = "display:none;">School: </label>
-		<select id="sch" type="text" name="SchoolName" value="" style = "visibility: hidden;">
-            {{ schoolnames | safe}}
-        </select><br>
-
         First name: <input type="text" name="FirstName" value="" ><br>
 
         Last name: <input type="text" name="LastName" value=""><br>
 
 		<label id="subjLabel" for="subj" style = "display:none;">Subject: </label>
+		<select id="subj" type="text" name="subject" value="" style = "visibility: hidden;">
+            <option value="Physics">Physics</option>
+			<option value="Biology">Biology</option>
+			<option value="Chemistry">Chemistry</option>
+        </select><br>
         <input name="subject" id="subj" type="text" style = "visibility: hidden;" value=""><br>
-		
-
-		<label  id="actLabel" for="act" style = "display:none;">Activation Code: </label>
-        <input type="number" id="act" type="text" name="ActivationCode" value="" style = "visibility: hidden;"><br>
 
 		<label  id="degLabel" for="deg" style = "display:none;">Degree: </label>
         <input type="number" id="deg" type="text" name="Degree" value="" style = "visibility: hidden;"><br>
