@@ -75,6 +75,8 @@ INIT_STATEMENTS = [
 	CONSTRAINT reg_cons UNIQUE(student_id,lecture_id),
 	CONSTRAINT regi_cons UNIQUE(student_id,etude_id));""",
 	
+	"""Insert into Buildings (name) values ('MED A34'),('EHB 2101'),('MDB A105')"""
+	
 ]
 
 
