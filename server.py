@@ -382,6 +382,9 @@ def lectures():
                 if subject is not None:
                     k = i-1
                     break
+            print(k)
+            if k == 0:
+               return redirect("/lectures")
             id = """%d""" %(k)
             lidd = request.form.get(id, None)
             if lidd is not None:
@@ -498,6 +501,9 @@ def etudes():
                 if subject is not None:
                     k = i-1
                     break
+            print(k)
+            if k == 0:
+               return redirect("/etudes")
             id = """%d""" %(k)
             lidd = request.form.get(id, None)
             statement1 = """insert into registeredstudents (etude_id,student_id) values( %s, (select id from users where username = '%s')); update etudes set enrolled = enrolled+1 where id = %s """ %(lidd,current_user.username,lidd)
