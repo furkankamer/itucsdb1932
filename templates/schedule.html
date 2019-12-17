@@ -40,7 +40,57 @@ if(sel.options[sel.selectedIndex].text == "Etude")
 	   document.getElementById("ETDLabel").style.display = "none";
 	}
 }
+function etudeorlecture2(sel)
+{
+if(sel.options[sel.selectedIndex].text == "Etude")
+	{
+	   document.getElementById("etudtimeselect").style.display = "inline";
+	   document.getElementById("lecturetimeselect").style.display = "none";
+	    document.getElementById("etudeday").style.display = "inline";
+	   document.getElementById("lectureday").style.display = "none";
+	   document.getElementById("LecID2").style.display = "none";
+	   document.getElementById("LecID2").required = false;
+	   document.getElementById("EtdID2").required = true;
+	   document.getElementById("EtdID2").style.display = "inline";
+	   document.getElementById("LECLabel2").style.display = "none";
+	   document.getElementById("ETDLabel2").style.display = "inline";
+	}
+	else
+	{
+		document.getElementById("etudtimeselect").style.display = "none";
+	   document.getElementById("lecturetimeselect").style.display = "inline";
+	    document.getElementById("etudeday").style.display = "none";
+	   document.getElementById("lectureday").style.display = "inline";
+	   document.getElementById("LecID2").required = true;
+	   document.getElementById("EtdID2").required = false;
+	   document.getElementById("LecID2").style.display = "inline";
+	   document.getElementById("EtdID2").style.display = "none";
+	   document.getElementById("LECLabel2").style.display = "inline";
+	   document.getElementById("ETDLabel2").style.display = "none";
+	}
+	
+	
+	
+}
 
+function daytimee(sel)
+{
+     if(sel.options[sel.selectedIndex].text == "Friday")
+	 {
+	 document.getElementById("9:30").disabled = true;
+	 document.getElementById("11:30").disabled = true;
+	 document.getElementById("13:30").disabled= true;
+	 document.getElementById("15:30").disabled = true;
+	 }
+	 else{
+	 document.getElementById("9:30").style.display = false;
+	 document.getElementById("11:30").style.display = false;
+	 document.getElementById("13:30").style.display = false;
+	 document.getElementById("15:30").style.display = false;
+	 }
+
+
+}
 
 
 </script>
@@ -48,6 +98,7 @@ if(sel.options[sel.selectedIndex].text == "Etude")
     <a href="/lectures" class="button">Lectures</a>
     <a href="/schedule" class="button">Weekly Schedule</a>
 	<a href="/etudes" class="button">Etudes</a>
+    <a href="/students" class="button">All Students</a>
     <a href="/profile" class="button" style="float: right;">Profile</a>
     <a href="/logout" class="button" style="float: right;">Log Out</a>
 </div>
@@ -68,21 +119,25 @@ if(sel.options[sel.selectedIndex].text == "Etude")
 </form>
 {% if title == 'Teacher' %}
 <form style="display: none;" action="/schedule" method="POST" name="edit" id="editform">
-<label  id="LECLabel" for="act" >Lecture ID: </label>
-<input type="number" id="act" type="text" name="LecID" value="" required><br>
-<label  id="ETDLabel" for="act" >Etude ID: </label>
-<input type="number" id="act" type="text" name="EtudeID" value="" required><br>
+<select onchange="etudeorlecture2(this)" id="mySelect12" name = "lectureoretude">
+<option value="Monday">Etude</option>
+<option value="Tuesday" selected>Lecture</option>
+</select>
+<label  style="display: none;" id="LECLabel2" for="act" >Lecture ID: </label>
+<input style="display: none;" type="number" id="LecID2" type="text" name="LecID2" value="" required><br>
+<label  style="display: none;" id="ETDLabel2" for="act" >Etude ID: </label>
+<input style="display: none;" type="number" id="EtdID2" type="text" name="EtudeID2" value="" required><br>
 <label  id="actLabel" for="act" >Weekday: </label>
-<select id="mySelect1" name = "wday">
+<select id="lectureday" name = "wday">
 <option value="Monday">Monday</option>
 <option value="Tuesday">Tuesday</option>
 <option value="Wednesday">Wednesday</option>
 <option value="Thursday">Thursday</option>
 <option value="Friday">Friday</option>
 </select>
-<select id="mySelect1" name = "etudewday">
+<select style="display: none;" onchange="daytimee(this)" id="etudeday" name = "etudewday">
 <option value="Friday">Friday</option>
-<option value="Thursday">Saturday</option>
+<option value="Saturday" selected>Saturday</option>
 </select>
 <label  id="actLabel" for="act" >Quota: </label>
 <select id="mySelect1" name = "lquotaa">
@@ -92,19 +147,19 @@ if(sel.options[sel.selectedIndex].text == "Etude")
 <option value="60">60</option>
 </select>
 <label  id="actLabel" for="act" >Time: </label>
-<select id="mySelect1" name = "timee">
+<select id="lecturetimeselect" name = "timee">
 <option value="9:30">9:30</option>
 <option value="11:30">11:30</option>
 <option value="13:30">13:30</option>
 <option value="15:30">15:30</option>
 </select>
-<select id="etudemySelect1" name = "timee">
-<option value="9:30">9:30</option>
-<option value="11:30">11:30</option>
-<option value="13:30">13:30</option>
-<option value="15:30">15:30</option>
-<option value="15:30">16:30</option>
-<option value="15:30">17:30</option>
+<select style="display: none;" id="etudtimeselect" name = "timee2">
+<option id ="9:30" value="9:30">9:30</option>
+<option id = "11:30" value="11:30">11:30</option>
+<option id ="13:30" value="13:30">13:30</option>
+<option id = "15:30" value="15:30">15:30</option>
+<option value="16:30" >16:30</option>
+<option value="17:30">17:30</option>
 </select>
 <label  id="actLabel" for="act" >Location: </label>
 <select id="mySelect1" name = "lcation">

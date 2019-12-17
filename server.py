@@ -556,12 +556,18 @@ def schedule():
                         statement = """delete from etudes where id = %s"""%(etdidd)
                         cursor.execute(statement)
                   elif request.form['sub'] == "Update":
-                     lecidd = request.form.get("LecID",None)
-                     if lecidd is not None:
+                     lecidd = request.form.get("LecID2",None)
+                     etdidd = request.form.get("EtudeID2",None)
+                     if lecidd is not None and lecidd != "":
                         statement = """update lectures set weekday = '%s', time = '%s', quota = %s, location_id = (select id from buildings where name = '%s') 
                                        where id = %s and teacher_id = (select id from teachers where user_id = (select id from users where username = '%s'))""" % (request.form['wday'],request.form['timee'],
                                        request.form['lquotaa'],request.form['lcation'],lecidd,current_user.username)
-                        print(statement)
+                        cursor.execute(statement)
+                     elif etdidd is not None and etdidd != "":
+                        statement = """update etudes set weekday = '%s', time = '%s', quota = %s, location_id = (select id from buildings where name = '%s') 
+                                       where id = %s and teacher_id = (select id from teachers where user_id = (select id from users where username = '%s'))"""% (request.form['etudewday'],request.form['timee2'],
+                                       request.form['lquotaa'],request.form['lcation'],etdidd,current_user.username)
+                        print(statement)                
                         cursor.execute(statement)									   
                statement = """SELECT id,name, time, weekday, location_id, quota FROM Lectures WHERE teacher_id = (
             SELECT id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s')) order by time""" \
