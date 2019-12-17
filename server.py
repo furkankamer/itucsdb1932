@@ -359,10 +359,10 @@ def lectures():
             lecturetime = request.form.get("time", None)
             lecturelocation = request.form.get("location", None)
             lecturequota = request.form.get("quota", None)
-            statement = """INSERT INTO Buildings (name) VALUES('%s');
-            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id) 
-            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')))""" % (
-                lecturelocation, branch, lecturetime, weekday, lecturelocation, lecturequota, current_user.username)
+            statement = """
+            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id,enrolled) 
+            VALUES('%s','%s','%s',(SELECT id from Buildings where name = '%s'),'%s',(select id from Teachers where user_id = (select id from users where username = '%s')),0)""" % (
+                branch, lecturetime, weekday, lecturelocation, lecturequota,current_user.username)
             with psycopg2.connect(url) as connection:
                 with connection.cursor() as cursor:
                      try:
@@ -377,18 +377,37 @@ def lectures():
             k = 0
             err = 0
             for i in range(11, 30000, 10):
-                id = """%d""" % (i)
+                id = """%d""" % (i) 
                 subject = request.form.get(id, None)
                 if subject is not None:
-                    k = i - 1
+                    k = i-1
                     break
-            id = """%d""" % (k)
+            id = """%d""" %(k)
             lidd = request.form.get(id, None)
-            statement1 = """UPDATE Students SET  lecture_id = %s where user_id = (
-            select id from users where username = '%s') """ % (lidd, current_user.username)
-            with psycopg2.connect(url) as connection:
-                with connection.cursor() as cursor:
-                    cursor.execute(statement1)
+            if lidd is not None:
+               statement1 = """insert into registeredstudents (lecture_id,student_id) values( %s, (select id from users where username = '%s')); update lectures set enrolled = enrolled + 1 where id = %s """ %(lidd,current_user.username,lidd)
+               statement2 = """select lecture_id from registeredstudents where lecture_id is not null and student_id = (select id from users where username = '%s')""" % (current_user.username)
+               statement4 = """select weekday,time from lectures where id = %s""" % (lidd)
+               with psycopg2.connect(url) as connection:
+                    with connection.cursor() as cursor:
+                         cursor.execute(statement2)
+                         reglec = cursor.fetchall()
+                         cursor.execute(statement4)
+                         lecc = cursor.fetchall()
+                         lweekd = lecc[0][0]
+                         ltimee = lecc[0][1]
+                         if reglec is not None:
+                            for row in reglec:                         
+                                statement3 = """select weekday,time from lectures where id = %s""" % (row[0])
+                                cursor.execute(statement3)
+                                wreglec = cursor.fetchall()
+                                for lrow in wreglec:
+                                    if lrow[0] == lweekd and lrow[1] == ltimee:
+                                       error = """You have already have a lecture at the same time. Please check your schedule"""                   
+                                       err = 1
+                         if(err == 0):
+                            cursor.execute(statement1)
+                         
         statement = """select id,name,weekday, time, quota from lectures"""
         lecturerows = """"""
         with psycopg2.connect(url) as connection:
@@ -401,10 +420,9 @@ def lectures():
                     weekday = rows[2]
                     lecturetime = rows[3]
                     lecturequota = rows[4]
-                    lecturerows += """<tr><td>%s</td><input type="hidden" name="%d" value = "%s"/><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
-                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (
-                        lid, i, lid,
-                        branch, weekday, lecturetime, lecturequota, i + 1, i + 1, i + 1, i + 1)
+                    lecturerows += """<tr><td>%s<input type="hidden" name="%d" value = "%s"/></td><td>%s</td><td>%s</td><td>%s</td> <td>%s</td>
+                      <td><input id="%d" onclick="uncheck(%d)" type="radio" name="%d" value="%d"></td></tr>""" % (lid,i,lid,
+                        branch, weekday,lecturetime,lecturequota,i+1,i+1,i+1,i+1)
                     i += 10
         return render_template("lectures.html", title=title, newrow=lecturerows,message=error)
 
@@ -748,6 +766,7 @@ def schedule():
                                      Friday += """</th>"""
                                      Saturday += """</th>"""
                                      schedulerows += Monday + Tuesday + Wednesday + Thursday + Friday + Saturday
+                                     print(schedulerows)
                                      schedulerows += """</tr>"""
                  return render_template("schedule.html",newrow = schedulerows)
 

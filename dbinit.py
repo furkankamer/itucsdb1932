@@ -19,6 +19,7 @@ INIT_STATEMENTS = [
     name VARCHAR(255),
     time TIME,
     weekday VARCHAR(255),
+	enrolled int,
     location_id int,
     FOREIGN KEY (location_id)REFERENCES Buildings(id),
     teacher_id int,
