@@ -1,5 +1,5 @@
-Parts Implemented by Member Name
-================================
+Parts Implemented by Muhammed Furkan Kamer
+==========================================
 
 **explain how your application works from the user perspective, use screenshots whereever appropriate**
 
