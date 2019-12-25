@@ -5,10 +5,11 @@ Welcome to itucsdb1932's documentation!
 
 :Members:
 
-   * Burak Bozdağ
-   * Muhammed Furkan Kamer
+    * Muhammed Furkan Kamer
+    * Burak Bozdağ
 
-**project description goes here (a few paragraphs)**
+*SchoolManager* is an application that enables schools to manage courses, exams, students, etc. more easily and
+systematically.
 
 Contents:
 
