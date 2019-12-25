@@ -24,9 +24,9 @@ copyright = '2019, ITUCSDB1932'
 author = 'ITUCSDB1932'
 
 # The short X.Y version
-version = ''
+version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = ''
+release = 'alpha 1.0'
 
 
 # -- General configuration ---------------------------------------------------

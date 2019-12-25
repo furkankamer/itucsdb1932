@@ -1,15 +1,12 @@
 Welcome to itucsdb1932's documentation!
 =======================================
 
-:Team: Team Name
+:Team: itucsdb1932
 
 :Members:
 
-   * Member 1
-   * Member 2
-   * Member 3
-   * Member 4
-   * Member 5
+   * Burak Bozdağ
+   * Muhammed Furkan Kamer
 
 **project description goes here (a few paragraphs)**
 
