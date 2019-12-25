@@ -5,13 +5,13 @@ Parts Implemented by Member Name
 
 **to add a picture, use the following example**::
 
-   .. figure:: img/castle.jpg
+   .. figure:: ../img/castle.jpg
       :scale: 50 %
       :alt: map to buried treasure
 
       This is the caption of the figure (a simple paragraph).
 
-.. figure:: img/castle.jpg
+.. figure:: ../img/castle.jpg
     :scale: 50 %
     :alt: map to buried treasure
 
