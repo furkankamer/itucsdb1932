@@ -8,7 +8,7 @@ In order to use this site, you must sign up to our application. If you are not s
 probably see a page like this:
 
 .. figure:: ../img/first.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The initial page for unsigned users. Sign up using the button and proceed to the next step.
@@ -20,7 +20,7 @@ When you click the *Sign In* button, a little form will appear in your browser. 
 these boxes and click *Sign In*.
 
 .. figure:: ../img/login.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     Enter your username and password to log in.
@@ -28,7 +28,7 @@ these boxes and click *Sign In*.
 After logging in, you should see the home page for signed users.
 
 .. figure:: ../img/homepage.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     Home page for signed users.
@@ -38,7 +38,7 @@ Profile Actions
 If you want to view your profile, you can click on the *Profile* button.
 
 .. figure:: ../img/profile.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The profile page.
@@ -49,7 +49,7 @@ Updating Profile
 In order to update your profile, you should click on the *Update Your Profile* button.
 
 .. figure:: ../img/update-profile.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The profile updating page.
@@ -62,7 +62,7 @@ Updating Password
 In order to update your password, you should click on the *Change Your Password* button.
 
 .. figure:: ../img/change-password.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The page for password changes.
@@ -94,7 +94,7 @@ Viewing All Teachers
 If you want to view all teachers in the database, you should click on the *All Teachers* button.
 
 .. figure:: ../img/teachers.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     All teachers in the database.
@@ -105,7 +105,7 @@ Viewing All Students
 If you want to view all students in the database, you should click on the *All Students* button.
 
 .. figure:: ../img/students.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     All students in the database.
@@ -117,7 +117,7 @@ You can grade students using the previous page. You should write the student's I
 *Submit*. After that, you will see the profile of the student.
 
 .. figure:: ../img/grade.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The grading page.
@@ -136,7 +136,7 @@ Viewing All Students
 If you want to view all students in the database, you should click on the *All Students* button.
 
 .. figure:: ../img/students.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     All students in the database.
@@ -148,7 +148,7 @@ You can grade students using the previous page. You should write the student's I
 *Submit*. After that, you will see the profile of the student.
 
 .. figure:: ../img/grade.png
-    :scale: 50 %
+    :scale: 100 %
     :alt: map to buried treasure
 
     The grading page.
