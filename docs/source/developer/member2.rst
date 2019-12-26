@@ -12,6 +12,7 @@ shown below:
 
 .. figure:: ../img/erDiagram2.png
     :scale: 100 %
+    :width: 200px
     :alt: map to buried treasure
 
     E/R diagram for managers, teachers and students.
