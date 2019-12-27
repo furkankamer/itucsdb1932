@@ -18,5 +18,5 @@ Contents:
     :maxdepth: 5
     :numbered:
 
-   user/index
-   developer/index
+    user/index
+    developer/index
