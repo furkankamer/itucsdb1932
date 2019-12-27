@@ -124,6 +124,7 @@ Schedule
 
 When you signed in successfully and see the homepage if you are a teacher or student you can also route
 to schedule a page and see your weekly schedule.
+
 Teachers' Schedule Page
 ^^^^^^^^^^^^^^^
 

@@ -120,8 +120,7 @@ given title information.
                 return render_template("homepage.html")
 
 
-Lectures Function
-^^^^^^^^^^^^^^^^^^	
+
 
 Lectures Function
 ----
@@ -256,8 +255,7 @@ table and user id also to use it in other processes. The function is then comple
                         i += 10
             return render_template("lectures.html", title=title, newrow=lecturerows, message=error)
 
-Etudes Function
-^^^^^^^^^^^^^^^^^^	
+
 
 Etudes Function
 ----
@@ -403,8 +401,7 @@ table and user id also to use it in other processes. The function is then comple
                         i += 10
             return render_template("etudes.html", title=title, newrow=lecturerows, message=error)
 
-Schedule Function
-^^^^^^^^^^^^^^^^^^	
+	
 
 Schedule Function
 ----
