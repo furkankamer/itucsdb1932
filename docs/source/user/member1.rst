@@ -133,7 +133,7 @@ Also you can delete or update your lecture or etude in the schedule using id tha
 is given in the schedule table. You can update every information of lecture other from
 id.
 
-.. figure:: ../img/ftscheule.png
+.. figure:: ../img/ftschedule.png
     :width: 100 %
     :alt: map to buried treasure
 
@@ -151,4 +151,4 @@ number of enrolled students
     :width: 100 %
     :alt: map to buried treasure
 
-    Students' Lectures Page
+    Students' Schedule Page
