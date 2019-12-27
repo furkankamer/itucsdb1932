@@ -51,15 +51,14 @@ Lectures
 ----------
 
 When you signed in successfully and see homepage, if you are a teacher or student you can route
-to Lectures page for lecture registry or creation, etudes for lecture registry or creation and schedule
-page for update lectures, etudes or delete them from your schedule.
+to Lectures page for lecture registry or creation.
 
 Teachers' Lectures Page
 ^^^^^^^^^^^^^^^
 
 When logged in as teacher, you can create a lecture from lectures page using
 select tags. You can select lecture name, time, day and building and quota for your new lecture.
-After selections you should click submit to create language.
+After selections you should click submit to create a lecture.
 If any other lecture exists that overlaps, it redirects to lectures page and 
 warns you about that there is another lecture that overlaps. Below we can see all these features.
 
@@ -79,6 +78,76 @@ When you select a lecture, you should click submit button. If no lecture of your
 it registers successfully. Else it will show a warning about overlap.
 
 .. figure:: ../img/fslectures.png
+    :width: 100 %
+    :alt: map to buried treasure
+
+    Students' Lectures Page
+
+Etudes
+----------
+
+When you signed in successfully and see homepage, if you are a teacher or student you can also route
+to Etudes page for etudes registry or creation.
+
+Teachers' Etudes Page
+^^^^^^^^^^^^^^^
+
+When logged in as teacher, you can create an etude from etudes page using
+select tags. You can select etude subject, time, day and building and quota for your new etude.
+After selections you should click submit to create an etudes.
+If any other etude exists that overlaps, it redirects to etudes page and 
+warns you about that there is another etude that overlaps. Below we can see all these features.
+
+.. figure:: ../img/ftetudes.png
+    :width: 100 %
+    :alt: map to buried treasure
+
+    Teachers' Etudes Page
+
+Students' Etudes Page
+^^^^^^^^^^^^^^^
+
+When logged in as student, a list of etudes appears on the
+screen. From that is every row has the information of etudes and also a radio button
+which is used to select an etude to register. Only one etude can be selected at the same time.
+When you select an etude, you should click submit button. If no etude of yours overlaps with these
+it registers successfully. Else it will show a warning about overlap.
+
+.. figure:: ../img/fsetudes.png
+    :width: 100 %
+    :alt: map to buried treasure
+
+    Students' Etudes Page
+	
+Schedule
+----------
+
+When you signed in successfully and see homepage, if you are a teacher or student you can also route
+to schedule page and see your weekly schedule.
+
+Teachers' Schedule Page
+^^^^^^^^^^^^^^^
+
+When logged in as teacher, you can see your weekly schedule in schedule page.
+Also you can delete or update your lecture or etude in the schedule using id that
+is given in the schedule table. You can update every information of lecture other from
+id.
+
+.. figure:: ../img/ftscheule.png
+    :width: 100 %
+    :alt: map to buried treasure
+
+    Teachers' Schedule Page
+
+Students' Schedule Page
+^^^^^^^^^^^^^^^
+
+When logged in as student, you can see your weekly schedule in schedule page.
+Also you can delete your registry from lecture or etude in the schedule using id that
+is given in the schedule table. When you did it will be deleted from your schedule and 
+number of enrolled students
+
+.. figure:: ../img/fsschedule.png
     :width: 100 %
     :alt: map to buried treasure
 
