@@ -403,7 +403,277 @@ table and user id also to use it in other processes. The function is then comple
                         i += 10
             return render_template("etudes.html", title=title, newrow=lecturerows, message=error)
 
+Schedule Function
+^^^^^^^^^^^^^^^^^^	
 
+Code
+----
+
+The schedule function is used to implement a schedule for teachers and students, and 
+also to achieve lecture delete or unroll and for teachers updating lectures whenever they
+want.
+
+Function parted into 2, first is to teachers and second to students. In first part it first checks if any
+delete, unroll or update request is sent from form. If it then it first performs operations and updates 
+tables in database according to these operations. Then is implements html part of schedule table using select 
+statements.
+
+In second part user is a student. So an unroll operation should be checked and it checks first it any one
+requested. Then it implements html part using select statements, selects lectures and etudes from tables according 
+to etude_id and lecture_ids from table *registeredstudents*.
+
+.. code-block:: python
+    :name: server.py
+	
+    @login_required
+    @app.route("/schedule", methods=['GET', 'POST'])
+    def schedule():
+        if not current_user.is_authenticated:
+            return redirect("/")
+        statement = """SELECT title FROM Users WHERE username = '%s'""" % (current_user.username,)
+        schedulerows = """<tr>"""
+        with psycopg2.connect(url) as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(statement)
+                title = cursor.fetchone()[0]
+                if title == "Manager":
+                    message = "Managers don't have a schedule."
+                    return render_template("homepage.html", message=message)
+                others = title
+                others += "s"
+                if title == "Teacher":
+                    if request.method == "POST":
+                        if request.form['sub'] == "Delete":
+                            lecidd = request.form.get("LecID", None)
+                            etdidd = request.form.get("EtudeID", None)
+                            if lecidd is not None and lecidd != "":
+                                statement = """delete from registeredstudents where lecture_id = %s""" % (lecidd)
+                                cursor.execute(statement)
+                                statement = """delete from lectures where id = %s""" % (lecidd)
+                                cursor.execute(statement)
+                            elif etdidd is not None and etdidd != "":
+                                statement = """delete from registeredstudents where etude_id = %s""" % (etdidd)
+                                cursor.execute(statement)
+                                statement = """delete from etudes where id = %s""" % (etdidd)
+                                cursor.execute(statement)
+                        elif request.form['sub'] == "Update":
+                            lecidd = request.form.get("LecID2", None)
+                            etdidd = request.form.get("EtudeID2", None)
+                            if lecidd is not None and lecidd != "":
+                                statement = """update lectures set weekday = '%s', time = '%s', quota = %s, location_id = (select id from buildings where name = '%s') 
+                                           where id = %s and teacher_id = (select id from teachers where user_id = (select id from users where username = '%s'))""" % (
+                                request.form['wday'], request.form['timee'],
+                                request.form['lquotaa'], request.form['lcation'], lecidd, current_user.username)
+                                cursor.execute(statement)
+                            elif etdidd is not None and etdidd != "":
+                                statement = """update etudes set weekday = '%s', time = '%s', quota = %s, location_id = (select id from buildings where name = '%s') 
+                                           where id = %s and teacher_id = (select id from teachers where user_id = (select id from users where username = '%s'))""" % (
+                                request.form['etudewday'], request.form['timee2'],
+                                request.form['lquotaa'], request.form['lcation'], etdidd, current_user.username)
+                                print(statement)
+                                cursor.execute(statement)
+                    statement = """SELECT id,name, time, weekday, location_id, quota FROM Lectures WHERE teacher_id = (
+                SELECT id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s')) order by time""" \
+                                % (others, current_user.username)
+                    cursor.execute(statement)
+                    lname = ""
+                    lcrn = 0
+                    ltime = '00:00'
+                    lweekday = ""
+                    llocation_id = 0
+                    lquota = 0
+                    schedule1 = cursor.fetchall()
+                    statement = """SELECT id,subject, time, weekday, location_id, quota FROM Etudes WHERE teacher_id = (
+                SELECT id FROM %s WHERE user_id = (SELECT id FROM Users WHERE username = '%s')) order by time""" \
+                                % (others, current_user.username)
+                    cursor.execute(statement)
+                    etdschedule = cursor.fetchall()
+                    if schedule1 is not None:
+                        Monday = """<th>"""
+                        Tuesday = """<th>"""
+                        Wednesday = """<th>"""
+                        Thursday = """<th>"""
+                        Friday = """<th>"""
+                        Saturday = """<th>"""
+                        for row in schedule1:
+                            print(row)
+                            lname = row[1]
+                            lcrn = row[0]
+                            ltime = row[2]
+                            lweekday = row[3]
+                            llocation_id = row[4]
+                            lquota = row[5]
+                            statement = """SELECT name FROM Buildings WHERE id = %s""" % (llocation_id,)
+                            cursor.execute(statement)
+                            llocation = ""
+                            for row in cursor.fetchall():
+                                print(row)
+                                llocation = row[0]
+                            if lweekday == "Monday":
+                                Monday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                lcrn, lname, ltime, llocation, lquota)
+                            elif lweekday == "Tuesday":
+                                Tuesday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                lcrn, lname, ltime, llocation, lquota)
+                            elif lweekday == "Wednesday":
+                                Wednesday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                lcrn, lname, ltime, llocation, lquota)
+                            elif lweekday == "Thursday":
+                                Thursday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                lcrn, lname, ltime, llocation, lquota)
+                            elif lweekday == "Friday":
+                                Friday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                lcrn, lname, ltime, llocation, lquota)
+                        if etdschedule is not None:
+                            for row in etdschedule:
+                                lname = row[1]
+                                lcrn = row[0]
+                                ltime = row[2]
+                                lweekday = row[3]
+                                llocation_id = row[4]
+                                lquota = row[5]
+                                statement = """SELECT name FROM Buildings WHERE id = %s""" % (llocation_id,)
+                                cursor.execute(statement)
+                                llocation = ""
+                                for row in cursor.fetchall():
+                                    print(row)
+                                    llocation = row[0]
+                                if lweekday == "Friday":
+                                    Friday += """<p>Etude ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                    lcrn, lname, ltime, llocation, lquota)
+                                elif lweekday == "Saturday":
+                                    Saturday += """<p>Etude ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                    lcrn, lname, ltime, llocation, lquota)
+                        Monday += """</th>"""
+                        Tuesday += """</th>"""
+                        Wednesday += """</th>"""
+                        Thursday += """</th>"""
+                        Friday += """</th>"""
+                        Saturday += """</th>"""
+                        schedulerows += Monday + Tuesday + Wednesday + Thursday + Friday + Saturday
+                        schedulerows += """</tr>"""
+                        return render_template("schedule.html", newrow=schedulerows, title=title)
+                elif title == "Student":
+                    statement = """select lecture_id from registeredstudents where student_id = (select id from users where username ='%s') and lecture_id is not null""" \
+                                % (current_user.username)
+
+                    Monday = """<th>"""
+                    Tuesday = """<th>"""
+                    Wednesday = """<th>"""
+                    Thursday = """<th>"""
+                    Friday = """<th>"""
+                    Saturday = """<th>"""
+                    with psycopg2.connect(url) as connection:
+                        with connection.cursor() as cursor:
+                            if request.method == "POST":
+                                lecidd = request.form.get("LecID", None)
+                                etdidd = request.form.get("EtudeID", None)
+                                if lecidd is not None and lecidd != "":
+                                    statement1 = """delete from registeredstudents where lecture_id = %s and student_id = (select id from users where username = '%s'); update
+                                     lectures set enrolled = enrolled - 1 where id = %s""" % (
+                                    lecidd, current_user.username, lecidd)
+                                    cursor.execute(statement1)
+                                elif etdidd is not None and etdidd != "":
+                                    statement1 = """delete from registeredstudents where etude_id = %s and student_id = (select id from users where username = '%s'); update
+                                     etudes set enrolled = enrolled - 1 where id = %s""" % (
+                                    etdidd, current_user.username, etdidd)
+                                    cursor.execute(statement1)
+                            cursor.execute(statement)
+                            lids = cursor.fetchall()
+                            if lids is not None:
+                                for lirow in lids:
+                                    lid = lirow[0]
+                                    if lid is not None:
+                                        statement = """SELECT id,name, time, weekday, location_id, quota FROM Lectures where id = %s""" % (
+                                            lid)
+                                        cursor.execute(statement)
+                                        lname = ""
+                                        lcrn = 0
+                                        ltime = '00:00'
+                                        lweekday = ""
+                                        llocation_id = 0
+                                        lquota = 0
+                                        schedule1 = cursor.fetchall()
+                                       if schedule1 is not None:
+                                            for row in schedule1:
+                                                print(row)
+                                                lname = row[1]
+                                                lcrn = row[0]
+                                                ltime = row[2]
+                                                lweekday = row[3]
+                                                llocation_id = row[4]
+                                                lquota = row[5]
+                                                statement = """SELECT name FROM Buildings WHERE id = %s""" % (llocation_id,)
+                                                cursor.execute(statement)
+                                                llocation = ""
+                                                for lorow in cursor.fetchall():
+                                                    print(lorow)
+                                                    llocation = lorow[0]
+                                                if lweekday == "Monday":
+                                                    Monday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                                elif lweekday == "Tuesday":
+                                                    Tuesday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                                elif lweekday == "Wednesday":
+                                                    Wednesday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                                elif lweekday == "Thursday":
+                                                    Thursday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                                elif lweekday == "Friday":
+                                                    Friday += """<p>Lecture ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                            statement = """select etude_id from registeredstudents where student_id = (select id from users where username ='%s') and etude_id is not null""" \
+                                        % (current_user.username)
+                            cursor.execute(statement)
+                            etdlids = cursor.fetchall()
+                            if etdlids is not None:
+                                for etdrow in etdlids:
+                                    etdlid = etdrow[0]
+                                    if etdlid is not None:
+                                        statement = """SELECT id,subject, time, weekday, location_id, quota FROM etudes where id = %s""" % (
+                                            etdlid)
+                                        cursor.execute(statement)
+                                        etdschedule = cursor.fetchall()
+                                        lname = ""
+                                        lcrn = 0
+                                        ltime = '00:00'
+                                        lweekday = ""
+                                        llocation_id = 0
+                                        lquota = 0
+                                        if etdschedule is not None:
+                                            for row in etdschedule:
+                                                lname = row[1]
+                                                lcrn = row[0]
+                                                ltime = row[2]
+                                                lweekday = row[3]
+                                                llocation_id = row[4]
+                                                lquota = row[5]
+                                                statement = """SELECT name FROM Buildings WHERE id = %s""" % (llocation_id,)
+                                                cursor.execute(statement)
+                                                llocation = ""
+                                                for row in cursor.fetchall():
+                                                    print(row)
+                                                    llocation = row[0]
+                                                if lweekday == "Friday":
+                                                    Friday += """<p>Etude ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                                elif lweekday == "Saturday":
+                                                    Saturday += """<p>Etude ID: %s</p><p>%s</p><p>%s</p><p>%s</p><p>Quota: %s</p>""" % (
+                                                    lcrn, lname, ltime, llocation, lquota)
+                                        Monday += """</th>"""
+                                        Tuesday += """</th>"""
+                                        Wednesday += """</th>"""
+                                        Thursday += """</th>"""
+                                        Friday += """</th>"""
+                                        Saturday += """</th>"""
+                                        schedulerows += Monday + Tuesday + Wednesday + Thursday + Friday + Saturday
+                                        print(schedulerows)
+                                        schedulerows += """</tr>"""
+                    return render_template("schedule.html", newrow=schedulerows)
+
+ 
 
 
 
