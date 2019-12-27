@@ -74,9 +74,9 @@ Sign Up Function
 Code
 ----
 
-Sign-Up function implemented as a function when form is posted from html page.
-It first gets posted data from the form and if it is not in error, it inserts new user
-to Users table. Then it also inserts other tables (Students, Teachers, Managers) according to
+The sign-up function implemented as a function when the form is posted from the HTML page.
+It first gets posted data from the form and if it is not in error, it inserts new users
+to the Users table. Then it also inserts other tables (Students, Teachers, Managers) according to
 given title information.
 
 .. code-block:: python
@@ -123,22 +123,22 @@ given title information.
 Lectures Function
 ^^^^^^^^^^^^^^^^^^	
 
-Code
+Lectures Function
 ----
 
-Lecture function can be seen as 2 parts. These parts are according to title of the user:
+Lecture function can be seen as 2 parts. These parts are according to the title of the user:
 
-1. If user is Teacher, html select tags prepared to use in lectures.html template. After the 
-select tags prepared, it checks if a form is being post. If a form is post, it takes selected
-values from select tags in the form and it checks if the lecture informations are overlaps with
-any other lecture and if it overlaps a error message is sent to render_template. If no error occurs
+1. If the user is Teacher, HTML select tags prepared to use in lectures.html template. After the select
+tags prepared, it checks if a form is being posted. If a form is posted, it takes selected
+values from select tags in the form and it checks if the lecture information overlaps with
+any other lecture and if it overlaps an error message is sent to render_template. If no error occurs
 it runs SQL query to insert new lecture to the table.
 
-2. If user is student, it first implements html list for open lectures using a select sql statement to
+2. If the user is a student, it first implements an HTML list for open lectures using a select SQL statement to
 get existing lectures and then it adds them to the template. After this task completed it checks again a 
 form post. If form posted it detects which row of lecture selected using checked radio button. Then it gets
-id of lecture to use registry. Then it checks if student have another lecture that overlaps with new lecture,
-if it is then an error message is send to render_template. If no error occurs then it inserts lecture id to *registeredstudents*
+the id of lecture to use the registry. Then it checks if the student has another lecture that overlaps with a new lecture
+if it is then an error message is sent to render_template. If no error occurs then it inserts lecture id to *registeredstudents*
 table and user id also to use it in other processes. The function is then completed.
 
 .. code-block:: python
@@ -259,22 +259,22 @@ table and user id also to use it in other processes. The function is then comple
 Etudes Function
 ^^^^^^^^^^^^^^^^^^	
 
-Code
+Etudes Function
 ----
 
-Etudes function can be seen as 2 parts. These parts are according to title of the user:
+Etudes function can be seen as 2 parts. These parts are according to the title of the user:
 
-1. If user is Teacher, html select tags prepared to use in etudes.html template. After the 
-select tags prepared, it checks if a form is being post. If a form is post, it takes selected
-values from select tags in the form and it checks if the etude informations are overlaps with
-any other etude and if it overlaps a error message is sent to render_template. If no error occurs
+1. If the user is Teacher, HTML select tags prepared to use in the etudes.html template. After the select tags prepared, 
+it checks if a form is being posted. If a form is a post, it takes selected
+values from select tags in the form and it checks if the etude information overlaps with
+any other etude and if it overlaps an error message is sent to render_template. If no error occurs
 it runs SQL query to insert new etude to the table.
 
-2. If user is student, it first implements html list for open etudes using a select sql statement to
+2. If the user is a student, it first implements an HTML list for open etudes using a select SQL statement to
 get existing etudes and then it adds them to the template. After this task completed it checks again a 
 form post. If form posted it detects which row of etude selected using checked radio button. Then it gets
-id of etude to use registry. Then it checks if student have another etude that overlaps with new etude,
-if it is then an error message is send to render_template. If no error occurs then it inserts etude id to *registeredstudents*
+the id of etude to use the registry. Then it checks if the student has another etude that overlaps with a new etude
+if it is then an error message is sent to render_template. If no error occurs then it inserts etude id to *registeredstudents*
 table and user id also to use it in other processes. The function is then completed.
 
 .. code-block:: python
@@ -406,21 +406,20 @@ table and user id also to use it in other processes. The function is then comple
 Schedule Function
 ^^^^^^^^^^^^^^^^^^	
 
-Code
+Schedule Function
 ----
 
 The schedule function is used to implement a schedule for teachers and students, and 
 also to achieve lecture delete or unroll and for teachers updating lectures whenever they
 want.
 
-Function parted into 2, first is to teachers and second to students. In first part it first checks if any
-delete, unroll or update request is sent from form. If it then it first performs operations and updates 
-tables in database according to these operations. Then is implements html part of schedule table using select 
-statements.
+Function parted into 2, first is to teachers and second to students. In the first part, it first checks if any
+delete, unroll or update request is sent from the form. If it then it first performs operations and 
+updates tables in the database according to these operations. Then implement the HTML part of the schedule table using select statements.
 
-In second part user is a student. So an unroll operation should be checked and it checks first it any one
-requested. Then it implements html part using select statements, selects lectures and etudes from tables according 
-to etude_id and lecture_ids from table *registeredstudents*.
+In the second part, the user is a student. So an unroll operation should be checked and it checks first it anyone
+requested. Then it implements the HTML part using select statements, selects lectures and etudes from tables 
+according to etude_id and lecture_ids from table *registeredstudents*.
 
 .. code-block:: python
     :name: server.py
