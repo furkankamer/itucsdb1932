@@ -14,7 +14,7 @@ systematically.
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
 
    user/index
    developer/index
