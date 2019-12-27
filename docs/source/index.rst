@@ -14,7 +14,9 @@ systematically.
 Contents:
 
 .. toctree::
-   :maxdepth: 1
+    :caption: Contents
+    :maxdepth: 5
+    :numbered:
 
    user/index
    developer/index

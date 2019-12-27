@@ -126,7 +126,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ITUCSDB1932.tex', 'ITUCSDB1932 Documentation',
+    (master_doc, 'ITUCSDB1932.tex', 'SchoolManager Documentation',
      'ITUCSDB1932', 'manual'),
 ]
 
