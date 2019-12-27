@@ -89,7 +89,7 @@ As a manager, you have the biggest authorization in this application. You can vi
 grade students. These functions are explained in next sections.
 
 Viewing All Teachers
-"""""""""""""""""
+""""""""""""""""""""
 
 If you want to view all teachers in the database, you should click on the *All Teachers* button.
 
@@ -100,7 +100,7 @@ If you want to view all teachers in the database, you should click on the *All T
     All teachers in the database.
 
 Viewing All Students
-"""""""""""""""""
+""""""""""""""""""""
 
 If you want to view all students in the database, you should click on the *All Students* button.
 

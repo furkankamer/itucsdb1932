@@ -7,7 +7,7 @@ To use this site, you must sign up for our application. If you are not signed in
 probably see a page like this:
 
 .. figure:: ../img/first.png
-    :scale: 50 %
+    :width: 100 %
     :alt: map to buried treasure
 
     The initial page for unsigned users. Sign up using the button and proceed to the next step.
@@ -48,13 +48,13 @@ After logging in, you should see the home page for signed users.
     Home page for signed users.
 	
 Lectures
-----------
+--------
 
 When you signed in successfully and see the homepage if you are a teacher or student you can route
 to Lectures page for lecture registry or creation.
 
 Teachers' Lectures Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a teacher, you can create a lecture from the lectures page using
 select tags. You can select lecture name, time, day and building and quota for your new lecture.
@@ -69,7 +69,7 @@ there is another lecture that overlaps. Below we can see all these features.
     Teachers' Lectures Page
 
 Students' Lectures Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a student, a list of lectures appears on the
 screen. From that is every row has information about lectures and also a radio button
@@ -84,13 +84,13 @@ it registers successfully. Else it will show a warning about overlap.
     Students' Lectures Page
 
 Etudes
-----------
+------
 
 When you signed in successfully and see the homepage if you are a teacher or student you can also route
 to Etudes page for etudes registry or creation.
 
 Teachers' Etudes Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a teacher, you can create an etude from the etudes page using
 select tags. You can select etude subject, time, day and building and quota for your new etude.
@@ -105,7 +105,7 @@ there is another etude that overlaps. Below we can see all these features.
     Teachers' Etudes Page
 
 Students' Etudes Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a student, a list of etudes appears on the
 screen. From that is every row has the information of etudes and also a radio button
@@ -120,13 +120,13 @@ it registers successfully. Else it will show a warning about overlap.
     Students' Etudes Page
 	
 Schedule
-----------
+--------
 
 When you signed in successfully and see the homepage if you are a teacher or student you can also route
 to schedule a page and see your weekly schedule.
 
 Teachers' Schedule Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a teacher, you can see your weekly schedule on the schedule page.
 Also, you can delete or update your lecture or etude in the schedule using an id that
@@ -140,7 +140,7 @@ id.
     Teachers' Schedule Page
 
 Students' Schedule Page
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When logged in as a student, you can see your weekly schedule on the schedule page.
 Also, you can delete your registry from the lecture or etude in the schedule using an id that

@@ -70,7 +70,7 @@ The implementation of tables in the database is done using the following code bl
 	
 
 Sign Up Function
-----
+----------------
 
 The sign-up function implemented as a function when the form is posted from the HTML page.
 It first gets posted data from the form and if it is not in error, it inserts new users
@@ -121,7 +121,7 @@ given title information.
 
 
 Lectures Function
-----
+-----------------
 
 Lecture function can be seen as 2 parts. These parts are according to the title of the user:
 
@@ -256,7 +256,7 @@ table and user id also to use it in other processes. The function is then comple
 
 
 Etudes Function
-----
+---------------
 
 Etudes function can be seen as 2 parts. These parts are according to the title of the user:
 
@@ -402,7 +402,7 @@ table and user id also to use it in other processes. The function is then comple
 	
 
 Schedule Function
-----
+-----------------
 
 The schedule function is used to implement a schedule for teachers and students, and 
 also to achieve lecture delete or unroll and for teachers updating lectures whenever they
@@ -666,12 +666,3 @@ according to etude_id and lecture_ids from table *registeredstudents*.
                                         print(schedulerows)
                                         schedulerows += """</tr>"""
                     return render_template("schedule.html", newrow=schedulerows)
-
- 
-
-
-
-
-
-
-	
