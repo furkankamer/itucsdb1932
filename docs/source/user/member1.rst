@@ -3,7 +3,7 @@ Parts Implemented by Muhammed Furkan Kamer
 New Users
 ---------
 
-In order to use this site, you must sign up to our application. If you are not signed in or signed up yet, you will
+To use this site, you must sign up for our application. If you are not signed in or signed up yet, you will
 probably see a page like this:
 
 .. figure:: ../img/first.png
@@ -15,10 +15,10 @@ probably see a page like this:
 Signing Up
 ----------
 
-When you click the *Sign Up* button, a form will appear in your browser. First you must select a radio button for
+When you click the *Sign Up* button, a form will appear in your browser. First, you must select a radio button for
 which account type do you want to sign up. Then a complete form will appear on screen according to your choice.
-For example in below a *Manager* signs up and in addition to common boxes like *username*, *password*, etc there is
-a *experience year* box which must be filled. You cannot enter anything other than number, if you did it will warns you to
+For example, in below a *Manager* signs up and in addition to common boxes like *username*, *password*, etc there is
+an *experience year* box which must be filled. You cannot enter anything other than a number, if you did it will warn you to
 enter a number. It can all be seen below:
 
 .. figure:: ../img/fsignup.png
@@ -50,17 +50,17 @@ After logging in, you should see the home page for signed users.
 Lectures
 ----------
 
-When you signed in successfully and see homepage, if you are a teacher or student you can route
+When you signed in successfully and see the homepage if you are a teacher or student you can route
 to Lectures page for lecture registry or creation.
 
 Teachers' Lectures Page
 ^^^^^^^^^^^^^^^
 
-When logged in as teacher, you can create a lecture from lectures page using
+When logged in as a teacher, you can create a lecture from the lectures page using
 select tags. You can select lecture name, time, day and building and quota for your new lecture.
-After selections you should click submit to create a lecture.
-If any other lecture exists that overlaps, it redirects to lectures page and 
-warns you about that there is another lecture that overlaps. Below we can see all these features.
+After selections, you should click submit to create a lecture.
+If any other lecture exists that overlaps, it redirects to the lectures page and warns you that 
+there is another lecture that overlaps. Below we can see all these features.
 
 .. figure:: ../img/ftlectures.png
     :width: 100 %
@@ -71,10 +71,10 @@ warns you about that there is another lecture that overlaps. Below we can see al
 Students' Lectures Page
 ^^^^^^^^^^^^^^^
 
-When logged in as student, a list of lectures appears on the
-screen. From that is every row has the information of lectures and also a radio button
+When logged in as a student, a list of lectures appears on the
+screen. From that is every row has information about lectures and also a radio button
 which is used to select a lecture to register. Only one lecture can be selected at the same time.
-When you select a lecture, you should click submit button. If no lecture of yours overlaps with these
+When you select a lecture, you should click the submit button. If no lecture of yours overlaps with these
 it registers successfully. Else it will show a warning about overlap.
 
 .. figure:: ../img/fslectures.png
@@ -86,17 +86,17 @@ it registers successfully. Else it will show a warning about overlap.
 Etudes
 ----------
 
-When you signed in successfully and see homepage, if you are a teacher or student you can also route
+When you signed in successfully and see the homepage if you are a teacher or student you can also route
 to Etudes page for etudes registry or creation.
 
 Teachers' Etudes Page
 ^^^^^^^^^^^^^^^
 
-When logged in as teacher, you can create an etude from etudes page using
+When logged in as a teacher, you can create an etude from the etudes page using
 select tags. You can select etude subject, time, day and building and quota for your new etude.
-After selections you should click submit to create an etudes.
-If any other etude exists that overlaps, it redirects to etudes page and 
-warns you about that there is another etude that overlaps. Below we can see all these features.
+After selections, you should click submit to create an etude.
+If any other etude exists that overlaps, it redirects to the etudes page and warns you that 
+there is another etude that overlaps. Below we can see all these features.
 
 .. figure:: ../img/ftetudes.png
     :width: 100 %
@@ -107,10 +107,10 @@ warns you about that there is another etude that overlaps. Below we can see all 
 Students' Etudes Page
 ^^^^^^^^^^^^^^^
 
-When logged in as student, a list of etudes appears on the
+When logged in as a student, a list of etudes appears on the
 screen. From that is every row has the information of etudes and also a radio button
 which is used to select an etude to register. Only one etude can be selected at the same time.
-When you select an etude, you should click submit button. If no etude of yours overlaps with these
+When you select an etude, you should click the submit button. If no etude of yours overlaps with these
 it registers successfully. Else it will show a warning about overlap.
 
 .. figure:: ../img/fsetudes.png
@@ -122,15 +122,14 @@ it registers successfully. Else it will show a warning about overlap.
 Schedule
 ----------
 
-When you signed in successfully and see homepage, if you are a teacher or student you can also route
-to schedule page and see your weekly schedule.
-
+When you signed in successfully and see the homepage if you are a teacher or student you can also route
+to schedule a page and see your weekly schedule.
 Teachers' Schedule Page
 ^^^^^^^^^^^^^^^
 
-When logged in as teacher, you can see your weekly schedule in schedule page.
-Also you can delete or update your lecture or etude in the schedule using id that
-is given in the schedule table. You can update every information of lecture other from
+When logged in as a teacher, you can see your weekly schedule on the schedule page.
+Also, you can delete or update your lecture or etude in the schedule using an id that
+is given in the schedule table. You can update every information of the lecture other from
 id.
 
 .. figure:: ../img/ftschedule.png
@@ -142,10 +141,9 @@ id.
 Students' Schedule Page
 ^^^^^^^^^^^^^^^
 
-When logged in as student, you can see your weekly schedule in schedule page.
-Also you can delete your registry from lecture or etude in the schedule using id that
-is given in the schedule table. When you did it will be deleted from your schedule and 
-number of enrolled students
+When logged in as a student, you can see your weekly schedule on the schedule page.
+Also, you can delete your registry from the lecture or etude in the schedule using an id that
+is given in the schedule table. When you did it will be deleted from your schedule and number of enrolled students.
 
 .. figure:: ../img/fsschedule.png
     :width: 100 %
