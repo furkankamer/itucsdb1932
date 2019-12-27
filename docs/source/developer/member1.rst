@@ -79,42 +79,42 @@ to Users table. Then it also inserts other tables (Students, Teachers, Managers)
 given title information.
 .. code-block:: python
     :name: server.py
-@app.route('/signup', methods=['POST'])
-def my_form_post():
-    username = request.form['UserName']
-    password = pbkdf2_sha256.hash(request.form['Password'])
-    firstname = request.form['FirstName']
-    lastname = request.form['LastName']
-    title = request.form.getlist('title')
-    title = title[0]
-    userid = 0
-    statement = """INSERT INTO Users (username, password, title, name, surname)
-    VALUES ('%s', '%s', '%s', '%s', '%s');""" % (username, password, title, firstname, lastname)
-    statement += """select id from users where username = '%s'""" % (username)
-    with psycopg2.connect(url) as connection:
-        with connection.cursor() as cursor:
-            cursor.execute(statement)
-            userid += cursor.fetchone()[0]
-    statement = """"""
-    if title == "Student":
-        degree = request.form['Degree']
-        statement += """INSERT INTO Students (name,surname,degree,grade,user_id)
-        VALUES ('%s', '%s', '%s', NULL,'%s');""" % (firstname, lastname, degree, userid)
-    if title == "Teacher":
-        print(request.form)
-        experience_year = request.form['Experience']
-        subject = request.form['subject']
-        statement += """INSERT INTO Teachers (name,surname,subject,experience_year,user_id)
-        VALUES ('%s', '%s', '%s', '%s','%s');""" % (firstname, lastname, subject, experience_year, userid)
-    if title == "Manager":
-        experience_year = request.form['Experience']
-        print(experience_year)
-        statement += """INSERT INTO Managers (name,surname,user_id,experience_year)
-        VALUES ('%s', '%s', '%s', '%s');""" % (firstname, lastname, userid, experience_year)
-    with psycopg2.connect(url) as connection:
-        with connection.cursor() as cursor:
-            cursor.execute(statement)
-            return render_template("homepage.html")
+	@app.route('/signup', methods=['POST'])
+	def my_form_post():
+		username = request.form['UserName']
+		password = pbkdf2_sha256.hash(request.form['Password'])
+		firstname = request.form['FirstName']
+		lastname = request.form['LastName']
+		title = request.form.getlist('title')
+		title = title[0]
+		userid = 0
+		statement = """INSERT INTO Users (username, password, title, name, surname)
+		VALUES ('%s', '%s', '%s', '%s', '%s');""" % (username, password, title, firstname, lastname)
+		statement += """select id from users where username = '%s'""" % (username)
+		with psycopg2.connect(url) as connection:
+			with connection.cursor() as cursor:
+				cursor.execute(statement)
+				userid += cursor.fetchone()[0]
+		statement = """"""
+		if title == "Student":
+			degree = request.form['Degree']
+			statement += """INSERT INTO Students (name,surname,degree,grade,user_id)
+			VALUES ('%s', '%s', '%s', NULL,'%s');""" % (firstname, lastname, degree, userid)
+		if title == "Teacher":
+			print(request.form)
+			experience_year = request.form['Experience']
+			subject = request.form['subject']
+			statement += """INSERT INTO Teachers (name,surname,subject,experience_year,user_id)
+			VALUES ('%s', '%s', '%s', '%s','%s');""" % (firstname, lastname, subject, experience_year, userid)
+		if title == "Manager":
+			experience_year = request.form['Experience']
+			print(experience_year)
+			statement += """INSERT INTO Managers (name,surname,user_id,experience_year)
+			VALUES ('%s', '%s', '%s', '%s');""" % (firstname, lastname, userid, experience_year)
+		with psycopg2.connect(url) as connection:
+			with connection.cursor() as cursor:
+				cursor.execute(statement)
+				return render_template("homepage.html")
 
 
 
