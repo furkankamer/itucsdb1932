@@ -11,11 +11,9 @@ Welcome to itucsdb1932's documentation!
 *SchoolManager* is an application that enables schools to manage courses, exams, students, etc. more easily and
 systematically.
 
-Contents:
-
 .. toctree::
     :caption: Contents
-    :maxdepth: 5
+    :maxdepth: 3
     :numbered:
 
     user/index
