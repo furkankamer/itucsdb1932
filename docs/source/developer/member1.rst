@@ -117,7 +117,8 @@ given title information.
 				return render_template("homepage.html")
 
 
-
+Lectures Function
+^^^^^^^^^^^^^^^^^^	
 
 
 
