@@ -68,10 +68,8 @@ The implementation of tables in the database is done using the following code bl
     CONSTRAINT regi_cons UNIQUE(student_id,etude_id));""",
     ]
 	
-Sign Up Function
-^^^^^^^^^^^^^^^^^^	
 
-Code
+Sign Up Function
 ----
 
 The sign-up function implemented as a function when the form is posted from the HTML page.
