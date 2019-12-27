@@ -78,7 +78,7 @@ It first gets posted data from the form and if it is not in error, it inserts ne
 to Users table. Then it also inserts other tables (Students, Teachers, Managers) according to
 given title information.
 .. code-block:: python
-    :name: server.py
+	:name: server.py
 	@app.route('/signup', methods=['POST'])
 	def my_form_post():
 		username = request.form['UserName']
