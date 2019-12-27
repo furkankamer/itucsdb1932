@@ -73,12 +73,15 @@ Sign Up Function
 
 Code
 ----
+
 Sign-Up function implemented as a function when form is posted from html page.
 It first gets posted data from the form and if it is not in error, it inserts new user
 to Users table. Then it also inserts other tables (Students, Teachers, Managers) according to
 given title information.
+
 .. code-block:: python
     :name: server.py
+	
     @app.route('/signup', methods=['POST'])
     def my_form_post():
         username = request.form['UserName']
