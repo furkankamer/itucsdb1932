@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.1. Parts Implemented by Muhammed Furkan Kamer &mdash; ITUCSDB1932 alpha 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Parts Implemented by Burak Bozdağ" href="member2.html" />
+    <link rel="prev" title="2. Developer Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ITUCSDB1932
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Developer Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Parts Implemented by Muhammed Furkan Kamer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database-design">2.1.1. Database Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code">2.1.2. Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sign-up-function">2.1.3. Sign Up Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lectures-function">2.1.4. Lectures Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etudes-function">2.1.5. Etudes Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule-function">2.1.6. Schedule Function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member2.html">2.2. Parts Implemented by Burak Bozdağ</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ITUCSDB1932</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>Developer Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">2.1. </span>Parts Implemented by Muhammed Furkan Kamer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/member1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parts-implemented-by-muhammed-furkan-kamer">
+<h1><span class="section-number">2.1. </span>Parts Implemented by Muhammed Furkan Kamer<a class="headerlink" href="#parts-implemented-by-muhammed-furkan-kamer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-design">
+<h2><span class="section-number">2.1.1. </span>Database Design<a class="headerlink" href="#database-design" title="Permalink to this headline">¶</a></h2>
+<p>I implemented three tables and two extra tables in this project: <em>Users</em>, <em>Lectures</em> and <em>Etudes</em> and <em>registeredstudents</em>,*building*.</p>
+<p>In my tables;</p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/ferdiagram.png"><img alt="map to buried treasure" src="../_images/ferdiagram.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">E/R diagram for managers, teachers and students.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="code">
+<h2><span class="section-number">2.1.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of tables in the database is done using the following code block:</p>
+<div class="highlight-python notranslate" id="dbinit-py"><div class="highlight"><pre><span></span><span class="n">INIT_STATEMENTS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Users ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">username VARCHAR(255) NOT NULL UNIQUE,</span>
+<span class="sd">password VARCHAR(255) NOT NULL,</span>
+<span class="sd">title VARCHAR(255) NOT NULL,</span>
+<span class="sd">name VARCHAR(255) NOT NULL,</span>
+<span class="sd">surname VARCHAR(255) NOT NULL );&quot;&quot;&quot;</span><span class="p">,</span>
+
+<span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Buildings ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">name varchar(255) NOT NULL,</span>
+<span class="sd">size int);&quot;&quot;&quot;</span><span class="p">,</span>
+
+<span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Lectures ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">name VARCHAR(255),</span>
+<span class="sd">time TIME,</span>
+<span class="sd">weekday VARCHAR(255),</span>
+<span class="sd">enrolled int DEFAULT 0,</span>
+<span class="sd">location_id int,</span>
+<span class="sd">FOREIGN KEY (location_id)REFERENCES Buildings(id),</span>
+<span class="sd">teacher_id int,</span>
+<span class="sd">FOREIGN KEY (teacher_id) REFERENCES Teachers (id),</span>
+<span class="sd">quota int,CONSTRAINT time_cons UNIQUE(time,weekday,location_id),</span>
+<span class="sd">CONSTRAINT teacher_cons UNIQUE(time,weekday,teacher_id));&quot;&quot;&quot;</span><span class="p">,</span>
+
+<span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Etudes ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">subject VARCHAR(255),</span>
+<span class="sd">teacher_id int,</span>
+<span class="sd">FOREIGN KEY (teacher_id) REFERENCES Teachers(id),</span>
+<span class="sd">time TIME,</span>
+<span class="sd">weekday VARCHAR(255),</span>
+<span class="sd">enrolled int DEFAULT 0,</span>
+<span class="sd">location_id int NOT NULL,</span>
+<span class="sd">FOREIGN KEY (location_id) REFERENCES Buildings(id),</span>
+<span class="sd">quota int);&quot;&quot;&quot;</span><span class="p">,</span>
+
+<span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists RegisteredStudents (</span>
+<span class="sd">lecture_id int,</span>
+<span class="sd">FOREIGN KEY (lecture_id) REFERENCES Lectures(id),</span>
+<span class="sd">student_id int ,</span>
+<span class="sd">FOREIGN KEY (student_id) REFERENCES Users(id),</span>
+<span class="sd">etude_id int ,</span>
+<span class="sd">FOREIGN KEY (etude_id) REFERENCES Etudes(id),</span>
+<span class="sd">CONSTRAINT reg_cons UNIQUE(student_id,lecture_id),</span>
+<span class="sd">CONSTRAINT regi_cons UNIQUE(student_id,etude_id));&quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sign-up-function">
+<h2><span class="section-number">2.1.3. </span>Sign Up Function<a class="headerlink" href="#sign-up-function" title="Permalink to this headline">¶</a></h2>
+<p>The sign-up function implemented as a function when the form is posted from the HTML page.
+It first gets posted data from the form and if it is not in error, it inserts new users
+to the Users table. Then it also inserts other tables (Students, Teachers, Managers) according to
+given title information.</p>
+<div class="highlight-python notranslate" id="server-py"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/signup&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">my_form_post</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;UserName&#39;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">pbkdf2_sha256</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;Password&#39;</span><span class="p">])</span>
+    <span class="n">firstname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;FirstName&#39;</span><span class="p">]</span>
+    <span class="n">lastname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;LastName&#39;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">userid</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;INSERT INTO Users (username, password, title, name, surname)</span>
+<span class="s2">    VALUES (&#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;);&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">firstname</span><span class="p">,</span> <span class="n">lastname</span><span class="p">)</span>
+    <span class="n">statement</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">username</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="n">userid</span> <span class="o">+=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+        <span class="n">degree</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;Degree&#39;</span><span class="p">]</span>
+        <span class="n">statement</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;INSERT INTO Students (name,surname,degree,grade,user_id)</span>
+<span class="s2">        VALUES (&#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, NULL,&#39;</span><span class="si">%s</span><span class="s2">&#39;);&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">firstname</span><span class="p">,</span> <span class="n">lastname</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">userid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">experience_year</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;Experience&#39;</span><span class="p">]</span>
+        <span class="n">subject</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+        <span class="n">statement</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;INSERT INTO Teachers (name,surname,subject,experience_year,user_id)</span>
+<span class="s2">        VALUES (&#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;);&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">firstname</span><span class="p">,</span> <span class="n">lastname</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">experience_year</span><span class="p">,</span> <span class="n">userid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+        <span class="n">experience_year</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;Experience&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">experience_year</span><span class="p">)</span>
+        <span class="n">statement</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;INSERT INTO Managers (name,surname,user_id,experience_year)</span>
+<span class="s2">        VALUES (&#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;);&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">firstname</span><span class="p">,</span> <span class="n">lastname</span><span class="p">,</span> <span class="n">userid</span><span class="p">,</span> <span class="n">experience_year</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;homepage.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lectures-function">
+<h2><span class="section-number">2.1.4. </span>Lectures Function<a class="headerlink" href="#lectures-function" title="Permalink to this headline">¶</a></h2>
+<p>Lecture function can be seen as 2 parts. These parts are according to the title of the user:</p>
+<p>1. If the user is Teacher, HTML select tags prepared to use in lectures.html template. After the select
+tags prepared, it checks if a form is being posted. If a form is posted, it takes selected
+values from select tags in the form and it checks if the lecture information overlaps with
+any other lecture and if it overlaps an error message is sent to render_template. If no error occurs
+it runs SQL query to insert new lecture to the table.</p>
+<p>2. If the user is a student, it first implements an HTML list for open lectures using a select SQL statement to
+get existing lectures and then it adds them to the template. After this task completed it checks again a
+form post. If form posted it detects which row of lecture selected using checked radio button. Then it gets
+the id of lecture to use the registry. Then it checks if the student has another lecture that overlaps with a new lecture
+if it is then an error message is sent to render_template. If no error occurs then it inserts lecture id to <em>registeredstudents</em>
+table and user id also to use it in other processes. The function is then completed.</p>
+<div class="highlight-python notranslate" id="id1"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/lectures&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">lectures</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select title from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Physics&quot;</span><span class="p">,</span> <span class="s2">&quot;Biology&quot;</span><span class="p">,</span> <span class="s2">&quot;Chemistry&quot;</span><span class="p">]</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">]</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;9:30&quot;</span><span class="p">,</span> <span class="s2">&quot;11:30&quot;</span><span class="p">,</span> <span class="s2">&quot;13:30&quot;</span><span class="p">,</span> <span class="s2">&quot;15:30&quot;</span><span class="p">]</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MED A34&quot;</span><span class="p">,</span> <span class="s2">&quot;EHB 2101&quot;</span><span class="p">,</span> <span class="s2">&quot;MDB A105&quot;</span><span class="p">]</span>
+        <span class="n">quotas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;45&#39;</span><span class="p">,</span> <span class="s1">&#39;60&#39;</span><span class="p">]</span>
+        <span class="n">branches</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">quota</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="n">branches</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">days</span><span class="p">:</span>
+            <span class="n">day</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">times</span><span class="p">:</span>
+            <span class="n">time</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
+            <span class="n">location</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quotas</span><span class="p">:</span>
+            <span class="n">quota</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">branch</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Branch&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">weekday</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturetime</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturelocation</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturequota</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;quota&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            INSERT INTO Lectures (name, time, weekday, location_id, quota,teacher_id,enrolled)</span>
+<span class="s2">            VALUES(&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,(SELECT id from Buildings where name = &#39;</span><span class="si">%s</span><span class="s2">&#39;),&#39;</span><span class="si">%s</span><span class="s2">&#39;,(select id from Teachers where user_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)),0)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">branch</span><span class="p">,</span> <span class="n">lecturetime</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">lecturelocation</span><span class="p">,</span> <span class="n">lecturequota</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">DatabaseError</span><span class="p">:</span>
+                        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You have already have a lecture at the same time. Please check your schedule&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;lectures.html&quot;</span><span class="p">,</span> <span class="n">branchnames</span><span class="o">=</span><span class="n">branches</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">day</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span>
+                           <span class="n">quota</span><span class="o">=</span><span class="n">quota</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%d</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">subject</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/lectures&quot;</span><span class="p">)</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%d</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">lidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">lidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">statement1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;insert into registeredstudents (lecture_id,student_id) values( </span><span class="si">%s</span><span class="s2">, (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)); update lectures set enrolled = enrolled + 1 where id = </span><span class="si">%s</span><span class="s2"> &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">lidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">lidd</span><span class="p">)</span>
+                <span class="n">statement2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select lecture_id from registeredstudents where lecture_id is not null and student_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                <span class="n">statement4</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select weekday,time from lectures where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lidd</span><span class="p">)</span>
+                <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement2</span><span class="p">)</span>
+                        <span class="n">reglec</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement4</span><span class="p">)</span>
+                        <span class="n">lecc</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                        <span class="n">lweekd</span> <span class="o">=</span> <span class="n">lecc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">ltimee</span> <span class="o">=</span> <span class="n">lecc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">reglec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reglec</span><span class="p">:</span>
+                                <span class="n">statement3</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select weekday,time from lectures where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement3</span><span class="p">)</span>
+                                <span class="n">wreglec</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                                <span class="k">for</span> <span class="n">lrow</span> <span class="ow">in</span> <span class="n">wreglec</span><span class="p">:</span>
+                                    <span class="k">if</span> <span class="n">lrow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">lweekd</span> <span class="ow">and</span> <span class="n">lrow</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">ltimee</span><span class="p">:</span>
+                                        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You have already have a lecture at the same time. Please check your schedule&quot;&quot;&quot;</span>
+                                        <span class="n">err</span> <span class="o">=</span> <span class="mi">1</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement1</span><span class="p">)</span>
+
+        <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select id,name,weekday, time, quota from lectures&quot;&quot;&quot;</span>
+        <span class="n">lecturerows</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+                <span class="k">for</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="n">lid</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">branch</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">weekday</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">lecturetime</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="n">lecturequota</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="n">lecturerows</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;tr&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;input type=&quot;hidden&quot; name=&quot;</span><span class="si">%d</span><span class="s2">&quot; value = &quot;</span><span class="si">%s</span><span class="s2">&quot;/&gt;&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt; &lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                      &lt;td&gt;&lt;input id=&quot;</span><span class="si">%d</span><span class="s2">&quot; onclick=&quot;uncheck(</span><span class="si">%d</span><span class="s2">)&quot; type=&quot;radio&quot; name=&quot;</span><span class="si">%d</span><span class="s2">&quot; value=&quot;</span><span class="si">%d</span><span class="s2">&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">lid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">lid</span><span class="p">,</span>
+                    <span class="n">branch</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">lecturetime</span><span class="p">,</span> <span class="n">lecturequota</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;lectures.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">newrow</span><span class="o">=</span><span class="n">lecturerows</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="etudes-function">
+<h2><span class="section-number">2.1.5. </span>Etudes Function<a class="headerlink" href="#etudes-function" title="Permalink to this headline">¶</a></h2>
+<p>Etudes function can be seen as 2 parts. These parts are according to the title of the user:</p>
+<p>1. If the user is Teacher, HTML select tags prepared to use in the etudes.html template. After the select tags prepared,
+it checks if a form is being posted. If a form is a post, it takes selected
+values from select tags in the form and it checks if the etude information overlaps with
+any other etude and if it overlaps an error message is sent to render_template. If no error occurs
+it runs SQL query to insert new etude to the table.</p>
+<p>2. If the user is a student, it first implements an HTML list for open etudes using a select SQL statement to
+get existing etudes and then it adds them to the template. After this task completed it checks again a
+form post. If form posted it detects which row of etude selected using checked radio button. Then it gets
+the id of etude to use the registry. Then it checks if the student has another etude that overlaps with a new etude
+if it is then an error message is sent to render_template. If no error occurs then it inserts etude id to <em>registeredstudents</em>
+table and user id also to use it in other processes. The function is then completed.</p>
+<div class="highlight-python notranslate" id="id2"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/etudes&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">etudes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select title from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select subject from Teachers where user_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">subject</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;Physics&quot;</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Electrics&quot;</span><span class="p">,</span> <span class="s2">&quot;Acceleration&quot;</span><span class="p">,</span> <span class="s2">&quot;Magnetism&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;Biology&quot;</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bacteria&quot;</span><span class="p">,</span> <span class="s2">&quot;Cell Division&quot;</span><span class="p">,</span> <span class="s2">&quot;DNA&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;Chemistry&quot;</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Compounds&quot;</span><span class="p">,</span> <span class="s2">&quot;Organics&quot;</span><span class="p">,</span> <span class="s2">&quot;Acids&quot;</span><span class="p">]</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">]</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;9:30&quot;</span><span class="p">,</span> <span class="s2">&quot;11:30&quot;</span><span class="p">,</span> <span class="s2">&quot;13:30&quot;</span><span class="p">,</span> <span class="s2">&quot;15:30&quot;</span><span class="p">,</span> <span class="s2">&quot;16:30&quot;</span><span class="p">,</span> <span class="s2">&quot;17:30&quot;</span><span class="p">]</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MED A34&quot;</span><span class="p">,</span> <span class="s2">&quot;EHB 2101&quot;</span><span class="p">,</span> <span class="s2">&quot;MDB A105&quot;</span><span class="p">]</span>
+        <span class="n">quotas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;45&#39;</span><span class="p">,</span> <span class="s1">&#39;60&#39;</span><span class="p">]</span>
+        <span class="n">branches</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">quota</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="n">branches</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">days</span><span class="p">:</span>
+            <span class="n">day</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">times</span><span class="p">:</span>
+            <span class="n">time</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option id = &quot;</span><span class="si">%s</span><span class="s2">&quot; value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
+            <span class="n">location</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">quotas</span><span class="p">:</span>
+            <span class="n">quota</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;option value=&quot;</span><span class="si">%s</span><span class="s2">&quot;&gt;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">branch</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Branch&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">weekday</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturetime</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturelocation</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">lecturequota</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;quota&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            INSERT INTO Etudes (subject, time, weekday, location_id, quota,teacher_id,enrolled)</span>
+<span class="s2">            VALUES(&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,(SELECT id from Buildings where name = &#39;</span><span class="si">%s</span><span class="s2">&#39;),&#39;</span><span class="si">%s</span><span class="s2">&#39;,(select id from Teachers where user_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)),0)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">branch</span><span class="p">,</span> <span class="n">lecturetime</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">lecturelocation</span><span class="p">,</span> <span class="n">lecturequota</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">DatabaseError</span><span class="p">:</span>
+                        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You have already have a lecture at the same time. Please check your schedule&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;etudes.html&quot;</span><span class="p">,</span> <span class="n">branchnames</span><span class="o">=</span><span class="n">branches</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">day</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span>
+                               <span class="n">quota</span><span class="o">=</span><span class="n">quota</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%d</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">subject</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">subject</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/etudes&quot;</span><span class="p">)</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%d</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">lidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">statement1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;insert into registeredstudents (etude_id,student_id) values( </span><span class="si">%s</span><span class="s2">, (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)); update etudes set enrolled = enrolled+1 where id = </span><span class="si">%s</span><span class="s2"> &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">lidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">lidd</span><span class="p">)</span>
+            <span class="n">statement2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select etude_id from registeredstudents where student_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;) and etude_id is not null&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+            <span class="n">statement4</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select weekday,time from etudes where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lidd</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement2</span><span class="p">)</span>
+                    <span class="n">reglec</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement4</span><span class="p">)</span>
+                    <span class="n">lecc</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                    <span class="n">lweekd</span> <span class="o">=</span> <span class="n">lecc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">ltimee</span> <span class="o">=</span> <span class="n">lecc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">reglec</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">reglec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reglec</span><span class="p">:</span>
+                            <span class="n">statement3</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select weekday,time from etudes where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement3</span><span class="p">)</span>
+                            <span class="n">wreglec</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                            <span class="k">for</span> <span class="n">lrow</span> <span class="ow">in</span> <span class="n">wreglec</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">lrow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">lweekd</span> <span class="ow">and</span> <span class="n">lrow</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">ltimee</span><span class="p">:</span>
+                                    <span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You have already have a etude at the same time. Please check your schedule&quot;&quot;&quot;</span>
+                                    <span class="n">err</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement1</span><span class="p">)</span>
+
+        <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select id,subject,weekday, time, quota from etudes&quot;&quot;&quot;</span>
+        <span class="n">lecturerows</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+                <span class="k">for</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="n">lid</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">branch</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">weekday</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">lecturetime</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                   <span class="n">lecturequota</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="n">lecturerows</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;tr&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;input type=&quot;hidden&quot; name=&quot;</span><span class="si">%d</span><span class="s2">&quot; value = &quot;</span><span class="si">%s</span><span class="s2">&quot;/&gt;&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt; &lt;td&gt;</span><span class="si">%s</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                      &lt;td&gt;&lt;input id=&quot;</span><span class="si">%d</span><span class="s2">&quot; onclick=&quot;uncheck(</span><span class="si">%d</span><span class="s2">)&quot; type=&quot;radio&quot; name=&quot;</span><span class="si">%d</span><span class="s2">&quot; value=&quot;</span><span class="si">%d</span><span class="s2">&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">lid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">lid</span><span class="p">,</span>
+                    <span class="n">branch</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">lecturetime</span><span class="p">,</span> <span class="n">lecturequota</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;etudes.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">newrow</span><span class="o">=</span><span class="n">lecturerows</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="schedule-function">
+<h2><span class="section-number">2.1.6. </span>Schedule Function<a class="headerlink" href="#schedule-function" title="Permalink to this headline">¶</a></h2>
+<p>The schedule function is used to implement a schedule for teachers and students, and
+also to achieve lecture delete or unroll and for teachers updating lectures whenever they
+want.</p>
+<p>Function parted into 2, first is to teachers and second to students. In the first part, it first checks if any
+delete, unroll or update request is sent from the form. If it then it first performs operations and
+updates tables in the database according to these operations. Then implement the HTML part of the schedule table using select statements.</p>
+<p>In the second part, the user is a student. So an unroll operation should be checked and it checks first it anyone
+requested. Then it implements the HTML part using select statements, selects lectures and etudes from tables
+according to etude_id and lecture_ids from table <em>registeredstudents</em>.</p>
+<div class="highlight-python notranslate" id="id3"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/schedule&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">schedule</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="n">schedulerows</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;tr&gt;&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Managers don&#39;t have a schedule.&quot;</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;homepage.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+            <span class="n">others</span> <span class="o">=</span> <span class="n">title</span>
+            <span class="n">others</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;sub&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Delete&quot;</span><span class="p">:</span>
+                        <span class="n">lecidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LecID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="n">etdidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EtudeID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">lecidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lecidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from registeredstudents where lecture_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lecidd</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from lectures where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lecidd</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">etdidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">etdidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from registeredstudents where etude_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">etdidd</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from etudes where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">etdidd</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;sub&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Update&quot;</span><span class="p">:</span>
+                        <span class="n">lecidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LecID2&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="n">etdidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EtudeID2&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">lecidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lecidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;update lectures set weekday = &#39;</span><span class="si">%s</span><span class="s2">&#39;, time = &#39;</span><span class="si">%s</span><span class="s2">&#39;, quota = </span><span class="si">%s</span><span class="s2">, location_id = (select id from buildings where name = &#39;</span><span class="si">%s</span><span class="s2">&#39;)</span>
+<span class="s2">                                       where id = </span><span class="si">%s</span><span class="s2"> and teacher_id = (select id from teachers where user_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;))&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;wday&#39;</span><span class="p">],</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;timee&#39;</span><span class="p">],</span>
+                            <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;lquotaa&#39;</span><span class="p">],</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;lcation&#39;</span><span class="p">],</span> <span class="n">lecidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">etdidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">etdidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;update etudes set weekday = &#39;</span><span class="si">%s</span><span class="s2">&#39;, time = &#39;</span><span class="si">%s</span><span class="s2">&#39;, quota = </span><span class="si">%s</span><span class="s2">, location_id = (select id from buildings where name = &#39;</span><span class="si">%s</span><span class="s2">&#39;)</span>
+<span class="s2">                                       where id = </span><span class="si">%s</span><span class="s2"> and teacher_id = (select id from teachers where user_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;))&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;etudewday&#39;</span><span class="p">],</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;timee2&#39;</span><span class="p">],</span>
+                            <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;lquotaa&#39;</span><span class="p">],</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;lcation&#39;</span><span class="p">],</span> <span class="n">etdidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id,name, time, weekday, location_id, quota FROM Lectures WHERE teacher_id = (</span>
+<span class="s2">            SELECT id FROM </span><span class="si">%s</span><span class="s2"> WHERE user_id = (SELECT id FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)) order by time&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">others</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">lcrn</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">ltime</span> <span class="o">=</span> <span class="s1">&#39;00:00&#39;</span>
+                <span class="n">lweekday</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">llocation_id</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">lquota</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">schedule1</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id,subject, time, weekday, location_id, quota FROM Etudes WHERE teacher_id = (</span>
+<span class="s2">            SELECT id FROM </span><span class="si">%s</span><span class="s2"> WHERE user_id = (SELECT id FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)) order by time&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">others</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="n">etdschedule</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">schedule1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">Monday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Tuesday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Wednesday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Thursday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Friday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Saturday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">schedule1</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                        <span class="n">lname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">lcrn</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">ltime</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                        <span class="n">lweekday</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                        <span class="n">llocation_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                        <span class="n">lquota</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                        <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name FROM Buildings WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">llocation_id</span><span class="p">,)</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                        <span class="n">llocation</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                            <span class="n">llocation</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
+                            <span class="n">Monday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">:</span>
+                            <span class="n">Tuesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">:</span>
+                            <span class="n">Wednesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">:</span>
+                            <span class="n">Thursday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span><span class="p">:</span>
+                            <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">etdschedule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">etdschedule</span><span class="p">:</span>
+                            <span class="n">lname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="n">lcrn</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="n">ltime</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                            <span class="n">lweekday</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                            <span class="n">llocation_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                            <span class="n">lquota</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name FROM Buildings WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">llocation_id</span><span class="p">,)</span>
+                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                            <span class="n">llocation</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                                <span class="n">llocation</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="k">if</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span><span class="p">:</span>
+                                <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Etude ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">:</span>
+                                <span class="n">Saturday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Etude ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                    <span class="n">Monday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Tuesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Wednesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Thursday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">Saturday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                    <span class="n">schedulerows</span> <span class="o">+=</span> <span class="n">Monday</span> <span class="o">+</span> <span class="n">Tuesday</span> <span class="o">+</span> <span class="n">Wednesday</span> <span class="o">+</span> <span class="n">Thursday</span> <span class="o">+</span> <span class="n">Friday</span> <span class="o">+</span> <span class="n">Saturday</span>
+                    <span class="n">schedulerows</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/tr&gt;&quot;&quot;&quot;</span>
+                    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;schedule.html&quot;</span><span class="p">,</span> <span class="n">newrow</span><span class="o">=</span><span class="n">schedulerows</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select lecture_id from registeredstudents where student_id = (select id from users where username =&#39;</span><span class="si">%s</span><span class="s2">&#39;) and lecture_id is not null&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+
+                <span class="n">Monday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="n">Tuesday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="n">Wednesday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="n">Thursday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="n">Friday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="n">Saturday</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;th&gt;&quot;&quot;&quot;</span>
+                <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+                            <span class="n">lecidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LecID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                            <span class="n">etdidd</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EtudeID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">lecidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lecidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                                <span class="n">statement1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from registeredstudents where lecture_id = </span><span class="si">%s</span><span class="s2"> and student_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;); update</span>
+<span class="s2">                                 lectures set enrolled = enrolled - 1 where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                <span class="n">lecidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">lecidd</span><span class="p">)</span>
+                                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement1</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">etdidd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">etdidd</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                                <span class="n">statement1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;delete from registeredstudents where etude_id = </span><span class="si">%s</span><span class="s2"> and student_id = (select id from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;); update</span>
+<span class="s2">                                 etudes set enrolled = enrolled - 1 where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                <span class="n">etdidd</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">etdidd</span><span class="p">)</span>
+                                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement1</span><span class="p">)</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                        <span class="n">lids</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">lids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">lirow</span> <span class="ow">in</span> <span class="n">lids</span><span class="p">:</span>
+                                <span class="n">lid</span> <span class="o">=</span> <span class="n">lirow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                <span class="k">if</span> <span class="n">lid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id,name, time, weekday, location_id, quota FROM Lectures where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                        <span class="n">lid</span><span class="p">)</span>
+                                    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                                    <span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                    <span class="n">lcrn</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="n">ltime</span> <span class="o">=</span> <span class="s1">&#39;00:00&#39;</span>
+                                    <span class="n">lweekday</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                    <span class="n">llocation_id</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="n">lquota</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="n">schedule1</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                                   <span class="k">if</span> <span class="n">schedule1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">schedule1</span><span class="p">:</span>
+                                            <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                                            <span class="n">lname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                            <span class="n">lcrn</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                            <span class="n">ltime</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                                            <span class="n">lweekday</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                                            <span class="n">llocation_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                                            <span class="n">lquota</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name FROM Buildings WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">llocation_id</span><span class="p">,)</span>
+                                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                                            <span class="n">llocation</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                            <span class="k">for</span> <span class="n">lorow</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                                                <span class="nb">print</span><span class="p">(</span><span class="n">lorow</span><span class="p">)</span>
+                                                <span class="n">llocation</span> <span class="o">=</span> <span class="n">lorow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                            <span class="k">if</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
+                                                <span class="n">Monday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">:</span>
+                                                <span class="n">Tuesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">:</span>
+                                                <span class="n">Wednesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">:</span>
+                                                <span class="n">Thursday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span><span class="p">:</span>
+                                                <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Lecture ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                        <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select etude_id from registeredstudents where student_id = (select id from users where username =&#39;</span><span class="si">%s</span><span class="s2">&#39;) and etude_id is not null&quot;&quot;&quot;</span> \
+                                    <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+                        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                        <span class="n">etdlids</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">etdlids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">etdrow</span> <span class="ow">in</span> <span class="n">etdlids</span><span class="p">:</span>
+                                <span class="n">etdlid</span> <span class="o">=</span> <span class="n">etdrow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                <span class="k">if</span> <span class="n">etdlid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                    <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id,subject, time, weekday, location_id, quota FROM etudes where id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                        <span class="n">etdlid</span><span class="p">)</span>
+                                    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                                    <span class="n">etdschedule</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                                    <span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                    <span class="n">lcrn</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="n">ltime</span> <span class="o">=</span> <span class="s1">&#39;00:00&#39;</span>
+                                    <span class="n">lweekday</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                    <span class="n">llocation_id</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="n">lquota</span> <span class="o">=</span> <span class="mi">0</span>
+                                    <span class="k">if</span> <span class="n">etdschedule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">etdschedule</span><span class="p">:</span>
+                                            <span class="n">lname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                            <span class="n">lcrn</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                            <span class="n">ltime</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                                            <span class="n">lweekday</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                                            <span class="n">llocation_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                                            <span class="n">lquota</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                                            <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name FROM Buildings WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">llocation_id</span><span class="p">,)</span>
+                                            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                                            <span class="n">llocation</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                                            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                                                <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                                                <span class="n">llocation</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                            <span class="k">if</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span><span class="p">:</span>
+                                                <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Etude ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                            <span class="k">elif</span> <span class="n">lweekday</span> <span class="o">==</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">:</span>
+                                                <span class="n">Saturday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;p&gt;Etude ID: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;</span><span class="si">%s</span><span class="s2">&lt;/p&gt;&lt;p&gt;Quota: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                                <span class="n">lcrn</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">ltime</span><span class="p">,</span> <span class="n">llocation</span><span class="p">,</span> <span class="n">lquota</span><span class="p">)</span>
+                                    <span class="n">Monday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">Tuesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">Wednesday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">Thursday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">Friday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">Saturday</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/th&gt;&quot;&quot;&quot;</span>
+                                    <span class="n">schedulerows</span> <span class="o">+=</span> <span class="n">Monday</span> <span class="o">+</span> <span class="n">Tuesday</span> <span class="o">+</span> <span class="n">Wednesday</span> <span class="o">+</span> <span class="n">Thursday</span> <span class="o">+</span> <span class="n">Friday</span> <span class="o">+</span> <span class="n">Saturday</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="n">schedulerows</span><span class="p">)</span>
+                                    <span class="n">schedulerows</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;&lt;/tr&gt;&quot;&quot;&quot;</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;schedule.html&quot;</span><span class="p">,</span> <span class="n">newrow</span><span class="o">=</span><span class="n">schedulerows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="member2.html" class="btn btn-neutral float-right" title="2.2. Parts Implemented by Burak Bozdağ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Developer Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ITUCSDB1932
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.2. Parts Implemented by Burak Bozdağ &mdash; ITUCSDB1932 alpha 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2.1. Parts Implemented by Muhammed Furkan Kamer" href="member1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ITUCSDB1932
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1. User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="member1.html">2.1. Parts Implemented by Muhammed Furkan Kamer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Parts Implemented by Burak Bozdağ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database-design">2.2.1. Database Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code">2.2.2. Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database-functions">2.2.2.1. Database Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log-in-and-log-out">2.2.2.2. Log In and Log Out</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-profile-page">2.2.2.3. The Profile Page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authorizations-for-specific-users">2.2.2.4. Authorizations for Specific Users</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ITUCSDB1932</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>Developer Guide</a> &raquo;</li>
+        
+      <li><span class="section-number">2.2. </span>Parts Implemented by Burak Bozdağ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/member2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parts-implemented-by-burak-bozdag">
+<h1><span class="section-number">2.2. </span>Parts Implemented by Burak Bozdağ<a class="headerlink" href="#parts-implemented-by-burak-bozdag" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-design">
+<h2><span class="section-number">2.2.1. </span>Database Design<a class="headerlink" href="#database-design" title="Permalink to this headline">¶</a></h2>
+<p>I implemented three tables in this project: <em>Managers</em>, <em>Teachers</em> and <em>Students</em>.</p>
+<p>Managers manages teachers and students. Teachers teaches students. Teachers gives lectures and etudes to students.
+Students takes lectures and etudes from teachers. Managers also manages these lectures and etudes. The E/R diagram is
+shown below:</p>
+<div class="figure align-default" id="id14">
+<a class="reference internal image-reference" href="../_images/erDiagram2.png"><img alt="map to buried treasure" src="../_images/erDiagram2.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">E/R diagram for managers, teachers and students.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="code">
+<h2><span class="section-number">2.2.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of tables in the database is done using the following code block:</p>
+<div class="highlight-python notranslate" id="dbinit-py"><div class="highlight"><pre><span></span><span class="n">INIT_STATEMENTS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Managers ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">    name VARCHAR(255) NOT NULL,</span>
+<span class="sd">    surname VARCHAR(255) NOT NULL,</span>
+<span class="sd">    email VARCHAR(255),</span>
+<span class="sd">    join_date DATE NOT NULL DEFAULT CURRENT_DATE,</span>
+<span class="sd">    experience_year int,</span>
+<span class="sd">    user_id int NOT NULL,</span>
+<span class="sd">    FOREIGN KEY (user_id) REFERENCES Users(id));&quot;&quot;&quot;</span><span class="p">,</span>
+
+    <span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Teachers ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">    name VARCHAR(255) NOT NULL,</span>
+<span class="sd">    surname VARCHAR(255) NOT NULL,</span>
+<span class="sd">    subject varchar(255),</span>
+<span class="sd">    join_date DATE NOT NULL DEFAULT CURRENT_DATE,</span>
+<span class="sd">    experience_year int,</span>
+<span class="sd">    user_id int NOT NULL,</span>
+<span class="sd">    FOREIGN KEY (user_id) REFERENCES Users(id));&quot;&quot;&quot;</span><span class="p">,</span>
+
+    <span class="sd">&quot;&quot;&quot;CREATE TABLE if not exists Students ( id SERIAL PRIMARY KEY,</span>
+<span class="sd">    name VARCHAR(255) NOT NULL,</span>
+<span class="sd">    surname VARCHAR(255) NOT NULL,</span>
+<span class="sd">    degree int NOT NULL,</span>
+<span class="sd">    join_date DATE NOT NULL DEFAULT CURRENT_DATE,</span>
+<span class="sd">    grade FLOAT,</span>
+<span class="sd">    user_id int NOT NULL,</span>
+<span class="sd">    FOREIGN KEY (user_id) REFERENCES Users(id));&quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="database-functions">
+<h3><span class="section-number">2.2.2.1. </span>Database Functions<a class="headerlink" href="#database-functions" title="Permalink to this headline">¶</a></h3>
+<p>The most used database functions are implemented in a separate file called <em>database.py</em> to avoid redundant codes in
+<em>server.py</em>.</p>
+<div class="section" id="getting-user">
+<h4><span class="section-number">2.2.2.1.1. </span>Getting user<a class="headerlink" href="#getting-user" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate" id="database-py"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+    <span class="k">with</span> <span class="n">dbapi2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT username, password, title, name, surname FROM Users WHERE username = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">username</span><span class="p">,)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">curs</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">curs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">curs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">curs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">surname</span> <span class="o">=</span> <span class="n">curs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">user</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-user">
+<h4><span class="section-number">2.2.2.1.2. </span>Updating user<a class="headerlink" href="#updating-user" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate" id="id1"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">dbapi2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Users</span>
+<span class="s2">        SET &quot; username = &#39;</span><span class="si">%s</span><span class="s2">&#39;, password = &#39;</span><span class="si">%s</span><span class="s2">&#39; title = &#39;</span><span class="si">%s</span><span class="s2">&#39; name = &#39;</span><span class="si">%s</span><span class="s2">&#39; surname = &#39;</span><span class="si">%s</span><span class="s2">&#39; WHERE (id = </span><span class="si">%s</span><span class="s2">)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">surname</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-profile">
+<h4><span class="section-number">2.2.2.1.3. </span>Updating Profile<a class="headerlink" href="#updating-profile" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate" id="id2"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">profile</span><span class="p">):</span>  <span class="c1"># Changeable attributes: name, surname (general updating)</span>
+    <span class="k">with</span> <span class="n">dbapi2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT title FROM Users WHERE id = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;UPDATE </span><span class="si">%s</span><span class="s2"> SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, YR = </span><span class="si">%s</span><span class="s2"> WHERE (ID = </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">title</span><span class="p">,</span> <span class="n">profile</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">profile</span><span class="o">.</span><span class="n">surname</span><span class="p">,</span> <span class="n">profile</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-user">
+<h4><span class="section-number">2.2.2.1.4. </span>Deleting User<a class="headerlink" href="#deleting-user" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate" id="id3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">profile_id</span><span class="p">):</span>  <span class="c1"># Deletes user and profile</span>
+    <span class="k">with</span> <span class="n">dbapi2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT title FROM Users WHERE id = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DELETE FROM </span><span class="si">%s</span><span class="s2"> WHERE (id = </span><span class="si">%s</span><span class="s2">)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">profile_id</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DELETE FROM Users WHERE (id = </span><span class="si">%s</span><span class="s2">)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There are many view functions such as login, home page, profile, etc. These functions are described in next parts.</p>
+</div>
+</div>
+<div class="section" id="log-in-and-log-out">
+<h3><span class="section-number">2.2.2.2. </span>Log In and Log Out<a class="headerlink" href="#log-in-and-log-out" title="Permalink to this headline">¶</a></h3>
+<p>When logging in, the server checks whether the username exists in the database. Then, password checking is done using
+hashing methods. If these requirements are satisfied, the user logs into the site successfully.</p>
+<p>The following code block is responsible for logging in:</p>
+<div class="highlight-python notranslate" id="server-py"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;UserName&#39;</span><span class="p">]</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;Password&#39;</span><span class="p">]</span>
+        <span class="n">password1</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">password</span>
+        <span class="k">if</span> <span class="n">pbkdf2_sha256</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">password1</span><span class="p">):</span>
+            <span class="n">login_user</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+            <span class="n">flash</span><span class="p">(</span><span class="s2">&quot;You have logged in.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;signin.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Invalid credentials.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When logging out, the server checks whether a user is already logged in, then proceeds to the logging out process.</p>
+<p>The following code block is responsible for logging out:</p>
+<div class="highlight-python notranslate" id="id4"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/logout&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">logout</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">logout_user</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;homepage.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;You have logged out.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-profile-page">
+<h3><span class="section-number">2.2.2.3. </span>The Profile Page<a class="headerlink" href="#the-profile-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="view-profile-attributes">
+<h4><span class="section-number">2.2.2.3.1. </span>View Profile Attributes<a class="headerlink" href="#view-profile-attributes" title="Permalink to this headline">¶</a></h4>
+<p>If a user wants to look at his/her information that is stored in the database, the user can enter to the profile page.
+The profile view function displays all attributes that a user has in the output.</p>
+<p>The following code block is responsible for displaying profile attributes:</p>
+<div class="highlight-python notranslate" id="id5"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/profile&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">profile</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">titles</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;select title from users where username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM Managers WHERE user_id = (SELECT id FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">email</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="n">join_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="n">experience</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;profile.html&quot;</span><span class="p">,</span>
+                                       <span class="n">username</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span>
+                                       <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">join_date</span><span class="o">=</span><span class="n">join_date</span><span class="p">,</span> <span class="n">experience</span><span class="o">=</span><span class="n">experience</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM Teachers WHERE user_id = (SELECT id FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">subject</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="n">join_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="n">experience</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;profile.html&quot;</span><span class="p">,</span>
+                                       <span class="n">username</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span>
+                                       <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">join_date</span><span class="o">=</span><span class="n">join_date</span><span class="p">,</span> <span class="n">experience</span><span class="o">=</span><span class="n">experience</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM Students WHERE user_id = (SELECT id FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;&quot;&quot;</span> \
+                            <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">degree</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="n">join_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="n">grade</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;profile.html&quot;</span><span class="p">,</span>
+                                       <span class="n">username</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span>
+                                       <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">join_date</span><span class="o">=</span><span class="n">join_date</span><span class="p">,</span> <span class="n">grade</span><span class="o">=</span><span class="n">grade</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-profile-attributes">
+<h4><span class="section-number">2.2.2.3.2. </span>Update Profile Attributes<a class="headerlink" href="#update-profile-attributes" title="Permalink to this headline">¶</a></h4>
+<p>The user may want to update his/her attributes. For this problem, there is a function that lets the user to update
+information in the database.</p>
+<p>The following code block is responsible for updating profile:</p>
+<div class="highlight-python notranslate" id="id6"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/update-profile&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">profile_update</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id, title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                <span class="n">user_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name, surname, email, experience_year FROM Managers WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">email</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">experience</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;update-profile.html&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+                                       <span class="n">experience</span><span class="o">=</span><span class="n">experience</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name, surname, subject, experience_year FROM Teachers WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">user_id</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">subject</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">experience</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;update-profile.html&quot;</span><span class="p">,</span>
+                                       <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">experience</span><span class="o">=</span><span class="n">experience</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name, surname, degree FROM Students WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">degree</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;update-profile.html&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to submit changes to update the profile, there must be a route for <em>POST</em> method to update the database:</p>
+<div class="highlight-python notranslate" id="id7"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/update-profile&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">update_profile</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id, title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                <span class="n">user_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                <span class="n">surname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;surname&#39;</span><span class="p">]</span>
+                <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+                <span class="n">experience</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;experience&#39;</span><span class="p">]</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Managers SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39;, email = &#39;</span><span class="si">%s</span><span class="s2">&#39;, experience_year = </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">                WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">experience</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Users SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39; WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teacher&quot;</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                <span class="n">surname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;surname&#39;</span><span class="p">]</span>
+                <span class="n">subject</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+                <span class="n">experience</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;experience&#39;</span><span class="p">]</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Teachers SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39;, subject = &#39;</span><span class="si">%s</span><span class="s2">&#39;, experience_year = </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">                WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">experience</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Users SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39; WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                <span class="n">surname</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;surname&#39;</span><span class="p">]</span>
+                <span class="n">degree</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Students SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39;, degree = </span><span class="si">%s</span><span class="s2"> WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Users SET name = &#39;</span><span class="si">%s</span><span class="s2">&#39;, surname = &#39;</span><span class="si">%s</span><span class="s2">&#39; WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-password">
+<h4><span class="section-number">2.2.2.3.3. </span>Updating Password<a class="headerlink" href="#updating-password" title="Permalink to this headline">¶</a></h4>
+<p>If the user wants to update the account’s password, it is done by entering the old password and the new password. The
+password function checks whether the old password is correct, then checks whether two new passwords that are entered are
+matching. At last, the server updates the account’s password.</p>
+<p>The following code block is responsible for updating password:</p>
+<div class="highlight-python notranslate" id="id8"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/password&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">change_password</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">new1</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;new1&#39;</span><span class="p">]</span>
+    <span class="n">new2</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;new2&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">new1</span> <span class="o">!=</span> <span class="n">new2</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;New passwords don&#39;t match. Try again.&quot;</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;password.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+    <span class="n">old</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;old&#39;</span><span class="p">]</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pbkdf2_sha256</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">password</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">pbkdf2_sha256</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">new1</span><span class="p">)</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Users SET password = &#39;</span><span class="si">%s</span><span class="s2">&#39; WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                <span class="n">logout_user</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/signin&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;The old password you entered is incorrect. Try again.&quot;</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;password.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-profile">
+<h4><span class="section-number">2.2.2.3.4. </span>Deleting Profile<a class="headerlink" href="#deleting-profile" title="Permalink to this headline">¶</a></h4>
+<p>The user might want to delete his/her account from the database but this is a problematic wish since there are many
+relations between managers, teachers and students. The server checks whether the user is dropped from all lectures,
+etudes, etc. then allows the profile deleting process.</p>
+<p>The following code block is responsible for deleting a profile:</p>
+<div class="highlight-python notranslate" id="id9"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/DELETE&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">delete</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT id, title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                <span class="n">user_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s2">&quot;s&quot;</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DELETE FROM </span><span class="si">%s</span><span class="s2"> WHERE user_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">DatabaseError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Teachers&quot;</span><span class="p">:</span>
+                    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;A teacher should quit from his/her lectures/etudes before deleting its account.&quot;</span>
+                    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;homepage.html&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+            <span class="n">logout_user</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Students&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DELETE FROM RegisteredStudents WHERE student_id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">user_id</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DELETE FROM Users WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">user_id</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="authorizations-for-specific-users">
+<h3><span class="section-number">2.2.2.4. </span>Authorizations for Specific Users<a class="headerlink" href="#authorizations-for-specific-users" title="Permalink to this headline">¶</a></h3>
+<p>In <em>SchoolManager</em>, there are some actions that are used by managers and teachers. In the following sections, these
+authorizations are explained.</p>
+<div class="section" id="viewing-all-students">
+<h4><span class="section-number">2.2.2.4.1. </span>Viewing All Students<a class="headerlink" href="#viewing-all-students" title="Permalink to this headline">¶</a></h4>
+<p>Only managers and teachers can view all students that are in the database. This function only works when the current
+user is not a student.</p>
+<p>The following code block is responsible for displaying all students that are in the database:</p>
+<div class="highlight-python notranslate" id="id10"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/students&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">students</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">!=</span> <span class="s2">&quot;Student&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * from Students ORDER BY id&quot;&quot;&quot;</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">rows</span> <span class="o">+=</span> <span class="p">(</span><span class="n">row</span><span class="p">,)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;students.html&quot;</span><span class="p">,</span> <span class="n">students</span><span class="o">=</span><span class="n">rows</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="grading">
+<h4><span class="section-number">2.2.2.4.2. </span>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">¶</a></h4>
+<p>Managers and teachers are able to grade their students using the previous function that displays all students. The user
+enter a student ID inside a form to update a student’s grade:</p>
+<div class="highlight-python notranslate" id="id11"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/student&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">give_grade</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT name, surname, degree, join_date, grade FROM Students WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/students&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/students&quot;</span><span class="p">)</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">surname</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">degree</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">join_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">grade</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;student.html&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">student_id</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span><span class="o">=</span><span class="n">surname</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span>
+                                       <span class="n">join_date</span><span class="o">=</span><span class="n">join_date</span><span class="p">,</span> <span class="n">grade</span><span class="o">=</span><span class="n">grade</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/students&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When the new grade is entered, the server updates the grade of the student using the following code block:</p>
+<div class="highlight-python notranslate" id="id12"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/grade&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">grader</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;UPDATE Students SET grade = </span><span class="si">%s</span><span class="s2"> WHERE id = </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">],</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/students&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="viewing-all-teachers">
+<h4><span class="section-number">2.2.2.4.3. </span>Viewing All Teachers<a class="headerlink" href="#viewing-all-teachers" title="Permalink to this headline">¶</a></h4>
+<p>This function displays all teachers that are in the database. Only managers can use this function. This limitation is
+checked by getting the current user’s title.</p>
+<p>The following code is responsible for displaying all teachers that are in the database:</p>
+<div class="highlight-python notranslate" id="id13"><div class="highlight"><pre><span></span><span class="nd">@login_required</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/teachers&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">teachers</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT title FROM Users WHERE username = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">username</span><span class="p">,)</span>
+    <span class="k">with</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="s2">&quot;Manager&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * from Teachers ORDER BY id&quot;&quot;&quot;</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">rows</span> <span class="o">+=</span> <span class="p">(</span><span class="n">row</span><span class="p">,)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;teachers.html&quot;</span><span class="p">,</span> <span class="n">teachers</span><span class="o">=</span><span class="n">rows</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="member1.html" class="btn btn-neutral float-left" title="2.1. Parts Implemented by Muhammed Furkan Kamer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ITUCSDB1932
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
